@@ -1,0 +1,22 @@
+%html{dir: "rtl", lang: "ar"}
+  %body
+    = link_to('عمل مبادرة جديدة',{:action => 'new'})
+    / search box
+    %br/
+    %form{action: "/initiatives/list", method: "get"}
+      %p
+        %input{name: "searchTitle", type: "text"}/
+        %input{type: "submit", value: "إبحث بالإسم"}/
+    %br/
+    %h3 كل المبادرات
+    / list all initiatives
+    - @initiatives.each do |initiative|
+      عنوان: #{link_to(initiative.title, {:action => 'show', :id_initiative => initiative.id, :id_sector => initiative.sector_id})}
+      %br/
+      بإمارة: #{link_to(initiative.region, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
+      %br/
+      الوصف: #{initiative.description}
+      %br/
+      التصنيفات: #{raw initiative.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
+      %br/
+      %br/

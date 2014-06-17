@@ -21,8 +21,8 @@
         = f.label :image
         = f.file_field :image, class: 'form-control'
       .form-group
-        = f.label :region
-        = f.select(:region,@regions, {}, {class: 'form-control'})
+        = f.label :region_id
+        = f.select(:region_id,@regions, {}, {class: 'form-control'})
       .form-group
         = label_tag :tags
         = text_field_tag :tags, nil, {class: 'form-control',data:{role:'tagsinput'}}

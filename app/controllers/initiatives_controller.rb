@@ -1,6 +1,10 @@
 class InitiativesController < ApplicationController
   def index
   end
+  def list
+    @sectors = Sector.all
+    @initiatives =Initiative.all
+  end
   def new
     @initiative = Initiative.new
     @sectors = Sector.all
@@ -17,7 +21,7 @@ class InitiativesController < ApplicationController
         
       end
     end
-    
+    logger.debug "New: #{@initiative.attributes.inspect}"
     respond_to do |format|
       if @initiative.save
         format.html { redirect_to @initiative, notice: 'Initiative was successfully created.' }
@@ -28,10 +32,11 @@ class InitiativesController < ApplicationController
   end
 
   def show
+    @initiative = Initiative.find(1)
   end
 end
 
 private
 def initiative_params
-  params.require(:initiative).permit(:image)
+  params.require(:initiative).permit(:title, :description, :region_id, :user_id, :image, :tags, :sector_id)
 end
