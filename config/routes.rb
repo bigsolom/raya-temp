@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
   get 'index/index'
+  get 'initiatives/list'
 
   resources :initiatives
 
@@ -7,7 +10,10 @@ Rails.application.routes.draw do
   devise_scope :user do
    get "signup", to: "devise/registrations#new"
    get "login", to: "devise/sessions#new"
-   get "logout", to: "devise/sessions#destroy"
+   get "logout", to: "devise/sessions#destroy" 
+  end
+  resources :initiatives do
+  resources :comments
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

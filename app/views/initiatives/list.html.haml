@@ -11,9 +11,9 @@
     %h3 كل المبادرات
     / list all initiatives
     - @initiatives.each do |initiative|
-      عنوان: #{link_to(initiative.title, {:action => 'show', :id_initiative => initiative.id, :id_sector => initiative.sector_id})}
+      عنوان: #{link_to(initiative.title, {:action => 'show', :id => initiative.id  })}
       %br/
-      بإمارة: #{link_to(initiative.region, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
+      بإمارة: #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
       %br/
       الوصف: #{initiative.description}
       %br/

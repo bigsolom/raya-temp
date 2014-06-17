@@ -21,3 +21,14 @@
 = link_to 'Edit', edit_initiative_path(@initiative)
 |
 \#{link_to 'Back', initiatives_path}
+%br/
+مناقشة المبادرة
+%br/
+%form{action: "/comments/create"}
+  %textarea{name: "content"}
+  %br/
+  %input{type: "submit", value: "ارسل"}/
+- @comments.each do |comment|
+  %div
+    %span= comment.content
+    %span= comment.created_at

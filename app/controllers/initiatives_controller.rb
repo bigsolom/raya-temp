@@ -32,7 +32,9 @@ class InitiativesController < ApplicationController
   end
 
   def show
-    @initiative = Initiative.find(1)
+    @initiative = Initiative.find(params[:id])
+    @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
+    
   end
 end
 
