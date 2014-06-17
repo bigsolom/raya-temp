@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @initiative.title
+%p
+  %strong Description:
+  = @initiative.description
+%p
+  %strong Image:
+  = image_tag @initiative.image.url
+%p
+  %strong Sector:
+  = @initiative.sector.name
+%p
+  %strong Region:
+  = @initiative.region.name
+%p
+  %strong User:
+  = @initiative.user.name
+= link_to 'Edit', edit_initiative_path(@initiative)
+|
+\#{link_to 'Back', initiatives_path}

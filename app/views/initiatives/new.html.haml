@@ -1,0 +1,6 @@
+%h3 New initiative
+%div#sectors
+  - @sectors.each do |sector|
+    %button.btn.btn-link{:type => "button", :value => sector.id}= sector.name
+%div#form
+  = render 'form'

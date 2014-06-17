@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eparticipation</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+		<header>
+			<div class="row logo-banner">	
+				<div class="col-md-4 user-info">
+					<div class="user-information pull-right">
+						<div class="user">
+							<span class="dark-text">ابومحمد الاماراتى</span><br/>
+							<span class="light-text"> مبادراتى - بياناتى - خروج</span>
+						</div>
+						<div class="user-image"><img src="<%= image_url 'profilePic.jpg' %>" width="26" height="26"></div>
+					</div>
+				</div>
+
+				<div class="col-md-4 social-media">
+						<div class="social-media-icon">
+							<a href = "http://www.rss.com"><img class="icon-link" src="<%= image_url 'RSS-icon.png' %>"></a>
+						</div>
+						<div class="social-media-icon" >
+							<a href = "http://www.google.com"><img class="icon-link"src="<%= image_url 'google-icon.png' %>"></a>
+						</div>
+						<div class="social-media-icon" >
+                                                  <a href = "http://www.youtube.com"><img class="icon-link"src="<%= image_url 'youtube-icon.png' %>"></a>
+						</div>
+						<div class="social-media-icon">
+							<a href = "http://www.twitter.com"><img class="icon-link"src="<%= image_url 'twitter-icon.png' %>" ></a>
+						</div>
+						<div class="social-media-icon" >
+							<a href = "http://www.facebook.com"><img class="icon-link"src="<%= image_url 'fb-icon.png' %>"> </a> 
+						</div>
+						<div class="inline-text dark-text">تابعونا</div>
+				</div>
+
+				<div class="col-md-4 logo">
+					<div class="logopic">
+						<a href="index.html"><img src="<%= image_url 'logo.png' %>"/></a>	
+					</div>
+				</div>
+			</div>  <!-- end of first row-->
+
+			<!--//-----------Navigation menu---------//-->
+			
+			<div class="row">
+				<div class="col-md-12 nav_menu">
+					<div class="navigation">
+						<div class="separator"></div>
+						<a href="causes.html">
+							<div class="nav_item nav-text">(153) نتائج </div>
+						<a>
+						<div class="separator"></div>
+						<a href="hangouts.html" >
+							<div class="nav_item nav-text"> (235) برزة </div>
+						</a>
+						<div class="separator"></div>
+						<a href="results.html" >
+							<div class="nav_item nav-text"> (2465) مبادرة </div>
+						</a>
+						<div class="separator"></div>
+					</div>
+				</div>
+			</div>
+		</header> <!--End of header -->
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   
+<%= yield %>
+   
+<!--//-----------Footer ---------//-->
+		
+		<footer>
+			<div class="row footer_wrapper">
+				<div class="col-md-12 wrap privacy-font"> سياسة الخصوصية - شروط الاستخدام - اخلاء المسئولية - ميثاق المتعاملين - حقوق النسخ</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 wrap copyright-font"> .جميع الحقوق &copy; 2013-2012 حكومة الامارات الالكترونية جميع الحققو محفوظة</div>
+			</div>
+		</footer>
+
+		
+		
+	</div>  <!--End of div container -->
+
+</body>
+</html>
