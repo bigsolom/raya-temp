@@ -1,0 +1,25 @@
+// Place all the styles related to the Results controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form{
+	position: relative;
+	top: 100px;
+	left: 100px;
+}
+
+.box-content{
+	text-align: right;
+	margin-top: 12px;
+	height: 40px;
+	width: 445px;
+}
+
+
+
+.btn-add-photo{
+	width: 140px;
+	height: 45px;
+	background-color: #F0F0F0 ;
+	border-bottom: 4px solid #CCC2C2;
+}

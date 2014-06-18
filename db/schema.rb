@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 20140617134952) do
     t.datetime "updated_at"
   end
 
+  create_table "decisionmakers", force: true do |t|
+    t.string   "username"
+    t.string   "name"
+    t.integer  "password"
+    t.string   "job"
+    t.string   "pic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "decisionmakers_results", id: false, force: true do |t|
+    t.integer "result_id"
+    t.integer "decisionmaker_id"
+  end
+
   create_table "initiatives", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -36,6 +51,11 @@ ActiveRecord::Schema.define(version: 20140617134952) do
     t.datetime "image_updated_at"
   end
 
+  create_table "initiatives_results", id: false, force: true do |t|
+    t.integer "initiative_id"
+    t.integer "result_id"
+  end
+
   create_table "initiatives_tags", id: false, force: true do |t|
     t.integer "initiative_id", null: false
     t.integer "tag_id",        null: false
@@ -46,6 +66,12 @@ ActiveRecord::Schema.define(version: 20140617134952) do
 
   create_table "regions", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "results", force: true do |t|
+    t.text     "decision"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

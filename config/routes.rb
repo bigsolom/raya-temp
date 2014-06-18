@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'comments/create'
+  get 'results/index'
+
+  get 'results/create'
 
   get 'index/index'
   get 'initiatives/list'

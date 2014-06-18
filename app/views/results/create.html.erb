@@ -1,0 +1,11 @@
+<div>
+<form  class="form" >
+<% @initiatives.each do |initiative| %>
+	<%= check_box_tag 'initiatives_ids[]', initiative.id %>
+	<%= initiative.title %><br>
+<% end %>
+<br><%= select_tag "decisionmaker_ids", options_for_select(@decisionmakers.collect{|u| [u.name, u.id]  }), class: 'form-control pull-right' %><br>
+<textarea name="decision" class="box-content"></textarea><br>
+<div><input class="btn-add-photo" type="submit" value="Done"></div>
+</form>
+</div>

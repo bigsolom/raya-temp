@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>تواصل | الامارات العربية المتحدة</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Bootstrap 101 Template</title>
+
+	    <!-- Bootstrap -->
+	    <link href="../../assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+	    <link href="../../assets/stylesheets/component.css" rel="stylesheet">
+	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+	<!--result-->
+	
+	<%  @results.each do |result|  %>
+	
+	<!--%  @decisionmakers.each do |decisionmaker|  %-->
+	<% resultmaker = result.decisionmakers.where(result_id = result.id).all[0] %>
+	<div class="result col-md-9 content-border">
+		<div class=" content col-md-6 content-partial right-border ">
+			<div class="result-person-detail col-md-12 ">	
+				<div class="result-person-info col-md-12">
+					<div class="col-md-10 width-80">
+					<div class="col-md-12 result-font ">
+							<span class="col-md-12 green-font bold-font">معالي / <%=  resultmaker.name %></span><br>
+							<span class="col-md-12 green-font"><%=  resultmaker.job %></span>
+						<div class="col-md-12">
+							<span class="gray-font small-font">بتاريخ</span>
+							<span class="gray-font small-font"><%=  result.updated_at %></span>
+						</div>
+					</div>
+					</div>
+					<div class="note-img col-md-2"><%=  resultmaker.pic %></div>
+					<!--% end %-->
+				</div>
+				<div class=" result-person-decision col-md-12 gray-font"><%= result.decision%></div>
+			</div>
+		</div>
+		
+		
+		<% initiative_data = result.initiatives.where(result_id = result.id).all[0] %>
+		<div class=" content col-md-6 content-partial">
+			<div class="result-person-detail col-md-12">
+				<div class="col-md-7 width-65">	
+					<div class="result-topic-title col-md-12 box-title">
+							<div class="col-md-12 title-font green-font"><%=  initiative_data.title %></div>
+							<div class="col-md-12 gray-font">مبارده في
+								<a href=""><%=  initiative_data.sector.name %> </a> بأمارة
+								<a href=""><%=  initiative_data.region.name %></a>
+						 </div>
+						 <div class="result-topic-content col-md-12 gray-font"><%=  initiative_data.description %>
+						</div>
+						</div>
+						</div>
+						<div class="col-md-5 width-35">
+							<div class="box-img col-md-12"><%= image_tag initiative_data.image.url %></div>
+							<div class="count-box col-md-12">
+							<span class="green-font col-md-12 title-font"><!--%= initiative_data.users.count %--></span>
+							<span class="green-font col-md-12 date-font">شخص دعم المبادرة</span>
+							</div>	
+						</div>
+					
+				</div>
+			</div>	
+		</div>
+	
+	
+<div>
+	
+	<% end %>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
