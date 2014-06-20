@@ -36,4 +36,13 @@
   %div
     %span= comment.content
     %span= comment.created_at
-
+- count =1
+- @updates.each do |update|
+  %table{align: "center", bgcolor: "white", border: "8", hight: "152", width: "652"}
+    %tr
+      %td
+        %span تحديث #
+        = count
+    %tr
+      %td= update.action
+    - count +=1

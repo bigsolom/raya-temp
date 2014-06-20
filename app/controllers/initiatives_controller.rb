@@ -50,12 +50,7 @@ class InitiativesController < ApplicationController
 
   def show
     @initiative = Initiative.find(params[:id])
-    #@updates = Update.find(:all, :conditions => ["initiative_id = ?", params[:id]])
-    #@updates = Update.where("initiative_id" => params[:id])
-
-
-    #@updates = Update.find(params[:id])
-
+    @updates = Update.where(initiative_id: params[:id])
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
     #@results=@initiative.results
     if request.get?
