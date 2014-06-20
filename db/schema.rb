@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617134952) do
+ActiveRecord::Schema.define(version: 20140617184911) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -64,6 +64,11 @@ ActiveRecord::Schema.define(version: 20140617134952) do
   add_index "initiatives_tags", ["initiative_id", "tag_id"], name: "index_initiatives_tags_on_initiative_id_and_tag_id", using: :btree
   add_index "initiatives_tags", ["tag_id", "initiative_id"], name: "index_initiatives_tags_on_tag_id_and_initiative_id", using: :btree
 
+  create_table "initiatives_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "initiative_id"
+  end
+
   create_table "regions", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -85,6 +90,13 @@ ActiveRecord::Schema.define(version: 20140617134952) do
 
   create_table "tags", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "updates", force: true do |t|
+    t.text     "action"
+    t.integer  "initiative_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

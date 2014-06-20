@@ -21,6 +21,10 @@
 = link_to 'Edit', edit_initiative_path(@initiative)
 |
 \#{link_to 'Back', initiatives_path}
+%form{method: "get"}
+  %input{name: "user_id", type: "hidden", value: "1"}/
+  = @status
+  = button_to "support"
 %br/
 مناقشة المبادرة
 %br/
@@ -32,3 +36,4 @@
   %div
     %span= comment.content
     %span= comment.created_at
+
