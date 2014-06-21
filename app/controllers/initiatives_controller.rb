@@ -49,14 +49,6 @@ class InitiativesController < ApplicationController
         format.html { render :new }
       end
     end
-    update=Update.new(params[:update])
-    update.action=params[:description]
-    update.initiative_id=params[:initiative_id].to_i
-    #if update.save
-      #redirect_to(:action => 'update')
-    #else
-      #render('new')
-    #end
   end
 
   def show
