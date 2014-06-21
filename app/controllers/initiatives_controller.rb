@@ -33,15 +33,21 @@ class InitiativesController < ApplicationController
 
   def create
     @initiative = Initiative.new(initiative_params)
+    
+    #Tags
     tags = params[:tags]
     @tags = tags.split(",")
     @tags.each do |tag|
-      if Tag.find_by_name(tag)
-        
-      else
-        
+    #each tag
+      if !(Tag.find_by_name(tag)) #not exists
+        @new_tag = Tag.new
+        @new_tag.name = tag
+        @initiative.tags << @new_tag 
       end
+
     end
+
+
   
     respond_to do |format|
       if @initiative.save

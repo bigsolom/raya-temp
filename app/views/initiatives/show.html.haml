@@ -39,12 +39,16 @@
                           .cause-wrapper-title.green-font
                             = @initiative.title
                           .cause-wrapper-sub-title
+                            
+                            
                             مبادرة فى
-                            %span.green-font.piro 
+                            %span.green-font 
                               #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.sector})}
                             \- بمحافظة
                             %span.green-font 
                               #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.region})}
+
+                                                          
                         .col-md-3
                           .cause-wrapper-img
                             = image_tag @initiative.image.url 
@@ -57,6 +61,13 @@
                         .green-font تفاصيل المبادرة
                         .cause-wrapper-details.gray-text
                           = @initiative.description
+                    .row.cause-wrapper-paragraph
+                      .col-md-12
+                        .green-font التصنيفات
+                        .cause-wrapper-details.gray-text.green-font                             
+                          - for tag in @initiative.tags
+                            = link_to(tag.name)
+                          
 
                           
             %br/
