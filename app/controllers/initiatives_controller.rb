@@ -58,10 +58,7 @@ class InitiativesController < ApplicationController
     #@results=@initiative.results
 
   end 
-
-
 end
-
 
 private
 def initiative_params

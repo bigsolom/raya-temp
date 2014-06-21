@@ -1,4 +1,4 @@
-%html{dir: "rtl",lang: "ar"}
+%html{lang: "ar"}
 = form_for(@initiative, html: {:role => "form",:multipart => true}) do |f|
   - if @initiative.errors.any?
     #error_explanation
@@ -9,10 +9,11 @@
         - @initiative.errors.full_messages.each do |message|
           %li= message
   .row
-    .col-md-6
+    .col-md-5
+    .col-md-6.green-font.text-right
       = f.hidden_field :sector_id
       = f.hidden_field :user_id, :value => current_user.id
-      .form-group
+      .form-group.green-border
         = f.label :"عنوان المبادرة"
         %br
         = f.text_field :title, class: 'form-control'
@@ -20,13 +21,14 @@
         = f.label :"تفاصيل المبادرة"
         = f.text_area :description, class: 'form-control'
       .form-group
-        = f.label :image
+        = f.label :"صورة المبادرة"
         = f.file_field :image, class: 'form-control'
       .form-group
-        = f.label :region_id
-        = f.select(:region_id,@regions, {}, {class: 'form-control'})
+        = f.label :"المحافظة"
+        = f.select(:region_id,@regions, {}, {class: 'form-control text-right'})
       .form-group
-        = label_tag :tags
+        = label_tag :"التصنيفات"
+        %br
         = text_field_tag :tags, nil, {class: 'form-control',data:{role:'tagsinput'}}
       .actions
-        = f.submit 'Create', class: 'btn btn-default'
+        = f.submit 'انشئ المبادرة', class: 'btn btn-default form-btn'

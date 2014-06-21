@@ -35,7 +35,10 @@ input, select {
   color: #D0D0D0;
 }
 .gray-font{
-  color:black;
+  
+}
+.gray-font a{
+  color:rgb(121, 113, 113);
 }
 
 header {
@@ -621,6 +624,9 @@ footer {
 .green-font {
   color: #0E9E38;
 }
+.green-font a{
+  color: #0E9E38;
+}
 
 .box-title {
   text-align: right;
@@ -831,6 +837,13 @@ a.cause-section {
 .btn-default {
   background-color: #ebebeb;
 }
+.form-btn{
+  background-color: #21830A;
+}
+.text-right{
+  text-align: right;
+}
+
 
 .add-image-container {
   width: 250px;
@@ -845,6 +858,7 @@ a.cause-section {
 
 .form-control {
   margin-bottom: 20px;
+  text-align: right;
 }
 
 .green-btn {

@@ -96,9 +96,7 @@
               %br
               %br
               .main_title.active_title برزات قادمة
-              %img.home-calendar=image_tag "calendar.png"
-
-                
+              %img.home-calendar=image_tag "calendar.png" 
             .col-md-6.latest-causes
               .inner_menu
                 .main_title مبادرات الاصدقاء
@@ -130,8 +128,9 @@
                           %span
                             #{initiative.description[0, 120]}
                           #{link_to("...المزيد", {:controller=>'initiatives',:action => 'show', :id => initiative.id  })}
-                      .col-md-3
-                        .box-img
+                      .col-md-3  
+                        .cause-wrapper-img
+                          = image_tag initiative.image.url
 
 
 

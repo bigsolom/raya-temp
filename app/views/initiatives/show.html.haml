@@ -37,14 +37,14 @@
                             إدعم المبادرة
                         .col-md-6
                           .cause-wrapper-title.green-font
-                            = @initiative.title[0, 40]
+                            = @initiative.title
                           .cause-wrapper-sub-title
                             مبادرة فى
+                            %span.green-font.piro 
+                              #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.sector})}
+                            \- بمحافظة
                             %span.green-font 
-                            #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.sector})}
-                            \- بإمارة
-                            %span.green-font 
-                            #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.region})}
+                              #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.region})}
                         .col-md-3
                           .cause-wrapper-img
                             = image_tag @initiative.image.url 
@@ -99,3 +99,4 @@
     %tr
       %td= update.action
     - count +=1
+= @time
