@@ -94,9 +94,20 @@
             .col-md-1
             .col-md-4.left-sidebar
               %br
-              %br
+              %br  
               .main_title.active_title برزات قادمة
-              %img.home-calendar=image_tag "calendar.png" 
+              %img.home-calendar=image_tag "calendar.png"
+              .col-md-12
+                %form.search-form
+                  %select.default-btn
+                    %option{name: "iro", value: "jdjs"}الأسم
+                    %option{name: "iro", value: "jdjs"}القطاع
+                    %option{name: "iro", value: "jdjs"}المحافظة
+                    %option{name: "iro", value: "jdjs"}التصنيفات
+                  %input.search-box{name: "answer", type: "text"}
+                  %br
+                  %input.btn-default.search-btn{type: "submit", value: "ابحث"} 
+                     
             .col-md-6.latest-causes
               .inner_menu
                 .main_title مبادرات الاصدقاء
@@ -122,7 +133,7 @@
                               %div
                                 مبارده في
                                 #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => initiative.sector})}
-                                \- بأمارة
+                                \- بمحافظة
                                 #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
                         .box-content-paragraph
                           %span

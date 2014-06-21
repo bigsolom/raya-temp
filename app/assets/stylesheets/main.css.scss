@@ -5,7 +5,6 @@
   font-style: normal;
 }
 
-
 body {
   background-image: URL(image-path("background.png"));
   background-repeat: repeat-x;
@@ -900,5 +899,19 @@ a.cause-section {
   padding-bottom: 10px;
 }
 
+.search-box{
+  border: 2px solid #CCC2C2;
+  border-radius: 5px;
+  margin-top: 5px;
+  text-align: right;
+  background-color: white;
+}
+.search-form{
+text-align: center;
+margin-left: 164px;
+border: 2px solid #CCC2C2;
+border-radius: 5px;
+background-color: gray;
+}
 
 
