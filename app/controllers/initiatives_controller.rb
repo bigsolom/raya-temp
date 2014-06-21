@@ -4,17 +4,18 @@ class InitiativesController < ApplicationController
 
   def list
     @sectors = Sector.all
-    case 
-    when params[:searchTitle]
+    if params[:searchTitle]
       @initiatives = Initiative.searchTitle(params[:searchTitle])
-    when params[:tag]
+    elsif params[:tag]
       @initiatives = Initiative.tagged_with(params[:tag])
-    when params[:searchRegion]
+    elsif params[:searchRegion]
       @initiatives = Initiative.searchRegion(params[:searchRegion])
+    elsif params[:searchSector]
+      @initiatives = Initiative.searchSector(params[:searchSector])
     else
       @initiatives = Initiative.all
     end
-    @initiatives =Initiative.all
+    
     
   end
   

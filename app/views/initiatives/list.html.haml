@@ -58,9 +58,9 @@
                                   .title-font.green-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
                                   %div
                                     مبارده في
-                                    #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => initiative.sector})}
+                                    #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => initiative.sector.id})}
                                     \- بمحافظة
-                                    #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
+                                    #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region.id})}
                             .box-content-paragraph
                               %span
                                 #{initiative.description[0, 130]}
@@ -100,7 +100,7 @@
                 - @sectors.each do |sector|        
                   .row.right-side-menu-item.gray-font
                     .col-md-12.gray-font
-                      #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => sector.name})}
+                      #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => sector.id})}
                  
                   
                   
