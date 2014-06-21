@@ -4,10 +4,11 @@ class InitiativesController < ApplicationController
 
   def list
     @sectors = Sector.all
+
     if params[:searchTitle]
       @initiatives = Initiative.searchTitle(params[:searchTitle])
     elsif params[:tag]
-      @initiatives = Initiative.tagged_with(params[:tag])
+      @initiatives = Tag.find_by_name(params[:tag]).initiatives
     elsif params[:searchRegion]
       @initiatives = Initiative.searchRegion(params[:searchRegion])
     elsif params[:searchSector]
@@ -15,7 +16,6 @@ class InitiativesController < ApplicationController
     else
       @initiatives = Initiative.all
     end
-    
     
   end
   
@@ -38,20 +38,23 @@ class InitiativesController < ApplicationController
     tags = params[:tags]
     @tags = tags.split(",")
     @tags.each do |tag|
-    #each tag
-      if !(Tag.find_by_name(tag)) #not exists
-        @new_tag = Tag.new
-        @new_tag.name = tag
-        @initiative.tags << @new_tag 
-      end
+    
+      #each tag
+        @test_tag = Tag.find_by_name(tag)
+        if !(@test_tag) #not exists
+          @new_tag = Tag.new
+          @new_tag.name = tag
+          @new_tag.save
+        else
+          @new_tag = @test_tag
+        end
+         @initiative.tags << @new_tag
 
     end
 
-
-  
     respond_to do |format|
       if @initiative.save
-        format.html { redirect_to @initiative, notice: 'Initiative was successfully created.' }
+        format.html { redirect_to @initiative }
       else
         format.html { render :new }
       end
