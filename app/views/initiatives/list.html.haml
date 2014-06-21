@@ -1,22 +1,119 @@
-%html{dir: "rtl", lang: "ar"}
+%html
   %body
-    = link_to('عمل مبادرة جديدة',{:action => 'new'})
-    / search box
-    %br/
-    %form{action: "/initiatives/list", method: "get"}
-      %p
-        %input{name: "searchTitle", type: "text"}/
-        %input{type: "submit", value: "إبحث بالإسم"}/
-    %br/
-    %h3 كل المبادرات
-    / list all initiatives
-    - @initiatives.each do |initiative|
-      عنوان: #{link_to(initiative.title, {:action => 'show', :id => initiative.id  })}
-      %br/
-      بإمارة: #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
-      %br/
-      الوصف: #{initiative.description}
-      %br/
-      التصنيفات: #{raw initiative.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')}
-      %br/
-      %br/
+    %div
+      .row
+        .col-md-12.page-header-block
+          .wrapper
+            %span.green-font.big-title عـبـر
+            %span.gray-text حتى يكون التعبير سمة من سمات التواصل بيننا و مفتاح النهوض ببلادنا
+      .row
+        .col-md-12.express-flowchart-details.flowchart-item-details
+          %ul.wrapper.list-style-none
+            %li.display-inline-block.top-vertical-align
+              .cause
+                %span.cause-paragraph
+                  صوت للمبادرة التى تستحق العرض للمناقشه من وجهة نظرك
+                .button-div
+                  %span.cause-button
+                    = link_to('ادعم مبادرة',{:action => 'list'})
+            
+            %li.display-inline-block.top-vertical-align.flowchart-items-separator
+              =image_tag "flowchart-items-separator.png"
+            %li.display-inline-block.top-vertical-align
+              .cause
+                %span.cause-paragraph
+                  أطرح وجهة نظرك فى البرزة المعروضة و ساعد فى الوصول لأفضل النتائج
+                .button-div
+                  %span.cause-button
+                    = link_to('ابدأ مبادرة',{:action => 'new'})  
+            
+      .row
+        .col-md-12
+          .wrapper
+            .row
+              .col-md-9
+                .col-md-12
+                  .latest-causes
+                    .row
+                      .col-md-12
+                        .inner_menu
+                          .main_title مبادرات الاصدقاء
+                          .top-causes-separetor
+                            =image_tag "top-causes-separetor.png"
+                          .main_title.active_title أحدث المبادرات
+                  - @initiatives.each do |initiative|
+                    .row
+                      .col-md-12
+                        .cause_block
+                          .col-md-9
+                            .col-md-12
+                              .box-count
+                                %span 45 يوم متبقي
+                                %br
+                                %span.green-font.title-font 12548
+                                %br
+                                %span.green-font شخص دعم المبادرة
+                              .box-content
+                                .box-title
+                                  .title-font.green-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
+                                  %div
+                                    مبارده في
+                                    #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => initiative.sector})}
+                                    \- بأمارة
+                                    #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchRegion => initiative.region})}
+                            .box-content-paragraph
+                              %span
+                                #{initiative.description[0, 130]}
+                              #{link_to("....المزيد", {:action => 'show', :id => initiative.id  })}
+                          .col-md-3
+                            .box-img
+
+                  .row
+                    .col-md-12
+                      .pagination_block
+                        %ul.pagination
+                          %li.disabled
+                            %a{href: "#"}
+                              %strong <
+                          %li.active
+                            %a{href: "#"}
+                              1
+                              %span.sr-only (current)
+                          %li
+                            %a{href: "#"} 2
+                          %li
+                            %a{href: "#"} 3
+                          %li
+                            %a{href: "#"} 4
+                          %li
+                            %a{href: "#"} 5
+                          %li.disabled
+                            %a{href: "#"}
+                              %strong >
+              .col-md-3
+                .right-side-menu
+                  .row
+                    .col-md-12
+                      .inner_menu
+                        .main_title.active_title اقسام المبادرات
+                - @sectors.each do |sector|        
+                  .row.right-side-menu-item.gray-font
+                    .col-md-12.gray-font
+
+                      #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => sector.name})}
+                 
+                  
+                  
+                  
+  
+
+
+
+
+
+
+ 
+   
+    
+
+

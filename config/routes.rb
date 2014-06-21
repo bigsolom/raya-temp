@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'results/index'
 
   get 'results/create'
-
+  get 'comments/create'
   get 'index/index'
   get 'initiatives/list'
 

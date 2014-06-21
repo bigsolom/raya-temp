@@ -1,3 +1,4 @@
+%html{dir: "rtl",lang: "ar"}
 = form_for(@initiative, html: {:role => "form",:multipart => true}) do |f|
   - if @initiative.errors.any?
     #error_explanation
@@ -12,10 +13,11 @@
       = f.hidden_field :sector_id
       = f.hidden_field :user_id, :value => current_user.id
       .form-group
-        = f.label :title
+        = f.label :"عنوان المبادرة"
+        %br
         = f.text_field :title, class: 'form-control'
       .form-group
-        = f.label :description
+        = f.label :"تفاصيل المبادرة"
         = f.text_area :description, class: 'form-control'
       .form-group
         = f.label :image

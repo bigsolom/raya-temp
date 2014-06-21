@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Eparticipation</title>
+  <title>تواصل | الامارات العربية المتحدة</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -41,7 +41,7 @@
 
 				<div class="col-md-4 logo">
 					<div class="logopic">
-						<a href="index.html"><img src="<%= image_url 'logo.png' %>"/></a>	
+					<%= link_to image_tag("logo.png"), {:action => 'index', :controller => 'index'} %>	
 					</div>
 				</div>
 			</div>  <!-- end of first row-->
@@ -52,17 +52,17 @@
 				<div class="col-md-12 nav_menu">
 					<div class="navigation">
 						<div class="separator"></div>
-						<a href="causes.html">
-							<div class="nav_item nav-text">(153) نتائج </div>
-						<a>
+						<div class="nav_item nav-text">
+						<%=link_to("(225)نتائج",:controller => 'results', :action => "create" )%>
+						</div>
 						<div class="separator"></div>
-						<a href="hangouts.html" >
-							<div class="nav_item nav-text"> (235) برزة </div>
-						</a>
+						<div class="nav_item nav-text">
+						<%=link_to("(246)برزة",:controller => 'initiatives', :action => "list" )%>
+						</div>
 						<div class="separator"></div>
-						<a href="results.html" >
-							<div class="nav_item nav-text"> (2465) مبادرة </div>
-						</a>
+						<div class="nav_item nav-text">
+						<%=link_to("(2465)مبادرة",:controller => 'initiatives', :action => "list" )%>
+						</div>
 						<div class="separator"></div>
 					</div>
 				</div>

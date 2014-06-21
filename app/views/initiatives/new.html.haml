@@ -1,7 +1,146 @@
-%html{dir: "rtl", lang: "ar"}
-%h3 مبادة جديدة
-%div#sectors
-  - @sectors.each do |sector|
-    %button.btn.btn-link{:type => "button", :value => sector.id}= sector.name
-%div#form
-  = render 'form'
+%html
+  %body
+    #sectors
+      - @sectors.each do |sector|
+        %button.btn.btn-link{type: "button", value: sector.id}
+      %div
+        .row
+          .col-md-12.page-header-block
+            .wrapper
+              %span.green-font.big-title عـبـر
+              %span.gray-text حتى يكون التعبير سمة من سمات التواصل بيننا و مفتاح النهوض ببلادنا
+        .createcause-container
+          .container.wrapper
+            .create-cause-header
+              .create-cause-text
+                .create-cause-title
+                  أبدا مبادرة
+                .create-cause-paragraph
+                  هناك حقيقة مثبنه و هى ان المحتوى المقروء
+              .create-cause-options.float-left
+                %ul.display-inline-block.list-style-none.top-vertical-align
+                  %li.display-inline-block
+                    %span
+                      تأكيد المبادرة
+                      %a.display-inline-block.create-cause-step.submit-cause
+                  %li.display-inline-block
+                    %span
+                      تفاصيل المبادرة
+                      %a.display-inline-block.create-cause-step.fill-cause
+                  %li.display-inline-block
+                    %span
+                      أختر القسم
+                      %a.display-inline-block.create-cause-step.create-cause-step-active.select-section
+            .display-inline-block.top-vertical-align.page-content.cause-form-content.position-relative
+              #step1.select-section-form
+                .inner_menu
+                  .main_title.active_title أختر القسم
+                .select-sections
+                  %ul.list-style-none.display-block.cause-sections
+                    %li.display-inline-block.top-vertical-align
+                    - @sectors.each do |sector|
+                      %a.cause-section.display-inline-block{href: "javascript:void(0)"}
+                      
+                        .section-text
+                        
+                          .title-font.green-font
+                          %button.btn.btn-link.green-font.title-font{type: "button", value: sector.id}
+                            = sector.name
+                          .section-sub-text
+                            = sector.description
+                    
+
+              #step2.select-section-form.hidden
+                .inner_menu
+                  .main_title.active_title تفاصيل المبادرة
+                .row.cause_details
+                  .col-md-4
+                    .green-font.title-font صورة للمبادرة
+                    .add-image-container
+                      .btn.btn-default.btn-add-photo أضف صورة
+                  .col-md-6
+                    .green-font.title-font الهوية
+                    .section-sub-text
+                      مجتمه متلاحم محافظ على هويته
+                    %input.form-control{type: "text"}/
+                    %textarea.form-control{cols: "5", rows: "10"}
+                    %select.form-control.pull-right
+                      %option{value: "state"} اختر الامارة
+                      %option{value: "state"} اختر الامارة
+                      %option{value: "state"} اختر الامارة
+                      %option{value: "state"} اختر الامارة
+                    %input.form-control{type: "text"}/
+                    %button.btn.btn-lg.green-btn{type: "button"}
+                      استمرار
+                  .col-md-2
+                    .green-font.title-font.title-1 مبادرة بقطاع
+                    .green-font.title-font.title-2 عنوان المبادرة
+                    .green-font.title-font.title-3 تفاصيل المبادرة
+                    .green-font.title-font.title-4 المنطقة المبادرة
+                    .green-font.title-font.title-5 تصنيفات
+              #step3.select-section-form.hidden
+                .inner_menu
+                  .main_title.active_title تأكيد المبادرة
+                .row
+                  .col-md-3
+                    .new-cause-creation-text
+                      اذا لم توجد مبادرات مشابهة لمبادراتى اضغط انشاء مبادرة جديدة
+                    %button.btn.btn-lg.green-btn{type: "button"}
+                      انشاء المبادرة
+                  .col-md-9
+                    .cause_block
+                      .box-content
+                        .box-title
+                          .title-font.green-font عنوان المبادره
+                          %div
+                            مبارده في
+                            %a{href: ""} الهويه
+                            \- بأمارة
+                            %a{href: ""} دبي
+                        .box-content-paragraph
+                          %span
+                            المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى
+                            المحتوى ى
+                          %a{href: ""} المزيد...
+                      .box-img
+                    .sim_causes
+                      .main_title.active_title مبادرات مشابهة
+                      .section-sub-text
+                        برجاء التاكد من عدم تكرار المبادرة الخاصة بك
+                    .cause_block
+                      .box-count
+                        %span 45 يوم متبقي
+                        %span.green-font.title-font 0,458
+                        %span.green-font شخص دعم المبادرة
+                      .box-content
+                        .box-title
+                          .title-font.green-font عنوان المبادره
+                          %div
+                            مبارده في
+                            %a{href: ""} الهويه
+                            \- بأمارة
+                            %a{href: ""} دبي
+                        .box-content-paragraph
+                          %span المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى
+                          %a{href: ""} المزيد...
+                      .box-img
+                    .cause_block
+                      .box-count
+                        %span 45 يوم متبقي
+                        %span.green-font.title-font 0,458
+                        %span.green-font شخص دعم المبادرة
+                      .box-content
+                        .box-title
+                          .title-font.green-font عنوان المبادره
+                          %div
+                            مبارده في
+                            %a{href: ""} الهويه
+                            \- بأمارة
+                            %a{href: ""} دبي
+                        .box-content-paragraph
+                          %span المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى المحتوى ى
+                          %a{href: ""} المزيد...
+                      .box-img
+      / End of div container
+    #form
+      = render 'form'

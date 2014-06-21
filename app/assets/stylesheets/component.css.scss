@@ -1,0 +1,1041 @@
+//colors
+$color_0: #919191;
+$color_1: #d0d0d0;
+$color_2: #9faeb9;
+$color_3: rgba(200, 200, 200, 0.75);
+$color_4: white;
+$color_5: #f2f2f2;
+$color_6: #cecece;
+$color_7: #e3e3e3;
+$color_8: #2aa14c;
+$color_9: #9f9f9f;
+$color_10: #0e9e38;
+$color_11: #8e8e8e;
+$color_12: #fff;
+$color_13: #1e833c;
+$color_14: #d91d14;
+$color_15: #dee0de;
+$color_16: #f8fcf9;
+$color_17: #209d44;
+$color_18: #999a99;
+$color_19: #9998a6;
+$color_20: #ccc2c2;
+$color_21: #e0e0e0;
+$color_22: #999999;
+$color_23: #9acea7;
+$color_24: #fad64e;
+$color_25: #ea453f;
+$color_26: #1a8a3c;
+$color_27: #f8f8f8;
+$color_28: #6cc085;
+$color_29: #ebebeb;
+$color_30: #adadad;
+$color_31: green;
+$color_32: #d61d13;
+$color_33: #9a9a9a;
+$color_34: #f3bab8;
+$color_35: #e1e2e1;
+$color_36: #909090;
+$color_37: #e2e3e2;
+
+//fonts
+$font_0: Droid;
+
+//@extend-elements
+//original selectors
+//input, select
+%extend_1 {
+	background: none;
+	border: none;
+	outline: none;
+}
+
+//original selectors
+//.cause-paragraph ,  .hangout-paragraph ,  .final-results-paragraph
+%extend_2 {
+	text-align: right;
+	color: $color_12;
+	font-size: 16px;
+}
+
+//original selectors
+//.hangout-img img , .final-results-img img
+%extend_3 {
+	vertical-align: top;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+	border: 2px solid $color_12;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+}
+
+//original selectors
+//.final-results-title, .final-results-sub-title
+%extend_4 {
+	display: block;
+	color: $color_12;
+	font-size: 14px;
+	font-family: $font_0;
+	font-weight: bold;
+}
+
+//original selectors
+//.tweets , .tweeters
+%extend_5 {
+	min-height: 300px;
+	border: 1px solid #DEE0DE;
+	margin: 50px 0;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	width: 260px;
+	float: right;
+}
+
+//original selectors
+//.create-cause-text, .create-cause-options
+%extend_6 {
+	color: $color_12;
+	padding-top: 40px;
+	display: inline-block;
+}
+
+
+@font-face {
+	font-family: $font_0;
+	src: url('../fonts/DroidNaskh-Bold.ttf') format('truetype'), url('../fonts/DroidNaskh-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+input {
+	@extend %extend_1;
+}
+select {
+	@extend %extend_1;
+}
+.dark-text {
+	color: $color_0;
+}
+.light-text {
+	color: #D0D0D0;
+}
+header {
+	height: 175px;
+	font-family: $font_0;
+}
+.logo-banner {
+	height: 125px;
+}
+.user-information {
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+.user-info {
+	height: 125px;
+	padding-right: 3.3%;
+	width: 30.333333%;
+}
+.user {
+	text-align: right;
+	padding-top: 25px;
+	display: inline-block;
+}
+.user-image {
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: -30px;
+	height: 30px;
+	width: 30px;
+	border: 2px solid #9FAEB9;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+}
+.row {
+	margin-right: 0;
+}
+.social-media-icon {
+	margin-right: 5px;
+	height: 22px;
+	width: 22px;
+	display: inline-block;
+}
+.inline-text {
+	display: inline;
+	vertical-align: top;
+}
+.social-media {
+	height: 125px;
+	padding-top: 30px;
+	padding-left: 10px;
+	width: 36.333333%;
+}
+.logo {
+	height: 125px;
+}
+.logopic {
+	margin-left: 46px;
+	margin-top: 25px;
+}
+.separator {
+	background-image: URL("../images/nav-separator.png");
+	width: 1px;
+	height: 47px;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 1px 1px 1px 0 $color_3;
+	display: inline-block;
+}
+.nav-text {
+	font-size: 16px;
+	text-align: center;
+	font-family: $font_0;
+	vertical-align: top;
+	margin-top: 15px;
+}
+.nav_menu {
+	background-image: URL("../images/navigation-bg.png");
+	height: 50px;
+}
+.nav_item {
+	width: 310px;
+	display: inline-block;
+}
+footer {
+	height: 145px;
+	width: 100%;
+	background-color: #F2F2F2;
+	border-top: 1px solid #CECECE;
+	font-family: $font_0;
+	font-size: 12px;
+}
+.footer_wrapper {
+	border-top: 2px solid #E3E3E3;
+}
+.privacy-font {
+	color: #2AA14C;
+}
+.copyright-font {
+	color: #9F9F9F;
+}
+.wrap {
+	position: relative;
+	text-align: center;
+	top: 32px;
+	opacity: 1;
+}
+.main_flowchart {
+	min-height: 50px;
+	padding-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.flowchart_container {
+	text-align: center;
+}
+.flowchart_component {
+	min-width: 100px;
+	max-width: 230px;
+	display: inline-block;
+	height: 250px;
+}
+.flowchart_title {
+	color: #0E9E38;
+	display: block;
+	font-size: 26px;
+	font-family: $font_0;
+}
+.flowchart_img {
+	height: 123px;
+}
+.flowchart_brief {
+	color: #8E8E8E;
+	display: block;
+	font-size: 13px;
+}
+.flowchart_arrow {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	bottom: 130px;
+}
+.express-flowchart-details {
+	background-image: URL("../images/express-rectangle.png");
+}
+.communicate-flowchart-details {
+	background-image: URL("../images/communicate-rectangle.png");
+}
+.participate-flowchart-details {
+	background-image: URL("../images/result-rectangle.png");
+}
+.flowchart-item-details {
+	background-repeat: repeat-x;
+	height: 181px;
+	.wrapper {
+		padding-top: 40px;
+		li {
+			padding-right: 40px;
+		}
+	}
+}
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+	text-align: right;
+}
+.list-style-none {
+	list-style: none;
+}
+.top-vertical-align {
+	vertical-align: top;
+}
+.display-inline-block {
+	display: inline-block;
+	letter-spacing: normal;
+	word-spacing: normal;
+	font-size: 12px;
+}
+.flowchart-items-separator {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.cause {
+	max-width: 335px;
+	display: inline-block;
+	text-align: right;
+	span {
+		display: block;
+	}
+	.cause-button {
+		width: 220px;
+		height: 49px;
+		background-image: URL("../images/button-bg.png");
+		background-repeat: repeat-x;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		text-align: center;
+		float: right;
+		margin-top: 10px;
+		margin-right: 25px;
+		font-family: $font_0;
+		font-size: 16px;
+		a {
+			color: #1E833C;
+			position: relative;
+			top: 10px;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+.hangout {
+	max-width: 385px;
+	display: inline-block;
+	text-align: right;
+}
+.final-results {
+	max-width: 995px;
+	display: block;
+	text-align: right;
+}
+.final {
+	display: inline-block;
+	max-width: 665px;
+}
+.depend {
+	display: inline-block;
+	padding-right: 5%;
+	position: relative;
+}
+.cause-paragraph {
+	@extend %extend_2;
+}
+.hangout-paragraph {
+	@extend %extend_2;
+	font-size: 14px;
+	display: inline-block;
+}
+.final-results-paragraph {
+	@extend %extend_2;
+	font-size: 14px;
+	display: inline-block;
+}
+.hangout-title {
+	display: block;
+	color: $color_12;
+	font-size: 16px;
+	font-family: $font_0;
+	font-weight: bold;
+}
+.final-results-title {
+	@extend %extend_4;
+}
+.final-results-sub-title {
+	@extend %extend_4;
+}
+.main_title {
+	color: #D91D14;
+	font-family: $font_0;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+}
+.inner_menu {
+	border-bottom: 2px solid #D91D14;
+	margin: 20px 0;
+	text-align: right;
+	position: relative;
+	.main_title {
+		display: inline-block;
+	}
+	.active_title:after {
+		z-index: 0;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -20px;
+		content: '';
+		width: 0;
+		height: 0;
+		border-top: solid 10px #D91D14;
+		border-left: solid 10px transparent;
+		border-right: solid 10px transparent;
+	}
+}
+.left-sidebar {
+	text-align: right;
+}
+.active_title {
+	font-weight: bold;
+	position: relative;
+}
+.tweets {
+	@extend %extend_5;
+	span {
+		padding: 10px;
+		&.tweet_paragraph {
+			padding: 1px 10px;
+			padding-bottom: 10px;
+		}
+	}
+	div.tweets_block {
+		border-bottom: 1px solid #DEE0DE;
+		&:last-child {
+			border: none;
+		}
+	}
+}
+.tweeters {
+	@extend %extend_5;
+	span {
+		padding: 10px;
+		&.tweeter-social-media-icon {
+			padding: 3px 0;
+		}
+		&.tweeter_sub_paragraph {
+			padding: 3px 0;
+		}
+		&.tweeter_profile_pic {
+			padding: 0;
+			margin-left: 8px;
+		}
+	}
+	div.tweeters_block {
+		border-bottom: 1px solid #DEE0DE;
+		&:last-child {
+			border: none;
+		}
+	}
+}
+.tweeters_social_media {
+	display: inline-block;
+	position: relative;
+	bottom: 20px;
+}
+.tweeters_block {
+	padding: 8px;
+	float: left;
+}
+.tweets_header {
+	background-color: #F8FCF9;
+	border-bottom: 1px solid #DEE0DE;
+}
+.display-block {
+	display: block;
+}
+.sub_title {
+	font-family: $font_0;
+	font-size: 14px;
+	color: #209D44;
+	font-weight: bold;
+	margin-left: 5px;
+}
+.sub_paragraph {
+	display: block;
+	color: #999A99;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+.tweeter_profile_img {
+	width: 50px;
+	height: 55px;
+	border: 1px solid #DEE0DE;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	display: inline-block;
+	float: left;
+	margin-top: 15px;
+	margin-left: 5px;
+	img {
+		margin-top: -10px;
+		margin-left: -10px;
+	}
+}
+.tweet_info {
+	display: inline-block;
+	margin-top: 15px;
+	width: 200px;
+	text-align: left;
+	border: none;
+}
+.tweeter_name {
+	font-family: $font_0;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+.tweet_time {
+	font-family: $font_0;
+	font-size: 12px;
+	color: #9998A6;
+	margin-left: 5px;
+	padding-top: 0 !important;
+	float: right;
+	padding-bottom: 0 !important;
+}
+.tweet_paragraph {
+	display: inline-block;
+	font-size: 12px;
+	max-width: 200px;
+}
+.tweets_footer_icon {
+	width: 50px;
+	height: 55px;
+	display: inline-block;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.tweets_footer {
+	background-color: #F8FCF9;
+	padding: 5px;
+	margin-top: -20px;
+	border-top: 1px solid #DEE0DE;
+	position: relative;
+	z-index: 2;
+}
+.tweeters_header {
+	background-color: #F8FCF9;
+	padding: 5px;
+	border-bottom: 1px solid #DEE0DE;
+}
+.tweeter_sub_paragraph {
+	width: 130px;
+	vertical-align: top;
+	display: inline-block;
+	font-size: 12px;
+}
+.tweeter_profile_pic {
+	border: 1px solid #DEE0DE;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	display: inline-block;
+}
+.top-causes-separetor {
+	display: inline-block;
+	padding: 0 10px;
+	vertical-align: bottom;
+}
+.cause_block {
+	border: 1px solid #CCC2C2;
+	border-bottom: 4px solid #E0E0E0;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 6px;
+	padding: 15px;
+	height: 155px;
+	margin-bottom: 20px;
+	color: $color_22;
+	a {
+		text-decoration: none;
+		color: #1A8A3C;
+		:hover {
+			text-decoration: none;
+			color: #1A8A3C;
+		}
+	}
+}
+.box-count {
+	text-align: right;
+	height: 70px;
+	width: 115px;
+	display: inline-block;
+	float: left;
+}
+.title-font {
+	font-size: 22px;
+	font-weight: bold;
+}
+.green-font {
+	color: #0E9E38;
+	font-weight: bold;
+}
+.light-green-font {
+	color: #9ACEA7;
+}
+.yellow-font {
+	color: #FAD64E;
+}
+.red-font {
+	color: #EA453F;
+}
+.box-title {
+	text-align: right;
+	margin-left: 10px;
+}
+.box-content {
+	display: inline-block;
+	vertical-align: top;
+	max-width: 340px;
+}
+.box-content-paragraph {
+	text-align: right;
+	margin-top: 12px;
+}
+.img-initiative-size{
+	height: 50px;
+	width: 50px;
+}
+.box-img {
+	width: 160px;
+	height: 118px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 10px;
+	border: 3px solid #F8F8F8;
+	display: inline-block;
+	float: right;
+}
+.pagination_block {
+	text-align: center;
+}
+.pagination>li>a {
+	text-decoration: none;
+	color: #1A8A3C;
+}
+.pagination>li>span {
+	text-decoration: none;
+	color: #1A8A3C;
+}
+.col-md-12 {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.icon-link {
+	height: 22px;
+	width: 22px;
+}
+.main_container {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+.main_content {
+	padding: 10px;
+}
+.big-title {
+	font-size: 36px;
+	font-weight: bold;
+	padding-left: 30px;
+}
+.md-title {
+	font-size: 30px;
+}
+.gray-text {
+	color: $color_22;
+}
+.createcause-container {
+	background-image: URL("../images/create-cause-bg.png");
+	background-repeat: repeat-x;
+}
+.page-header-block {
+	padding: 20px 0;
+}
+.create-cause-text {
+	@extend %extend_6;
+}
+.create-cause-options {
+	@extend %extend_6;
+}
+.create-cause-title {
+	font-size: 25px;
+}
+.create-cause-paragraph {
+	font-size: 15px;
+}
+.float-left {
+	float: left;
+}
+.select-section {
+	background-image: URL("../images/li-1.png");
+}
+.create-cause-step-active {
+	background-position: 0 -40px;
+	margin-left: 20px;
+}
+.create-cause-step {
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 60px;
+	height: 37px;
+	vertical-align: middle;
+}
+.fill-cause {
+	width: 60px;
+	background-image: URL("../images/li-2.png");
+}
+.submit-cause {
+	width: 60px;
+	background-image: URL("../images/li-3.png");
+}
+.cause-form-content {
+	width: 900px;
+	height: 750px;
+}
+.page-content {
+	padding-top: 23px;
+	margin-bottom: 60px;
+}
+.position-relative {
+	position: relative;
+}
+.cause-sections {
+	margin-top: 10px;
+	margin-right: -10px;
+}
+.cause-section {
+	background-image: URL("../images/cause-section.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 274px;
+	height: 206px;
+	margin: 10px;
+}
+.section-text {
+	text-align: center;
+	margin-top: 25%;
+}
+.section-sub-text {
+	font-size: 18px;
+	color: #6CC085;
+	padding-bottom: 20px;
+}
+.btn-default {
+	background-color: $color_29;
+	color: white;
+}
+.btn-size{
+	width: 100px;
+	background-color: green;
+}
+.add-image-container {
+	width: 250px;
+	height: 200px;
+	float: right;
+	border: 1px solid $color_30;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	margin-top: 10px;
+	text-align: center;
+	padding-top: 80px;
+}
+.form-control {
+	margin-bottom: 20px;
+}
+.green-btn {
+	background-image: URL("../images/$color_31-btn.png");
+	background-repeat: x-repeat;
+	color: $color_12;
+	float: left;
+	text-align: center;
+	width: 200px;
+}
+.title-1 {
+	height: 70px;
+}
+.title-2 {
+	height: 44px;
+}
+.title-3 {
+	height: 234px;
+}
+.title-4 {
+	height: 54px;
+}
+.new-cause-creation-text {
+	color: $color_32;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+.right-side-menu-item {
+	color: #9A9A9A;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: $font_0;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	border-bottom: 1px solid #F3BAB8;
+}
+.right-side-menu {
+	text-align: right;
+}
+.cause-wrapper {
+	border: 2px solid #E1E2E1;
+	border-bottom: 3px solid #E1E2E1;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	margin-top: 15px;
+}
+.red-btn {
+	background-image: URL("../images/navigation-bg.png");
+	background-repeat: repeat-x;
+	background-color: #D80000;
+	color: $color_12;
+	padding: 10px;
+	margin: 20px;
+	margin-left: 25px;
+	font-family: $font_0;
+	font-size: 16px;
+	font-weight: bold;
+}
+.cause-wrapper-header {
+	border-bottom: 1px solid #E1E2E1;
+	margin: 0;
+}
+.cause-wrapper-row {
+	margin: 0;
+}
+.cause-wrapper-title {
+	font-family: $font_0;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+.cause-wrapper-sub-title {
+	font-family: $font_0;
+	font-size: 15px;
+	color: $color_36;
+}
+.cause-wrapper-img {
+	width: 135px;
+	height: 110px;
+	border: 4px solid #E1E2E1;
+	padding: 2px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	small : 160*160
+}
+.cause-wrapper-img img{
+	width: 100%;
+	height: 100%; 
+}
+.cause-result-img {
+	width: 100px;
+	height: 90px;
+	border: 4px solid #E1E2E1;
+	padding: 2px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.timeline {
+	border-right: 4px solid #E1E2E1;
+	margin-right: 50px;
+	margin-left: 15px;
+	padding-top: 30px;
+	min-height: 100px;
+}
+.timeline-item {
+	padding-top: 20px;
+	margin-bottom: 10px;
+	width: 595px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+.small-item {
+	height: 170px;
+	background-image: URL("../images/note-bg-small.png");
+}
+.medium-item {
+	height: 280px;
+	background-image: URL("../images/note-bg-md.png");
+}
+.large-item {
+	height: 533px;
+	background-image: URL("../images/note-bg-lg.png");
+}
+.timeline-item-wrapper {
+	padding: 5px 30px;
+}
+.bold {
+	font-weight: bold;
+}
+.calendar-icon {
+	background-image: URL("../images/calendar-icon.png");
+	background-repeat: no-repeat;
+	min-height: 30px;
+	min-width: 27px;
+}
+.date-wrapper {
+	font-size: 12px;
+	display: inline-block;
+}
+.date-time {
+	margin-top: 30px;
+}
+.timeline-item-supporter {
+	margin-top: 30px;
+}
+.timeline-item-supporter-img {
+	margin-top: 30px;
+	min-height: 70px;
+	min-width: 65px;
+	border: 1px solid #E2E3E2;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	padding: 3px;
+}
+.timeline-item-supporter-title {
+	font-size: 15px;
+}
+.timeline-item-supporter-sub-title {
+	font-size: 12px;
+}
+.cause-result-sub-title {
+	font-size: 10px;
+}
+.bottom-bordered {
+	border-bottom: 4px solid $color_35;
+}
+.circle-icon {
+	width: 30px;
+	height: 30px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 20px;
+	border: 4px solid $color_35;
+	float: right;
+	margin-right: -17px;
+	margin-top: 26px;
+}
+.green-icon {
+	background-color: #0E9E38;
+}
+.red-icon {
+	background-color: #EA453F;
+}
+.yellow-icon {
+	background-color: #FAD64E;
+}
+.pre-timeline-date {
+	display: inline-block;
+	float: right;
+	margin-right: -100px;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+.cause_discussion_img {
+	height: 60px;
+	width: 70px;
+	border: 2px solid $color_35;
+	float: right;
+}
+.send-comment {
+	margin-bottom: 100px;
+}
+.cause_discussion_block {
+	padding: 10px 0;
+	border-bottom: 2px solid $color_35;
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+.progress {
+	margin: 10px 0;
+}
+.small-text {
+	font-size: 16px;
+}
+.cause-result-wrapper {
+	border: 1px solid $color_35;
+	border-bottom: 3px solid $color_35;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	min-height: 100px;
+	margin-bottom: 20px;
+	margin-left: 0;
+}
+.cause-result-item {
+	border-right: 1px solid $color_35;
+	min-height: 100px;
+	&:last-child {
+		border-right: 0;
+		margin-top: 30px;
+	}
+}
+img.displayed {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.navigation a {
+	color: $color_4;
+	text-decoration: none;
+}
+.hangout-img img {
+	@extend %extend_3;
+}
+.final-results-img img {
+	@extend %extend_3;
+}
+.pagination>.active>a {
+	z-index: 2;
+	color: $color_12;
+	background-color: #1A8A3C;
+	border-color: #1A8A3C;
+}
+.topic-list li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 25px;
+	width: 80px;
+}
+.select-sections ul {
+	padding: 0;
+	text-align: right;
+	float: right;
+}
+a.cause-section {
+	text-decoration: none;
+}
+.cause_details .title-font {
+	font-size: 16px;
+}
+.sim_causes .section-sub-text {
+	color: $color_32;
+}
+.cause-wrapper-paragraph .col-md-12 {
+	padding: 20px;
+	padding-top: 30px;
+}
