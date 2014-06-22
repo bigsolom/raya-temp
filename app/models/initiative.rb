@@ -20,5 +20,4 @@ class Initiative < ActiveRecord::Base
   scope :searchTitle, lambda{|searchTitle| where (["title LIKE ?","%#{searchTitle}%"])}
   scope :searchSector, lambda{|searchSector| where (["sector_id LIKE ?","%#{searchSector}%"])}
 
-
 end

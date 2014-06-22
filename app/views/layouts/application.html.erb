@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="col-md-12">
   <div>
 		<header>
 			<div class="row logo-banner">	
@@ -51,6 +51,7 @@
 			<div class="row">
 				<div class="col-md-12 nav_menu">
 					<div class="navigation">
+						<div class="col-md-2"></div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
 						<%=link_to("(225)نتائج",:controller => 'results', :action => "create" )%>

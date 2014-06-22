@@ -94,19 +94,69 @@
             .col-md-1
             .col-md-4.left-sidebar
               %br
-              %br  
+              %br 
+              .main_title.active_title ابحث عن مبادرة
+              .col-md-12
+                %form{action: "/initiatives/list"}
+                  %input.btn-default.search-btn{type: "submit", value: "ابحث"}
+                  %input.search-box.green-font{name: "answer", type: "text"} 
+              %br
+              %br
+              %br
               .main_title.active_title برزات قادمة
               %img.home-calendar=image_tag "calendar.png"
-              .col-md-12
-                %form.search-form
-                  %select.default-btn
-                    %option{name: "iro", value: "jdjs"}الأسم
-                    %option{name: "iro", value: "jdjs"}القطاع
-                    %option{name: "iro", value: "jdjs"}المحافظة
-                    %option{name: "iro", value: "jdjs"}التصنيفات
-                  %input.search-box{name: "answer", type: "text"}
-                  %br
-                  %input.btn-default.search-btn{type: "submit", value: "ابحث"} 
+
+
+              .tweets
+                .col-md-12
+                  .col-md-12
+                    .tweets_header
+                      %span.social-media-icon
+                        %a{href: "http://www.facebook.com"}
+                          =image_tag "fb-icon.png"
+                      %span.social-media-icon
+                        %a{href: "http://www.twitter.com"}
+                          =image_tag "twitter-icon.png"
+                      %span.sub_title
+                        تحديثات الهيئات الحكومية
+                      %span.sub_paragraph
+                        تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية
+                  
+                    .col-md-12.bottom-boreded
+                      .tweets_block
+                        .tweeter_profile_img
+                          =image_tag "profilePic.jpg"
+                        .tweet_info
+                          %span.tweeter_name
+                            Islam Askar
+                          %span.tweet_time
+                            5h
+                        %span.tweet_paragraph
+                          تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية
+                  
+                    .col-md-12.bottom-boreded
+                      .tweets_block
+                        .tweeter_profile_img
+                          =image_tag "part.png"
+                        .tweet_info
+                          %span.tweeter_name
+                            True Company
+                          %span.tweet_time
+                            1d
+                        %span.tweet_paragraph
+                          تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد تغريد
+                  
+                    .col-md-12
+                      .tweets_footer
+                        .tweets_footer_icon
+                          %a{href: ""}
+                            =image_tag "live.png"
+                        %span.sub_title
+                          تواصل مع المسئولين مباشرة
+                        %span.sub_paragraph
+                          تعرف على الحسابات المعتمده للمسئولين بالحكومة
+              
+              
                      
             .col-md-6.latest-causes
               .inner_menu
@@ -166,3 +216,8 @@
                     %a{href: "#"}
                       %strong >
               
+
+
+
+        
+       

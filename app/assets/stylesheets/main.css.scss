@@ -4,7 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+.col-md-12{
+  padding: 0px;
+}
+.div{
+  float: left;
+}
 body {
   background-image: URL(image-path("background.png"));
   background-repeat: repeat-x;
@@ -144,7 +149,7 @@ img {
 }
 
 .navigation {
-  margin-left: 17%;
+  margin-left: 0px;
 }
 
 .nav_item {
@@ -443,7 +448,9 @@ footer {
 .tweets div.tweets_block, .tweeters div.tweeters_block {
   border-bottom: 1px solid #DEE0DE;
 }
-
+.bottom-boreded{
+  border-bottom: 1px solid #DEE0DE;
+}
 .tweets div.tweets_block:last-child, .tweeters div.tweeters_block:last-child {
   border: none;
 }
@@ -487,6 +494,11 @@ footer {
   }
 }
 
+.tweeter_profile_img img{
+  margin-top: -1px;
+  width: 100%;
+  height: 100%;
+}
 .tweet_info {
   display: inline-block;
   margin-top: 15px;
@@ -842,6 +854,13 @@ a.cause-section {
 .text-right{
   text-align: right;
 }
+.search-btn{
+  background-color: #0E9E38;
+  border-radius: 5px;
+  width: 65px;
+  height: 35px;
+
+}
 
 
 .add-image-container {
@@ -905,13 +924,9 @@ a.cause-section {
   margin-top: 5px;
   text-align: right;
   background-color: white;
+  width: 190px;
+  height: 35px;
 }
-.search-form{
-text-align: center;
-margin-left: 164px;
-border: 2px solid #CCC2C2;
-border-radius: 5px;
-background-color: gray;
-}
+
 
 
