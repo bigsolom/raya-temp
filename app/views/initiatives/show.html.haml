@@ -43,17 +43,17 @@
 
                               مبادرة فى
                               %span.green-font 
-                                #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.sector})}
+                                #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => @initiative.sector.name})}
                               \- بمحافظة
                               %span.green-font 
-                                #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :searchSector => @initiative.region})}
+                                #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => @initiative.region.name})}
                           .col-md-12
                             .social-media-sharing
                             
                             .cause-wrapper-sub-title :التصنيفات
                             .cause-wrapper-details.gray-text.green-font                             
                               - for tag in @initiative.tags
-                                = link_to(tag.name)
+                                #{link_to(tag.name, {:controller => 'initiatives' ,:action => "list", :tag => tag.name})}
 
                                                           
                         .col-md-3

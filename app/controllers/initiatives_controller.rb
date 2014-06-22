@@ -7,14 +7,17 @@ class InitiativesController < ApplicationController
 
     if params[:searchTitle]
       @initiatives = Initiative.searchTitle(params[:searchTitle])
+    elsif params[:region_name]
+      @initiatives = Initiative.searchRegion(params[:region_name])
+    elsif params[:sector_name]
+      @initiatives = Initiative.searchSector(params[:sector_name])
     elsif params[:tag]
-      @initiatives = Tag.find_by_name(params[:tag]).initiatives
-    elsif params[:searchRegion]
-      @initiatives = Initiative.searchRegion(params[:searchRegion])
-    elsif params[:searchSector]
-      @initiatives = Initiative.searchSector(params[:searchSector])
+      @initiatives = Initiative.tagged_with(params[:tag]) 
+    elsif params[:search_all]
+      @initiatives = Initiative.searchAll(params[:search_all])
     else
       @initiatives = Initiative.all
+
     end
     
   end
