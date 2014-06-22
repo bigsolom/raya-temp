@@ -1,0 +1,11 @@
+<form name="myForm" action="create" method="get">
+<% @initiatives.each do |initiative| %>
+<%= radio_button_tag 'initiative_id', initiative.id %> 
+<%= initiative.title %><br> 
+<% end %>
+
+	<td>Description</td>
+    <td><textarea cols="33" rows="5" name="description"></textarea></td><br>
+	<input type="Submit" value="Submit">
+</form> 
+
