@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		
-		
+		<% @initiatives.each do |initiative| %>
 		<% initiative_data = result.initiatives.where(result_id = result.id).all[0] %>
 		<div class=" content col-md-6 content-partial">
 			<div class="result-person-detail col-md-12">
@@ -73,7 +73,7 @@
 	
 	
 <div>
-	
+	<% end %>
 	<% end %>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
