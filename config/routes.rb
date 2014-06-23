@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   get 'update/new'
 
   get 'update/create'
-
   get 'results/index'
-
   get 'results/create'
   get 'comments/create'
   get 'index/index'

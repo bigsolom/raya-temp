@@ -34,8 +34,17 @@
                       .row
                         .col-md-9
                           .col-md-4
-                            %button.btn.red-btn{type: "button"}
-                              إدعم المبادرة
+                            - if @status == 0
+                              %form{method: "get"}
+                                %input{name: "user_id", type: "hidden", value: "1"}/
+                                .btn.red-btn
+                                  = button_to "إدعم مبادرة"
+                            - else
+                              .col-md-3
+                              .support-mark.col-md-9
+                                = image_tag "support-mark.png"
+                              %span.col-md-12.green-font
+                                تم دعم هذه المبادرة
                           .col-md-8
                             .cause-wrapper-title.green-font
                               = @initiative.title
@@ -66,6 +75,104 @@
                         .green-font تفاصيل المبادرة
                         .cause-wrapper-details.gray-text
                           = @initiative.description
+                  .cause_discussion_block
+                .row
+                .col-md-12
+                  .timeline
+                    - count =1
+                    - @updates.each do |update|
+                      .timeline-wrapper
+                        .pre-timeline-date.gray-text
+                          %div السبت
+                          .green-font.bold 22 أكتوبر
+                          %div 2012
+                        .circle-icon.green-icon
+                        .timeline-item.small-item.plain-timeline-item
+                          .timeline-item-wrapper
+                            .green-font.bold 
+                              %span تحديث #
+                              = count
+                            .timeline-item-details.gray-text
+                              = update.action
+                              - count +=1  
+                    .timeline-wrapper
+                      .pre-timeline-date.gray-text
+                        %div السبت
+                        .yellow-font.bold 22 أكتوبر
+                        %div 2012
+                      .circle-icon.yellow-icon
+                      .timeline-item.large-item.lower-image-timeline-item
+                        .timeline-item-wrapper
+                          .yellow-font.bold 
+                            %span تحديث #
+                            = count
+                          .timeline-item-details.gray-text
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                          .row
+                            .col-md-4.date-time
+                              .date-wrapper
+                                .green-font.bold يوم الخميس الموافق
+                                .green-font.bold 11/8/2014
+                              %img.calendar-icon/
+                            .col-md-6
+                              .timeline-item-supporter
+                                .green-font.timeline-item-supporter-title
+                                  عادل لبيب
+                                .green-font.timeline-item-supporter-sub-title
+                                  وزير التنمية المحلية
+                            .col-md-2
+                              .timeline-item-supporter-img
+                                %img{src: ""}/
+                    .timeline-wrapper
+                      .pre-timeline-date.gray-text
+                        %div السبت
+                        .red-font.bold 22 أكتوبر
+                        %div 2012
+                      .circle-icon.red-icon
+                      .timeline-item.medium-item.upper-image-timeline-item
+                        .timeline-item-wrapper
+                          .red-font.bold تحديث #1
+                          .row
+                            .col-md-10
+                              .timeline-item-supporter
+                                .green-font.timeline-item-supporter-title
+                                  عادل لبيب
+                                .green-font.timeline-item-supporter-sub-title
+                                  وزير التنمية المحلية
+                                .light-text.timeline-item-supporter-sub-date
+                                  تاريخ الاحد 11 أغسطس 2014
+                            .col-md-2
+                              .timeline-item-supporter-img
+                                %img{src: ""}/
+                          .timeline-item-details.gray-text
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
+
+                    
                           
             %br/
             .row
@@ -91,20 +198,10 @@
                         .cause_discussion_img
                           %img/
 
-%form{method: "get"}
-  %input{name: "user_id", type: "hidden", value: "1"}/
-  = @status
-  = button_to "support"
 
 
-- count =1
-- @updates.each do |update|
-  %table{align: "center", bgcolor: "white", border: "8", hight: "152", width: "652"}
-    %tr
-      %td
-        %span تحديث #
-        = count
-    %tr
-      %td= update.action
-    - count +=1
-= @time
+
+
+
+
+
