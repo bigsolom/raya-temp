@@ -1,0 +1,14 @@
+.row
+  .col-md-5
+  .col-md-6.green-font.text-right.title-font
+    .main_title.active_title هل نسيت كلمة السر؟
+    %br
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = devise_error_messages!
+      .form-group.green-border
+        = f.label :"البريد الالكتروني"
+        = f.email_field :email, autofocus: true, class: 'form-control'
+
+      .btn.form-btn  
+        = f.submit "ارسل بيانات بيانات اعادة ظبط كلمة المرور"
+    = render "devise/shared/links"

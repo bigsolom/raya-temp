@@ -4,12 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.col-md-12{
-  padding: 0px;
-}
-.div{
-  float: left;
-}
+
 body {
   background-image: URL(image-path("background.png"));
   background-repeat: repeat-x;
@@ -194,8 +189,7 @@ footer {
 .main_flowchart {
   min-height: 50px;
   padding-top: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
+
 }
 
 .flowchart_container {
@@ -850,6 +844,7 @@ a.cause-section {
 }
 .form-btn{
   background-color: #21830A;
+  color: white;
 }
 .text-right{
   text-align: right;
@@ -859,9 +854,9 @@ a.cause-section {
   border-radius: 5px;
   width: 65px;
   height: 35px;
+  color: white;
 
 }
-
 
 .add-image-container {
   width: 250px;

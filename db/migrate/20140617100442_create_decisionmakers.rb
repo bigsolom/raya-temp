@@ -5,7 +5,7 @@ class CreateDecisionmakers < ActiveRecord::Migration
       t.string :name
       t.integer :password
       t.string :job
-      t.string :pic
+      t.string :image
 
       t.timestamps
     end

@@ -6,7 +6,8 @@
       .row.flowchart
         .col-md-1
         .col-md-10.main_flowchart
-          .flowchart_container
+          .col-md-1
+          .flowchart_container.col-md-10
             .flowchart_component
               %img.flowchart_img=image_tag "part.png"
               %span.flowchart_title شارك
@@ -171,9 +172,13 @@
                       .col-md-9
                         .col-md-12
                           .box-count
-                            %span 45 يوم متبقي
+                            %span
+                              يوم متبقى
+                            %span 
+                              = (45 - ((Time.now - initiative.created_at) / (3600*24)).round) 
                             %br
-                            %span.green-font.title-font 12548
+                            %span.green-font.title-font 
+                              = initiative.users.length
                             %br
                             %span.green-font شخص دعم المبادرة
                           .box-content

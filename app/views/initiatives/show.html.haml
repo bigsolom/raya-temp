@@ -7,9 +7,15 @@
           .wrapper
             .row.bottom-bordered
               .col-md-3
-                .title-font.gray-text 45 يوم متبقى
-                .md-title.green-font 45 يوم متبقى
-                .light-green-font 45 يوم متبقى
+                .title-font.gray-text
+                  %span
+                    يوم متبقى
+                  %span 
+                    = (45 - ((Time.now - @initiative.created_at) / (3600*24)).round) 
+                  
+                .md-title.green-font
+                  = @supoorters
+                .light-green-font.title-font شخص دعم المبادرة
                 .progress
                   .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", role: "progressbar", style: "width: 40%"}
                     %span.sr-only 40% Complete (success)
@@ -26,7 +32,8 @@
                     %input{name: "answer", type: "radio", value: "no"}/
                     %br
                     %input.btn.btn-size{type: "submit", value: "تصويت"}
-              
+               
+           
               .col-md-9
                 .cause-wrapper
                   .row.cause-wrapper-row
@@ -34,17 +41,18 @@
                       .row
                         .col-md-9
                           .col-md-4
-                            - if @status == 0
-                              %form{method: "get"}
-                                %input{name: "user_id", type: "hidden", value: "1"}/
+                            -if @supportFlag == []
+                              %form{action: "/supports/support"}
+                                %input{name: "initiative_id", type: "hidden", value: @initiative.id }/
                                 .btn.red-btn
-                                  = button_to "إدعم مبادرة"
+                                  = button_to "إدعم مبادرة"    
                             - else
                               .col-md-3
                               .support-mark.col-md-9
                                 = image_tag "support-mark.png"
                               %span.col-md-12.green-font
                                 تم دعم هذه المبادرة
+                              
                           .col-md-8
                             .cause-wrapper-title.green-font
                               = @initiative.title
@@ -143,35 +151,38 @@
                             .col-md-2
                               .timeline-item-supporter-img
                                 %img{src: ""}/
-                    .timeline-wrapper
-                      .pre-timeline-date.gray-text
-                        %div السبت
-                        .red-font.bold 22 أكتوبر
-                        %div 2012
-                      .circle-icon.red-icon
-                      .timeline-item.medium-item.upper-image-timeline-item
-                        .timeline-item-wrapper
-                          .red-font.bold تحديث #1
-                          .row
-                            .col-md-10
-                              .timeline-item-supporter
-                                .green-font.timeline-item-supporter-title
-                                  عادل لبيب
-                                .green-font.timeline-item-supporter-sub-title
-                                  وزير التنمية المحلية
-                                .light-text.timeline-item-supporter-sub-date
-                                  تاريخ الاحد 11 أغسطس 2014
-                            .col-md-2
-                              .timeline-item-supporter-img
-                                %img{src: ""}/
-                          .timeline-item-details.gray-text
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
 
+                      - @results.each do |result|
+                        - user=result.decisionmakers.first
+                        .timeline-wrapper
+                          .pre-timeline-date.gray-text
+                            %div= result.created_at.to_time.strftime('%A')
+                            .red-font.bold= result.created_at.to_time.strftime('%B %e')
+                            %div= result.created_at.to_time.strftime('%Y')
+                          .circle-icon.red-icon
+                        .timeline-item.medium-item.upper-image-timeline-item
+                          .timeline-item-wrapper
+                            .red-font.bold النتائج الرسمية
+                            .row
+                              .col-md-10
+                                .timeline-item-supporter
+                                  .green-font.timeline-item-supporter-title
+                                    = user.name
+                                  .green-font.timeline-item-supporter-sub-title
+                                    = user.job
+                                  .light-text.timeline-item-supporter-sub-date
+                                    تاريخ 
+                                    = result.created_at.to_time.strftime('%A %e %B  %Y ')
+
+                              .col-md-2
+                                .timeline-item-supporter-img
+                                  = image_tag "atef-helmy.jpg"
+                            %br
+                            .timeline-item-details.gray-text
+                              .green-font
+                                تفاصيل القرار
+                              = result.decision
+                              
                     
                           
             %br/
@@ -188,16 +199,24 @@
                 - @comments.each do |comment|
                   .cause_discussion_block
                     .row
-                      .col-md-1
-                        %span.cause_discussion_time
-                          = comment.created_at
-                      .col-md-9
-                        %span.cause_discussion_paragraph
-                          = comment.content
+                      .col-md-10
+                        .col-md-2
+                          %span.cause_discussion_time.gray-text
+                            - if ((Time.now - comment.created_at) / 3600).round < 24
+                              = ((Time.now - comment.created_at) / 3600).round
+                              %span h
+                            - else 
+                              = ((Time.now - comment.created_at) / (3600*24)).round
+                              %span d 
+                        .col-md-10
+                          %span.cause_discussion_paragraph.title-font
+                            = comment.user.name
+                        .col-md-12
+                          %span.cause_discussion_paragraph
+                            = comment.content
                       .col-md-2
                         .cause_discussion_img
-                          %img/
-
+                          = image_tag "profilePic.jpg"
 
 
 

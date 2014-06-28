@@ -68,23 +68,15 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params[:id])
     @updates = Update.where(initiative_id: params[:id])
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
-    #@results=@initiative.results
-    if request.get?
-      users=@initiative.users 
-      if users.exists?(current_user.id)
-        userFlag =users.find(current_user.id)
-        if userFlag == []
-          user = User.find(current_user.id)
-          user.initiatives << @initiative
-        else
-        @status = 1
-        end
-      else
-        user = User.find(current_user.id)
-        user.initiatives << @initiative
-        @status = 0
-      end
-    end
+    @results=@initiative.results
+    @supoorters = @initiative.users.length
+    users=@initiative.users
+    if users.exists?(current_user.id)
+      @supportFlag =users.find(current_user.id)
+    else
+      @supportFlag=[]
+    end  
+
   end 
 end
 

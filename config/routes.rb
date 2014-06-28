@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  get 'decisionmakers/new'
+
+  get 'decisionmakers/create'
+
+  get 'decisionmakers/list'
+
+  get 'decisionmaker/new'
+
+  get 'decisionmaker/create'
+
+  get 'decisionmaker/list'
+
+  get 'supporters/create'
+
+  get 'supporters/list'
+
+  get 'supporter/create'
+
+  get 'supporter/list'
+
+  get 'supports/support'
+
   get 'update/new'
 
   get 'update/create'

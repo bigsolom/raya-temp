@@ -23,7 +23,9 @@ class ResultsController < ApplicationController
 	result = Result.new
 	if result = Result.new
 		result.decision = params[:decision]
-		result.save
+		if result.save
+		redirect_to :action => "index"
+	end
 	end
 	result.initiative_ids = @initiatives_ids
 	result.decisionmaker_ids = @decisionmaker_ids

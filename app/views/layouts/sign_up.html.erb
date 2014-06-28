@@ -41,7 +41,7 @@
 
 				<div class="col-md-4 logo">
 					<div class="logopic">
-					<%= link_to image_tag("logo.png"), {:action => 'index', :controller => 'index'} %>	
+					<a href = ""><img src="<%= image_url 'logo.png' %>"> </a> 	
 					</div>
 				</div>
 			</div>  <!-- end of first row-->
@@ -54,15 +54,15 @@
 						<div class="col-md-2"></div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(225)نتائج",:controller => 'results', :action => "index" )%>
+							<a href = "">نتائج</a> 
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(246)اجتماع",:controller => 'initiatives', :action => "list" )%>
+						<a href = "">اجتماع</a>
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(2465)مبادرة",:controller => 'initiatives', :action => "list" )%>
+						<a href = "">مبادرة</a>
 						</div>
 						<div class="separator"></div>
 					</div>
@@ -76,8 +76,8 @@
    
 <!--//-----------Footer ---------//-->
 		
-		<footer>
-			<div class="row footer_wrapper">
+		<footer class="col-md-12">
+			<div class="row footer_wrapper ">
 				<div class="col-md-12 wrap privacy-font"> سياسة الخصوصية - شروط الاستخدام - اخلاء المسئولية - ميثاق المتعاملين - حقوق النسخ</div>
 			</div>
 			<div class="row">
