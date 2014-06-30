@@ -3,7 +3,7 @@
   .col-md-6.green-font.text-right.title-font
     .main_title.active_title هل نسيت كلمة السر؟
     %br
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
       = devise_error_messages!
       .form-group.green-border
         = f.label :"البريد الالكتروني"

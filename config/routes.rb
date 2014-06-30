@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
+  get 'users/edit'
+
   get 'decisionmakers/new'
 
   get 'decisionmakers/create'

@@ -9,6 +9,8 @@ class InitiativesController < ApplicationController
       @initiatives = Initiative.searchTitle(params[:searchTitle])
     elsif params[:region_name]
       @initiatives = Initiative.searchRegion(params[:region_name])
+    elsif params[:user_id]
+      @initiatives = Initiative.searchUser(params[:user_id])
     elsif params[:sector_name]
       @initiatives = Initiative.searchSector(params[:sector_name])
     elsif params[:tag]
@@ -70,6 +72,7 @@ class InitiativesController < ApplicationController
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
     @results=@initiative.results
     @supoorters = @initiative.users.length
+    @support_percent = ((45000/45000)*100)
     users=@initiative.users
     if users.exists?(current_user.id)
       @supportFlag =users.find(current_user.id)

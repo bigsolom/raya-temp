@@ -25,6 +25,12 @@ class Initiative < ActiveRecord::Base
       end
   end
 
+   def self.searchUser(user_id)
+      if User.find_by_id(user_id)
+        User.find_by_id(user_id).initiatives
+      end
+  end
+
   def self.searchRegion(region_name)
       if Region.find_by_name(region_name)
         Region.find_by_name(region_name).initiatives

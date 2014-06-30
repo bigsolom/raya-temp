@@ -13,8 +13,10 @@
 				<div class="col-md-4 user-info">
 					<div class="user-information pull-right">
 						<div class="user">
-							<span class="dark-text">محمد ابراهيم</span><br/>
-							<span class="light-text"> مبادراتى - بياناتى - خروج</span>
+							<span class="dark-text"><%= current_user.name%></span><br/>
+							<span class="light-text"> <%=link_to("مبادراتي",:controller => 'initiatives', :action => "list", :user_id => current_user.id )%> - </span>
+							<span class="light-text"><%=link_to("بياناتي",:controller => 'users', :action => "show", :user_id => current_user.id )%> - </span>
+							<span class="light-text"><%= link_to('خروج', destroy_user_session_path, :method => :delete) %></span>
 						</div>
 						<div class="user-image"><img src="<%= image_url 'profilePic.jpg' %>" width="26" height="26"></div>
 					</div>
@@ -54,7 +56,7 @@
 						<div class="col-md-2"></div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(225)نتائج",:controller => 'results', :action => "index" )%>
+						<%=link_to("(#{Result.all.length}) نتائج",{:controller => 'results', :action => "index"} )%>
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
@@ -62,7 +64,7 @@
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(2465)مبادرة",:controller => 'initiatives', :action => "list" )%>
+						<%=link_to("(#{Initiative.all.length})مبادرة",:controller => 'initiatives', :action => "list" )%>
 						</div>
 						<div class="separator"></div>
 					</div>

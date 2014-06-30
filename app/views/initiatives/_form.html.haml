@@ -10,25 +10,38 @@
           %li= message
   .row
     .col-md-5
+      .form-group
+        .col-md-11.title-font.green-font.text-right
+          = f.label :"صورة المبادرة"
+        .col-md-4
+        .col-md-5.text-right
+          = f.file_field :image , class: 'initiative-img'
     .col-md-6.green-font.text-right
       = f.hidden_field :sector_id
       = f.hidden_field :user_id, :value => current_user.id
       .form-group.green-border
-        = f.label :"عنوان المبادرة"
+        .col-md-9.padding-top
+          = f.text_field :title, class: 'form-control'
         %br
-        = f.text_field :title, class: 'form-control'
+        .col-md-3.title-font
+          = f.label :"عنوان المبادرة"
+          
+      .form-grouppadding
+        .col-md-9
+          = f.text_area :description, class: 'form-control'
+        .col-md-3.title-font
+          = f.label :"تفاصيل المبادرة"
+      
       .form-group
-        = f.label :"تفاصيل المبادرة"
-        = f.text_area :description, class: 'form-control'
+        .col-md-9
+          = f.select(:region_id,@regions, {}, {class: 'form-control text-right'})
+        .col-md-3.title-font
+          = f.label :"    منطقة المبادرة"
       .form-group
-        = f.label :"صورة المبادرة"
-        = f.file_field :image, class: 'form-control'
-      .form-group
-        = f.label :"المحافظة"
-        = f.select(:region_id,@regions, {}, {class: 'form-control text-right'})
-      .form-group
-        = label_tag :"التصنيفات"
-        %br
-        = text_field_tag :tags, nil, {class: 'form-control',data:{role:'tagsinput'}}
+        .col-md-9
+          = text_field_tag :tags, nil, {class: 'form-control',data:{role:'tagsinput'}}
+        .col-md-3.title-font
+          = label_tag :"التصنيفات"
       .actions
-        = f.submit 'انشئ المبادرة', class: 'btn btn-default form-btn'
+        .col-md-12
+          = f.submit 'انشئ المبادرة', class: 'btn btn-default form-btn'

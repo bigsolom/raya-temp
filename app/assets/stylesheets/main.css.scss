@@ -616,7 +616,7 @@ footer {
 .box-count {
   text-align: right;
   height: 70px;
-  width: 115px;
+  width: 27%;
   display: inline-block;
   float: left;
 }
@@ -935,6 +935,16 @@ a.cause-section {
   font-size: 16px;
   color: gray;
 }
+.padding-top{
+  padding-top: 20px;
+}
+.initiative-img{
+  border-radius: 5px;
+  border: 1px solid #CCC2C2;
+  height: 200px;
+  padding-top: 90px;
+  padding-left: 10px;
 
+}
 
 

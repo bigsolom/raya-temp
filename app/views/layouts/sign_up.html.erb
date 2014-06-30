@@ -10,17 +10,10 @@
   <div>
 		<header>
 			<div class="row logo-banner">	
-				<div class="col-md-4 user-info">
-					<div class="user-information pull-right">
-						<div class="user">
-							<span class="dark-text">محمد ابراهيم</span><br/>
-							<span class="light-text"> مبادراتى - بياناتى - خروج</span>
-						</div>
-						<div class="user-image"><img src="<%= image_url 'profilePic.jpg' %>" width="26" height="26"></div>
-					</div>
+				<div class="col-md-3">
 				</div>
-
-				<div class="col-md-4 social-media">
+				<div class="col-md-5 social-media ">
+				<div class="col-md-3"></div>
 						<div class="social-media-icon">
 							<a href = "http://www.rss.com"><img class="icon-link" src="<%= image_url 'RSS-icon.png' %>"></a>
 						</div>
@@ -71,6 +64,36 @@
 		</header> <!--End of header -->
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
+
+   <div class="row flowchart">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 main_flowchart">
+				<div class="flowchart_container">
+					<div class="flowchart_component">
+						<a href="javascript:void(0)" id="participate"><img class="flowchart_img" src="<%= image_url 'part.png' %>"/></a>
+						<span class="flowchart_title">شارك</span>
+						<span class="flowchart_brief"> فى نهضة البلد و تابع نتائج الاجتماعات والحلول المقدمه لتطبيق المبادرة</span>
+					</div>
+					<div class="flowchart_arrow">
+						<img src="<%= image_url 'arrow.png' %>"/>
+					</div>
+					<div class="flowchart_component">
+						<a href="javascript:void(0)" id="communicate"><img class="flowchart_img" src="<%= image_url 'comm.png' %>"/></a>
+						<span class="flowchart_title">تواصل</span>
+						<span class="flowchart_brief">أطرح وجهة نظرك فى الاجتماعات المعروضه و ساعد فى الوصول لافضل النتائج</span>
+					</div>
+					<div class="flowchart_arrow">
+						<img src="<%= image_url 'arrow.png' %>"/>
+					</div>
+					<div class="flowchart_component">
+						<a href="javascript:void(0)" id="express"><img class="flowchart_img" src="<%= image_url 'exp.png' %>"/></a>
+						<span class="flowchart_title">عبـر</span>
+						<span class="flowchart_brief">حتى يكون التعبير سمة من سمات التواصل بيننا و مفتاح النهوض ببلادنا</span>
+					</div>
+				</div>
+			</div>		
+			<div class="col-md-1"></div> 
+		</div>
    
 <%= yield %>
    
