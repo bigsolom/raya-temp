@@ -34,8 +34,8 @@
                 %span.cause-paragraph
                   \صوت للمبادرة التى تستحق العرض للمناقشه من وجهة نظرك
                 .button-div
-                  %span.cause-button
-                    %a.button{href: "causes.html"} إدعم مبادرة
+                  %form{action: "/initiatives/list"}
+                    %input{type:"submit",value: "إدعم مبادرة", class: "cause-button"}
             %li.display-inline-block.top-vertical-align.flowchart-items-separator
               =image_tag "flowchart-items-separator.png"
               %li.display-inline-block.top-vertical-align
@@ -43,8 +43,9 @@
                   %span.cause-paragraph
                     \أطرح وجهة نظرك فى البرزة المعروضة و ساعد فى الوصول لأفضل النتائج
                   .button-div
-                    %span.cause-button
-                      = link_to('ابدأ مبادرة',{:controller => 'initiatives', :action => 'new'})
+                    %form{action: "/initiatives/new"}
+                      %input{type:"submit",value: "إبدأ مبادرة", class: "cause-button"}
+                      
           .communicate-flowchart-details.flowchart-item-details.hidden
             %ul.wrapper.list-style-none
               %li.display-inline-block.top-vertical-align
@@ -180,11 +181,10 @@
                             %span.green-font.title-font 
                               = initiative.users.length
                             %br
-                            %span.green-font شخص دعم المبادرة
+                            %span.green-font.bold-font شخص دعم المبادرة
                           .box-content
                             .box-title
-                              .title-font.green-font 
-                              #{link_to(initiative.title[0, 45], {:controller => 'initiatives', :action => 'show', :id => initiative.id  })}
+                              .title-font.green-font #{link_to(initiative.title[0, 35], {:controller => 'initiatives', :action => 'show', :id => initiative.id  })}
                               %div
                                 مبارده في
                                 #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
@@ -193,7 +193,7 @@
                         .box-content-paragraph
                           %span
                             #{initiative.description[0, 120]}
-                          #{link_to("...المزيد", {:controller=>'initiatives',:action => 'show', :id => initiative.id  })}
+                            %span.bold-font #{link_to("...المزيد", {:controller=>'initiatives',:action => 'show', :id => initiative.id  })}
                       .col-md-3  
                         .cause-wrapper-img
                           = image_tag initiative.image.url

@@ -1,0 +1,10 @@
+<form name="myForm" action="create" >
+<%= @initiatives.title %><br> 
+
+	<td>Description</td>
+	<input type="hidden" name="id" value= <%= @initiatives.id%> >
+    <td><textarea cols="33" rows="5" name="description"></textarea></td><br>
+	<input type="Submit" value="Submit">
+
+</form> 
+

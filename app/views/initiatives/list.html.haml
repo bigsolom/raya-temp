@@ -14,8 +14,8 @@
                 %span.cause-paragraph
                   صوت للمبادرة التى تستحق العرض للمناقشه من وجهة نظرك
                 .button-div
-                  %span.cause-button
-                    = link_to('ادعم مبادرة',{:action => 'list'})
+                  %form{action: "/initiatives/list"}
+                    %input{type:"submit",value: "إدعم مبادرة", class: "cause-button"}
             
             %li.display-inline-block.top-vertical-align.flowchart-items-separator
               =image_tag "flowchart-items-separator.png"
@@ -24,8 +24,8 @@
                 %span.cause-paragraph
                   أطرح وجهة نظرك فى البرزة المعروضة و ساعد فى الوصول لأفضل النتائج
                 .button-div
-                  %span.cause-button
-                    = link_to('ابدأ مبادرة',{:action => 'new'})  
+                  %form{action: "/initiatives/new"}
+                    %input{type:"submit",value: "إبدأ مبادرة", class: "cause-button"} 
             
       .row
         .col-md-12
@@ -59,7 +59,7 @@
                                 %span.green-font شخص دعم المبادرة
                               .box-content
                                 .box-title
-                                  .title-font.green-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
+                                  .title-font.green-font.title-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
                                   %div
                                     مبارده في
                                     #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
@@ -80,10 +80,9 @@
                           %li.disabled
                             %a{href: "#"}
                               %strong <
-                          %li.active
+                          %li
                             %a{href: "#"}
                               1
-                              %span.sr-only (current)
                           %li
                             %a{href: "#"} 2
                           %li

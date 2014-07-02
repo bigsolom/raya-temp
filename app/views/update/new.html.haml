@@ -1,0 +1,20 @@
+.row
+	.col-md-12
+		.col-md-6
+		.col-md-5
+			.main_title إضافة تحديث للمبادرة
+			%br
+	.col-md-4
+	.col-md-6
+		.main_title.green-font
+			#{link_to(@initiatives.title,{:controller => "initiatives", :action => "show", :id => @initiatives.id})}
+		.inner_menu
+			.main_title.title-font محتوي التحديث
+		%form{action: "/update/create", name:"myForm"}
+			%input{type:"hidden", name:"id", value: @initiatives.id}
+			%textarea.form-control{rows:"10",name:"description"}
+			%input.btn.green-btn{type:"submit", value:"اضف التحديث"}
+		%br
+	.col-md-2
+	.cause-wrapper-paragraph
+		.col-md-12

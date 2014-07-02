@@ -6,19 +6,19 @@ class InitiativesController < ApplicationController
     @sectors = Sector.all
 
     if params[:searchTitle]
-      @initiatives = Initiative.searchTitle(params[:searchTitle])
+      @initiatives = Initiative.searchTitle(params[:searchTitle]).order('created_at DESC')
     elsif params[:region_name]
-      @initiatives = Initiative.searchRegion(params[:region_name])
+      @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC')
     elsif params[:user_id]
-      @initiatives = Initiative.searchUser(params[:user_id])
+      @initiatives = Initiative.searchUser(params[:user_id]).order('created_at DESC')
     elsif params[:sector_name]
-      @initiatives = Initiative.searchSector(params[:sector_name])
+      @initiatives = Initiative.searchSector(params[:sector_name]).order('created_at DESC')
     elsif params[:tag]
-      @initiatives = Initiative.tagged_with(params[:tag]) 
+      @initiatives = Initiative.tagged_with(params[:tag]).order('created_at DESC') 
     elsif params[:search_all]
-      @initiatives = Initiative.searchAll(params[:search_all])
+      @initiatives = Initiative.searchAll(params[:search_all]).order('created_at DESC')
     else
-      @initiatives = Initiative.all
+      @initiatives = Initiative.all.order('created_at DESC')
 
     end
     
@@ -68,7 +68,7 @@ class InitiativesController < ApplicationController
 
   def show
     @initiative = Initiative.find(params[:id])
-    @updates = Update.where(initiative_id: params[:id])
+    @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
     @results=@initiative.results
     @supoorters = @initiative.users.length

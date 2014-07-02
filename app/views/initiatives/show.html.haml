@@ -12,7 +12,7 @@
                     يوم متبقى
                   %span 
                     = (45 - ((Time.now - @initiative.created_at) / (3600*24)).round) 
-                  
+
                 .md-title.green-font
                   = @supoorters
                 .light-green-font.title-font شخص دعم المبادرة
@@ -32,6 +32,13 @@
                     %input{name: "answer", type: "radio", value: "no"}/
                     %br
                     %input.btn.btn-size{type: "submit", value: "تصويت"}
+                - if @initiative.user_id == current_user.id
+                  %form{action: "/update/new"}
+                    %input{name: "initiative_id", value: @initiative.id, type: "hidden"}
+                    %input{type: "submit", value: "اضف تحديث",class: "red-btn"}
+                  
+                      
+               
                
            
               .col-md-9
@@ -80,20 +87,21 @@
                       
                     .row.cause-wrapper-paragraph
                       .col-md-12
-                        .green-font تفاصيل المبادرة
+                        .green-font.bold-font تفاصيل المبادرة
                         .cause-wrapper-details.gray-text
                           = @initiative.description
                   .cause_discussion_block
                 .row
                 .col-md-12
                   .timeline
-                    - count =1
+                    - count = @updates.all.length
                     - @updates.each do |update|
                       .timeline-wrapper
                         .pre-timeline-date.gray-text
-                          %div السبت
-                          .green-font.bold 22 أكتوبر
-                          %div 2012
+                          %div= update.created_at.to_time.strftime('%A')
+                          .green-font.bold 
+                            = update.created_at.to_time.strftime('%B %e')
+                          %div= update.created_at.to_time.strftime('%Y')
                         .circle-icon.green-icon
                         .timeline-item.small-item.plain-timeline-item
                           .timeline-item-wrapper
@@ -102,56 +110,8 @@
                               = count
                             .timeline-item-details.gray-text
                               = update.action
-                              - count +=1  
-                    .timeline-wrapper
-                      .pre-timeline-date.gray-text
-                        %div السبت
-                        .yellow-font.bold 22 أكتوبر
-                        %div 2012
-                      .circle-icon.yellow-icon
-                      .timeline-item.large-item.lower-image-timeline-item
-                        .timeline-item-wrapper
-                          .yellow-font.bold 
-                            %span تحديث #
-                            = count
-                          .timeline-item-details.gray-text
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                            تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل
-                          .row
-                            .col-md-4.date-time
-                              .date-wrapper
-                                .green-font.bold يوم الخميس الموافق
-                                .green-font.bold 11/8/2014
-                              %img.calendar-icon/
-                            .col-md-6
-                              .timeline-item-supporter
-                                .green-font.timeline-item-supporter-title
-                                  عادل لبيب
-                                .green-font.timeline-item-supporter-sub-title
-                                  وزير التنمية المحلية
-                            .col-md-2
-                              .timeline-item-supporter-img
-                                %img{src: ""}/
-
+                              - count -=1  
+              
                       - @results.each do |result|
                         - user=result.decisionmakers.first
                         .timeline-wrapper
@@ -218,7 +178,7 @@
                         .cause_discussion_img
                           = image_tag "profilePic.jpg"
 
-
+                
 
 
 

@@ -4,7 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+.bold-font{
+  font-weight: bold;
+}
+.result-font{
+  font-size: 17px;
+}
 body {
   background-image: URL(image-path("background.png"));
   background-repeat: repeat-x;
@@ -66,7 +71,10 @@ header {
   padding-top: 25px;
   display: inline-block;
 }
-
+.img-rounded img{
+  width: 100%;
+  height: 100%;
+}
 .user-image {
   display: inline-block;
   margin-left: 10px;
@@ -75,6 +83,10 @@ header {
   width: 30px;
   border: 2px solid #9FAEB9;
   border-radius: 5px;
+}
+.user-image img{
+  width: 100%;
+  height: 100%;
 }
 
 img {
@@ -134,7 +146,7 @@ img {
 }
 
 .navigation a {
-  color: white;
+  color: rgb(236, 236, 236);
   text-decoration: none;
 }
 
@@ -181,14 +193,15 @@ footer {
   top: 32px;
   opacity: 1;
 }
-
+.opacity-font{
+  opacity: 0.7;
+}
 /*---------------Content------------------*/
 
 /*---------------flowchart------------------*/
 
 .main_flowchart {
   min-height: 50px;
-  padding-top: 5%;
 
 }
 
@@ -301,7 +314,9 @@ footer {
 .final, .depend {
   display: inline-block;
 }
-
+.decision-maker-info{
+  padding-top: 15px;
+}
 .final {
   max-width: 665px;
 }
@@ -309,6 +324,7 @@ footer {
 .depend {
   max-width: 330px;
   padding-right: 5%;
+  padding-top: 1%;
   position: relative;
   bottom: 20px;
 }
@@ -335,6 +351,7 @@ footer {
   margin-right: 25px;
   font-family: 'Droid';
   font-size: 16px;
+  color: #1E833C;
   a {
     color: #1E833C;
     position: relative;
@@ -344,7 +361,6 @@ footer {
     }
   }
 }
-
 .hangout-title {
   display: block;
   color: #fff;
@@ -882,6 +898,10 @@ a.cause-section {
   text-align: center;
   width: 200px;
 }
+.green-btn:hover{
+  color: #fff;
+  font-size: 18px;
+}
 
 .cause_details .title-font {
   font-size: 16px;
@@ -948,3 +968,5 @@ a.cause-section {
 }
 
 
+.piro { border-top: 1px solid #96d1f8; background: #65a9d7; background: -webkit-gradient(linear, left top, left bottom, from(#778c74), to(#65a9d7)); background: -moz-linear-gradient(top, #778c74, #65a9d7); padding: 7.5px 15px; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0; -moz-box-shadow: rgba(0,0,0,1) 0 1px 0; box-shadow: rgba(0,0,0,1) 0 1px 0; text-shadow: rgba(0,0,0,.4) 0 1px 0; color: white; font-size: 16px; font-family: Georgia, serif; text-decoration: none; vertical-align: middle; } 
+.piro:hover { border-top-color: #782855; background: #782855; color: #ccc; } .piro:active { border-top-color: #1b435e; background: #1b435e; }

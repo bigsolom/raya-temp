@@ -54,3 +54,8 @@ gem 'paperclip'
 
 #less
 gem "less-rails"
+
+#pagination
+gem 'will_paginate'
+
+gem 'semantic-ui-rails'

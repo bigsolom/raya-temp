@@ -13,16 +13,18 @@
               .col-md-4.depend
                 %span.final-results-title واعتمد هذاالقرار من
                 %span.final-results-paragraph
-                  د/عاطف حلمي 
+                  = Result.last.decisionmakers[0].name
                   %br>/
-                  وزير الاتصالات  
+                  = Result.last.decisionmakers[0].job  
                 %span.final-results-img
                   = image_tag "atef-helmy.jpg"
               .col-md-8.final
                 %span.final-results-title أخر النتائج
-                %span.final-results-sub-title بمناقشة مبادرة استعمال الهوية الالكترونية في الحضور والانصراف في المصالح الحكومية 
+                %span.final-results-sub-title 
+                  بمناقشة 
+                  = Result.last.initiatives[0].title
                 %span.final-results-paragraph
-                  تهدف هذة  المبادرة الي توفير الوقت في الحضور والانصراف داخل المصالح الحكومية عن طريق استعمال البطافات الذكية الاكترونية في الحضور والانصراف بمجرد دخول الموضف سيتم التعرف علية عن طريق الباطقة الاكترونية وبذلك يتم توفير الوقت 
+                  = Result.last.decision 
       .row
         .col-md-12
           .col-md-2

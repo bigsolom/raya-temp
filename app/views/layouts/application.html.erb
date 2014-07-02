@@ -18,7 +18,8 @@
 							<span class="light-text"><%=link_to("بياناتي",:controller => 'users', :action => "show", :user_id => current_user.id )%> - </span>
 							<span class="light-text"><%= link_to('خروج', destroy_user_session_path, :method => :delete) %></span>
 						</div>
-						<div class="user-image"><img src="<%= image_url 'profilePic.jpg' %>" width="26" height="26"></div>
+						<div class="user-image">
+						<%= image_tag current_user.image.url%></div>
 					</div>
 				</div>
 
@@ -83,7 +84,7 @@
 				<div class="col-md-12 wrap privacy-font"> سياسة الخصوصية - شروط الاستخدام - اخلاء المسئولية - ميثاق المتعاملين - حقوق النسخ</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12 wrap copyright-font"> .جميع الحقوق &copy; 2013-2012 حكومة الامارات الالكترونية جميع الحققو محفوظة</div>
+				<div class="col-md-12 wrap copyright-font"> .جميع الحقوق &copy; 2013-2012 حكومة الامارات الالكترونية جميع الحقوق محفوظة</div>
 			</div>
 		</footer>
 
