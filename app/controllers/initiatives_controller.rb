@@ -67,12 +67,16 @@ class InitiativesController < ApplicationController
   end
 
   def show
+    @poll = Poll.where(initiative_id: params[:id]).last
     @initiative = Initiative.find(params[:id])
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
     @results=@initiative.results
+    
+    #support initiative
     @supoorters = @initiative.users.length
     @support_percent = ((45000/45000)*100)
+    
     users=@initiative.users
     if users.exists?(current_user.id)
       @supportFlag =users.find(current_user.id)
@@ -80,7 +84,33 @@ class InitiativesController < ApplicationController
       @supportFlag=[]
     end  
 
+    #vote initiative
+
+
   end 
+
+
+  def poll_submit
+    usr_ans = Answer.find(params[:ans_id])
+    current_vote_usr = User.find(params[:usr_id])
+    
+    users_who_voted_for_this_ans = usr_ans.users
+    
+    users_ids_arr = []
+    users_who_voted_for_this_ans.each do |user|
+      users_ids_arr.push(user.id)
+    end
+
+    if (users_ids_arr.include?(params[:usr_id]) == false) #user exists
+      redirect_to({action: 'list'})
+    else
+      usr_ans.users << current_vote_usr
+      redirect_to({action: 'list'}) 
+    end
+  end
+
+
+
 end
 
 private

@@ -1,6 +1,6 @@
 class SupportsController < ApplicationController
   def support
-@initiative = Initiative.find(params[:initiative_id])
+    @initiative = Initiative.find(params[:initiative_id])
     if request.get?
       users=@initiative.users 
       if users.exists?(current_user.id)

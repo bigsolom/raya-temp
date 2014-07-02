@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'vote/vote'
+
   get 'users/show'
 
   get 'users/edit'
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'supports/support'
 
+  resources :polls
+
   get 'update/new'
 
   get 'update/create'
@@ -33,6 +37,7 @@ Rails.application.routes.draw do
   get 'comments/create'
   get 'index/index'
   get 'initiatives/list'
+  get 'initiatives/poll_submit'
 
   resources :initiatives
 
@@ -45,6 +50,8 @@ Rails.application.routes.draw do
   resources :initiatives do
     resources :comments
   end
+
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

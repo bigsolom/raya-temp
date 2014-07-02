@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
        
   has_many :initiatives
   has_and_belongs_to_many :initiatives
+
+  has_and_belongs_to_many :answers #initiative
+
+ 
   has_many :comments
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"

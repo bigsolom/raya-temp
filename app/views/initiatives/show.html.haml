@@ -178,8 +178,24 @@
                         .cause_discussion_img
                           = image_tag "profilePic.jpg"
 
-                
 
+#{link_to("عمل تصويت جديد", {:controller => 'polls' ,:action => "new", })}
+
+%div
+  - for question in @poll.questions
+    = question.content
+    
+    %form{action:"poll_submit"}
+      %input{name: "usr_id", type: "hidden", value: current_user.id }/
+      %input{name: "id", type: "hidden", value: @initiative.id  }/
+
+      - for answer in question.answers
+        %input{name: "ans_id", type: "radio", value: answer.id}/
+        = answer.content
+        %br/
+      %input{type: "submit", value: "تصويت"}/
+
+                
 
 
 

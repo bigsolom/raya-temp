@@ -1,0 +1,13 @@
+%p
+  %b إسم التصويت:
+  = @poll.name
+%p
+  - for question in @poll.questions
+    %ol
+      %li= question.content
+    %ul
+      - for answer in question.answers
+        %li= answer.content
+= link_to 'تعديل', edit_poll_path(@poll)
+|
+\#{link_to 'عودة', polls_path}

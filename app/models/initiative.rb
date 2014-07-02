@@ -4,7 +4,9 @@ class Initiative < ActiveRecord::Base
   has_and_belongs_to_many :tags
   belongs_to :sector
   has_many :commetns
+  has_many :polls
 
+  
   has_and_belongs_to_many :users
   #has_and_belongs_to_many :updates
   #has_and_belongs_to_many :results
