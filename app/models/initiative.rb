@@ -28,7 +28,7 @@ class Initiative < ActiveRecord::Base
   end
 
    def self.searchUser(user_id)
-      if User.find_by_id(user_id)
+      if User.find(user_id)
         User.find_by_id(user_id).initiatives
       end
   end

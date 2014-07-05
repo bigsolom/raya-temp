@@ -20,56 +20,26 @@
                   .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", role: "progressbar", style: "width: 40%"}
                     %span.sr-only 40% Complete (success)
                 .inner_menu
-                  /////////Make new vote for the poll////////////
-                - if @poll_exist == true
                   .main_title.small-text تصويت الحالى 
-                  %br
-                  .md-title.green-font
-                    = @users_who_voted_for_ans_question.length
+                .poll-results
+                  .green-font
+                    هل توافق على التصويت الحالى ؟
+                  %form{action: ""}
+                    موافق
+                    %input{name: "answer", type: "radio", value: "yes"}/
+                    %br/
+                    غير موافق
+                    %input{name: "answer", type: "radio", value: "no"}/
                     %br
-                  .light-green-font.title-font شخص قام بالتصويت
-                  %br
-                  
-                  - if @user_voted_before == false
-                    .poll-results
-                      .green-font
-                        - for question in @poll.questions
-                          = question.content
-                          %br
-                        
-                      %form{action:"poll_submit"}
-                        %input{name: "usr_id", type: "hidden", value: current_user.id }/
-                        %input{name: "initiative_id", type: "hidden", value: @initiative.id  }/
-
-                        - for answer in question.answers
-                          %input{name: "ans_id", type: "radio", value: answer.id}/
-                          = answer.content
-                          %br/
-                        %input.btn.btn-size{type: "submit", value: "تصويت"}/
-                  - else
-                    .green-font تم التصويت مسبقا
-                    %br
-                    - @all_answers_of_question.each do |answer|
-                      .green-font
-                        = answer.content
-                        %br
-                        .progress
-                          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 2%;"}
-                          =  number_to_percentage(((answer.users.length.to_f/@users_who_voted_for_ans_question.length.to_f)*100),precision: 0)
-                // Make new poll for this initiative
-                - if @initiative.user_id == current_user.id
-                  %form{action: "/polls/new"}
-                    %input{name: "initiative_id", value: @initiative.id, type: "hidden"}
-                    %input{type: "submit", value: "اضف تصويت جديد",class: "red-btn"}
-                    
-
-                // Make new update for this initiative
+                    %input.btn.btn-size{type: "submit", value: "تصويت"}
                 - if @initiative.user_id == current_user.id
                   %form{action: "/update/new"}
                     %input{name: "initiative_id", value: @initiative.id, type: "hidden"}
                     %input{type: "submit", value: "اضف تحديث",class: "red-btn"}
                   
                       
+               
+               
            
               .col-md-9
                 .cause-wrapper
@@ -207,3 +177,21 @@
                       .col-md-2
                         .cause_discussion_img
                           = image_tag "profilePic.jpg"
+
+
+#{link_to("عمل تصويت جديد", {:controller => 'polls' ,:action => "new", })}
+
+%div
+  - for question in @poll.questions
+    = question.content
+    
+    %form{action:"poll_submit"}
+      %input{name: "usr_id", type: "hidden", value: current_user.id }/
+      %input{name: "initiative_id", type: "hidden", value: @initiative.id  }/
+
+      - for answer in question.answers
+        %input{name: "ans_id", type: "radio", value: answer.id}/
+        = answer.content
+        %br/
+      %input{type: "submit", value: "تصويت"}/  
+

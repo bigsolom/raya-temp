@@ -67,7 +67,6 @@ class InitiativesController < ApplicationController
   end
 
   def show
-    @poll = Poll.where(initiative_id: params[:id]).last
     @initiative = Initiative.find(params[:id])
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
@@ -84,29 +83,65 @@ class InitiativesController < ApplicationController
       @supportFlag=[]
     end  
 
-    #vote initiative
+    
+    ## POLL Existance & Voted TEST##
+    @poll_exist = false
+    @user_voted_before = false
+    @users_who_voted_for_ans_question = []
+
+    if Poll.where(initiative_id: params[:id]).last
+
+      @poll_exist = true
+      
+      @poll = Poll.where(initiative_id: params[:id]).last
+      question_of_answer = @initiative.polls.last.questions.last
+      @users_who_voted_for_ans_question = question_of_answer.users
+
+      @all_answers_of_question = question_of_answer.answers 
 
 
+      users_ids_arr = []
+
+      @users_who_voted_for_ans_question.each do |user|
+        users_ids_arr.push(user.id)
+      end
+      
+      @user_voted_before = users_ids_arr.include?(current_user.id) 
+      #true if user has voted for this question before    
+  end
   end 
 
-
+  ## POLL VOTE ##
   def poll_submit
-    usr_ans = Answer.find(params[:ans_id])
-    current_vote_usr = User.find(params[:usr_id])
-    
-    users_who_voted_for_this_ans = usr_ans.users
+    ans = Answer.find(params[:ans_id])
+    current_user = User.find(params[:usr_id])
+    question_of_answer = Question.find(ans.question.id)    
+    id_initiative=params[:initiative_id]
+
+    users_who_voted_for_ans_question = question_of_answer.users
     
     users_ids_arr = []
-    users_who_voted_for_this_ans.each do |user|
+
+    users_who_voted_for_ans_question.each do |user|
       users_ids_arr.push(user.id)
     end
+    
+    user_voted_before = users_ids_arr.include?(current_user.id) 
+    #true if user has voted for this question before
+    
+    if (user_voted_before == true) #user exists
+      # "user exists for this question > not created"
+  
+     redirect_to({action: 'show', :id => id_initiative})      
 
-    if (users_ids_arr.include?(params[:usr_id]) == false) #user exists
-      redirect_to({action: 'list'})
-    else
-      usr_ans.users << current_vote_usr
-      redirect_to({action: 'list'}) 
+     else
+       ans.users << current_user
+       question_of_answer.users << current_user
+  
+       redirect_to({action: 'show', :id => id_initiative})      
+       # "Your data have been submited"      
     end
+
   end
 
 

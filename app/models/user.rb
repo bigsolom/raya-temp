@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :initiatives
 
   has_and_belongs_to_many :answers #initiative
+  has_and_belongs_to_many :questions #initiative
+
+
 
  
   has_many :comments
