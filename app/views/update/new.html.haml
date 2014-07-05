@@ -7,11 +7,11 @@
 	.col-md-4
 	.col-md-6
 		.main_title.green-font
-			#{link_to(@initiatives.title,{:controller => "initiatives", :action => "show", :id => @initiatives.id})}
+			#{link_to(@initiative.title,{:controller => "initiatives", :action => "show", :id => @initiative.id})}
 		.inner_menu
 			.main_title.title-font محتوي التحديث
 		%form{action: "/update/create", name:"myForm"}
-			%input{type:"hidden", name:"id", value: @initiatives.id}
+			%input{type:"hidden", name:"id", value: @initiative_id}
 			%textarea.form-control{rows:"10",name:"description"}
 			%input.btn.green-btn{type:"submit", value:"اضف التحديث"}
 		%br

@@ -1,6 +1,7 @@
 class UpdateController < ApplicationController
   def new
-  	 @initiatives = current_user.initiatives.find(params[:initiative_id])
+     @initiative_id = params[:initiative_id]
+  	 @initiative = Initiative.find(params[:initiative_id])
   	 @update = Update.new
   end
 

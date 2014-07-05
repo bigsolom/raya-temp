@@ -10,7 +10,7 @@ class InitiativesController < ApplicationController
     elsif params[:region_name]
       @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC')
     elsif params[:user_id]
-      @initiatives = Initiative.searchUser(params[:user_id]).order('created_at DESC')
+      @initiatives = Initiative.where("user_id" => params[:user_id])
     elsif params[:sector_name]
       @initiatives = Initiative.searchSector(params[:sector_name]).order('created_at DESC')
     elsif params[:tag]

@@ -29,7 +29,7 @@ class Initiative < ActiveRecord::Base
 
    def self.searchUser(user_id)
       if User.find(user_id)
-        User.find_by_id(user_id).initiatives
+        User.find(user_id).initiatives
       end
   end
 
