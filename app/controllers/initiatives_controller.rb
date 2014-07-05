@@ -38,6 +38,7 @@ class InitiativesController < ApplicationController
 
   def create
     @initiative = Initiative.new(initiative_params)
+    @initiative.user_id = current_user.id.to_i
     
     #Tags
     tags = params[:tags]
@@ -73,8 +74,8 @@ class InitiativesController < ApplicationController
     @results=@initiative.results
     
     #support initiative
-    @supoorters = @initiative.users.length
-    @support_percent = ((45000/45000)*100)
+    @supporters = @initiative.users.length
+    @support_percent = ((@supporters)/0.1)
     
     users=@initiative.users
     if users.exists?(current_user.id)

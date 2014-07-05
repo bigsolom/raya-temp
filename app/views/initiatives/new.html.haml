@@ -40,15 +40,18 @@
                     %li.display-inline-block.top-vertical-align
                     - @sectors.each do |sector|
                       %a.cause-section.display-inline-block{href: "javascript:void(0)"}
-                      
-                        .section-text
-                        
-                          .title-font.green-font
-                          %button.btn.btn-link.green-font.title-font{type: "button", value: sector.id}
-                            = sector.name
-                          .section-sub-text
-                            = sector.description
-                          
+                        %button.btn.btn-link.green-font.title-font{type: "button", value: sector.id}
+                          .section-img.col-md-11
+                            .section-text
+
+                              .title-font.green-font
+                              
+                                = sector.name
+                              = image_tag sector.image.url
+                              .section-sub-text
+                                = sector.description
+
+                            
                     
 
               #step2.select-section-form.hidden
@@ -143,5 +146,8 @@
                           %a{href: ""} المزيد...
                       .box-img
       / End of div container
+      .col-md-9
+      %form{action: "/sectors/new"}
+        %input{type: "submit", value: "اضف قسم", class: "red-btn"}
     #form
       = render 'form'

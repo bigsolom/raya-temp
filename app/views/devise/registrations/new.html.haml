@@ -3,13 +3,13 @@
   .col-md-6.green-font.text-right.title-font
     .main_title.active_title انشاء حساب جديد
     %br
-    = form_for(resource, as: resource_name, url: registration_path(resource_name),html: {:multipart => true}) do |f|
+    = form_for(resource,html: {:role => "form",:multipart => true} ,as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
       .form-group.green-border
         = f.label :"اسم المستخدم"
         = f.text_field :name, autofocus: true, class: 'form-control'
       .form-group.green-border
-        = f.file_field :image 
+        = f.file_field :image
       .form-group.green-border
         = f.label :"البريد الالكتروني"
         = f.email_field :email, autofocus: true, class: 'form-control'
@@ -21,6 +21,24 @@
         = f.label :"اعد كلمة المرور"
         %br/
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      .form-group.green-border
+        = f.label :"الامارة"
+        .form-control.green-font.title-font
+          = f.select :location, [['ابو ظبي', "ابو ظبي"], ['دبي ',"دبي"], ['الشارقة', "الشارقة"], ['عجمان ', "عجمان"], ['رأس الخيمة', "رأس الخيمة"], ['ام القيوين', "ام القيوين"], ['الفجيرة', "الفجيرة"]],{class: 'form-control text-right'}
+      .form-group.green-border
+        = f.label :"الوظيفة"
+        = f.text_field :job_title, class: 'form-control'
+      .form-group.green-border
+        = f.label :"النوع"
+        .form-control.green-font.title-font
+          = f.select :gender, [['ذكر', "ذكر"], ['انثي ',"انثي"]],{class: 'form-control text-right'}
+      .form-group.green-border
+        = f.label :"الرقم القومي"
+        = f.text_field :national_id, class: 'form-control'
+      .form-group.green-border
+        = f.label :"تاريخ الميلاد"
+        = f.text_field :date_of_birth, class: 'form-control'
+      
         .btn.form-btn  
           = f.submit "انشأ الحساب"
     = render "devise/shared/links"

@@ -833,6 +833,15 @@ footer {
   height: 206px;
   margin: 10px;
 }
+.section-img{
+  width: 265px;
+  height: 195px;
+
+}
+.section-img img{
+  height: 135px;
+  width: 200px;;
+}
 
 .select-sections ul {
   padding: 0px;
@@ -842,7 +851,7 @@ footer {
 
 .section-text {
   text-align: center;
-  margin-top: 25%;
+
 }
 
 a.cause-section {
@@ -850,7 +859,7 @@ a.cause-section {
 }
 
 .section-sub-text {
-  font-size: 18px;
+  font-size: 16px;
   color: #6CC085;
   padding-bottom: 20px;
 }

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'vote/vote'
 
+  get 'sectors/new'
+
+  get 'sectors/create'
+
   get 'users/show'
 
   get 'users/edit'
@@ -40,6 +44,7 @@ Rails.application.routes.draw do
   get 'initiatives/poll_submit'
 
   resources :initiatives
+  resources :sectors
 
   devise_for :users
   devise_scope :user do

@@ -1,4 +1,60 @@
-= @user.name
-= @user.email
-.img-rounded
-	= image_tag @user.image.url
+.col-md-12
+	.col-md-3
+	.col-md-8
+		.row.col-md-12
+			.inner_menu
+				.main_title بياناتي
+		.row.col-md-12
+			.col-md-3.profile_image
+				= image_tag @user.image.url
+			.col-md-1
+			.col-md-8.green-font-title-font.panel.panel-default
+				%tr
+					%td.col-md-9
+						= @user.name
+					%td.table-border.col-md-3.user-info-label.green-font.title-font
+						الاسم
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.email
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span البريد الاكتروني
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.job_title
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span الوظيفة
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.date_of_birth
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span تاريخ الميلاد
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.gender
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span النوع
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.national_id
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span الرقم القومي
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.location
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span محل الاقامه
+				%tr.table-border
+					%td.col-md-8.table-border
+						= @user.initiatives.length
+					%td.col-md-4.user-info-label.green-font.table-border
+						%span عدد المبادرات
+			.col-md-1
+.row
+
+
+
+
+
+
+      

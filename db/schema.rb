@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702153813) do
+ActiveRecord::Schema.define(version: 20140702221910) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140702153813) do
   end
 
   create_table "questions_users", force: true do |t|
-    t.integer "question_id"
+    t.integer "questions_id"
     t.integer "user_id"
   end
 
@@ -117,6 +117,10 @@ ActiveRecord::Schema.define(version: 20140702153813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "tags", force: true do |t|
@@ -134,7 +138,6 @@ ActiveRecord::Schema.define(version: 20140702153813) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "image"
     t.string   "job_title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -152,6 +155,10 @@ ActiveRecord::Schema.define(version: 20140702153813) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "gender"
+    t.string   "date_of_birth"
+    t.string   "national_id"
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

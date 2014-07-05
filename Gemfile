@@ -59,3 +59,5 @@ gem "less-rails"
 gem 'will_paginate'
 
 gem 'semantic-ui-rails'
+
+gem 'rails_admin'

@@ -1,0 +1,43 @@
+%html{lang: "ar"}
+= form_for(@sector, html: {:role => "form",:multipart => true}) do |f|
+  - if @sector.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@sector.errors.count, "error")
+        prohibited this sector from being saved:
+      %ul
+        - @sector.errors.full_messages.each do |message|
+          %li= message
+  .row
+    .col-md-6
+    .col-md-5.main_title إضافة قسم جديد
+    %br
+    .col-md-12
+      .col-md-6
+        .form-group
+          .col-md-11.title-font.green-font.text-right
+            = f.label :"صورة القسم"
+          .col-md-5
+          .col-md-5.text-right
+            = f.file_field :image , class: 'initiative-img'
+      .col-md-5
+      
+        
+
+        .form-group.green-border
+          .col-md-9.padding-top
+            = f.text_field :name, class: 'form-control'
+          %br
+          .col-md-3.title-font.main_title.green-font
+            = f.label :"عنوان القسم"
+        .form-group.green-border
+          .col-md-9.padding-top
+            = f.text_area :description, class: 'form-control'
+          %br
+          .col-md-3.title-font.main_title.green-font
+            = f.label :"شعار القسم"
+       
+            
+        .actions
+          .col-md-12
+            = f.submit 'اضف القسم', class: 'green-button'

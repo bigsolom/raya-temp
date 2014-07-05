@@ -48,7 +48,7 @@
                           = resultmaker.job
                         .light-text.timeline-item-supporter-sub-date
                           تاريخ 
-                          = result.updated_at.to_time.strftime('%A %e %B %Y')
+                          = result.created_at.to_time.strftime('%A %e %B %Y')
                           = ((Time.now - result.updated_at) / 3600).round
                     .col-md-2
                       .timeline-item-supporter-img
