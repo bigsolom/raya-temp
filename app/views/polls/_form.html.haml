@@ -1,0 +1,18 @@
+= form_for(@poll) do |f|
+  - if @poll.errors.any?
+    %h2
+      = pluralize(@poll.errors.count, "error")
+      prohibited this poll from being saved:
+    %ul
+      - @poll.errors.full_messages.each do |msg|
+        %li
+          = msg
+
+  = f.hidden_field :initiative_id, :value => @initiative_id
+  = f.label :name ,"إسم التصويت"
+  %br/
+  = f.text_field :name
+  = f.fields_for :questions do |builder|
+    = render 'questions_fields', :f => builder
+  .input.btn.green-btn  
+    = f.submit "تسجيل الأسئلة"

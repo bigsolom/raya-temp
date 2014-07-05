@@ -1,6 +1,15 @@
-%h1 تصويت جديد
-%br
+.row
+	.col-md-12
+		.col-md-6
+		.col-md-5
+			.main_title  عمل تصويت جديد
+			.main_title.green-font 
+				= @initiative.title
+			.inner_menu
+		%br
+		%br	
 = render 'form'
 
--# = link_to 'Back', polls_path
 
+
+-# = link_to 'Back', polls_path

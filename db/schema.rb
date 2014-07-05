@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140702221910) do
   end
 
   create_table "questions_users", force: true do |t|
-    t.integer "questions_id"
+    t.integer "question_id"
     t.integer "user_id"
   end
 
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20140702221910) do
 
   create_table "users", force: true do |t|
     t.string   "name"
+    t.string   "image"
     t.string   "job_title"
     t.datetime "created_at"
     t.datetime "updated_at"

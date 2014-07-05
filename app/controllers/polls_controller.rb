@@ -12,12 +12,14 @@ class PollsController < ApplicationController
 
   
   def new
-    @initiatives = Initiative.all
+    @initiative = Initiative.find(params[:initiative_id])
     @poll = Poll.new
      1.times do 
        question = @poll.questions.build
        2.times{question.answers.build}
      end
+    @initiative_id = params[:initiative_id]
+
 
   end
 
