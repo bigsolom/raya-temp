@@ -16,6 +16,9 @@
         .col-md-4
         .col-md-5.text-right
           = f.file_field :image , class: 'initiative-img'
+          .upload-preview
+            %img/
+          %input.file{name: "logo", type: "file"}/
     .col-md-6.green-font.text-right
       = f.hidden_field :sector_id
       = f.hidden_field :user_id, :value => current_user.id
