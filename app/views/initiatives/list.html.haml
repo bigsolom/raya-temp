@@ -65,7 +65,7 @@
                                   .title-font.green-font.title-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
                                   %div
                                     مبارده في
-                                    #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
+                                    #{link_to(initiative.sector, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector})}
                                     \- بمحافظة
                                     #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
                             .col-md-12.box-content-paragraph
