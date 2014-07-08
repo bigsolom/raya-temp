@@ -1,6 +1,6 @@
 .col-md-12
 	.col-md-3
-	.col-md-8
+	.col-md-8.padding-bottom
 		.row.col-md-12
 			.inner_menu
 				.main_title بياناتي
@@ -8,47 +8,42 @@
 			.col-md-3.profile_image
 				= image_tag @user.image.url
 			.col-md-1
-			.col-md-8.green-font-title-font.panel.panel-default
-				%tr
-					%td.col-md-9
-						= @user.name
-					%td.table-border.col-md-3.user-info-label.green-font.title-font
-						الاسم
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.email
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span البريد الاكتروني
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.job_title
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span الوظيفة
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.date_of_birth
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span تاريخ الميلاد
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.gender
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span النوع
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.national_id
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span الرقم القومي
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.location
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span محل الاقامه
-				%tr.table-border
-					%td.col-md-8.table-border
-						= @user.initiatives.length
-					%td.col-md-4.user-info-label.green-font.table-border
-						%span عدد المبادرات
+			.col-md-8.green-font-title-font
+				.col-md-8
+					%input.form-control.gray-text.result-font{type: "text",value:  @user.name }
+				.col-md-3.user-info-label.green-font.bold-font
+					الاسم
+				.col-md-8
+					%input.form-control.result-font{type: "text",value:  @user.email }
+						
+				.col-md-3.user-info-label.green-font.bold-font
+					البريد الاكتروني
+				
+				.col-md-8
+					%input.form-control.gray-text.result-font{type: "text",value:  @user.job_title }	
+				.col-md-3.user-info-label.green-font.bold-font
+					الوظيفة
+				.col-md-8
+					%input.form-control.gray-text.result-font{type: "text",value:  @user.date_of_birth }	
+				.col-md-3.user-info-label.green-font.bold-font
+					تاريخ الميلاد
+			
+				.col-md-8
+					%input.form-control.gray-text.result-font{type: "text",value:  @user.gender }		
+				.col-md-3.user-info-label.green-font.bold-font
+					النوع
+				.col-md-8
+					%input.form-control.result-font{type: "text",value:  @user.national_id}		
+				.col-md-3.user-info-label.green-font.bold-font
+					الرقم القومي
+				.col-md-8
+					%input.form-control.gray-text.result-font{type: "text",value:  @user.location}
+				.col-md-3.user-info-label.green-font.bold-font
+					محل الاقامه
+				.col-md-8
+					%input.text-right.result-font{type: "text",value:  @user.initiatives.length}
+				.col-md-3.user-info-label.green-font.bold-font
+					عدد المبادرات
 			.col-md-1
 .row
 

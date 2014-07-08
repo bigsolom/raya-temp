@@ -1,14 +1,14 @@
 .row
-	.col-md-12
-		.col-md-6
-		.col-md-5
+	.col-md-12.padding-bottom
+		.col-md-3
+		.col-md-7
 			.main_title  عمل تصويت جديد
+			%br
 			.main_title.green-font 
 				= @initiative.title
 			.inner_menu
-		%br
-		%br	
-= render 'form'
+
+			= render 'form'
 
 
 

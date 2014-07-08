@@ -62,3 +62,5 @@ gem 'will_paginate'
 gem 'semantic-ui-rails'
 
 gem 'rails_admin'
+
+gem 'state_machine'

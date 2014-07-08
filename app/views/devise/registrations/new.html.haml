@@ -35,11 +35,13 @@
       .form-group.green-border
         = f.label :"الرقم القومي"
         = f.text_field :national_id, class: 'form-control'
-      .form-group.green-border
+      .form-group.green-border.col-md-12
         = f.label :"تاريخ الميلاد"
-        = f.text_field :date_of_birth, class: 'form-control'
-      
-        .btn.form-btn  
-          = f.submit "انشأ الحساب"
+        %br
+        .form-control.green-font
+          = f.date_select :date_of_birth, :start_year=>1900 , :end_year => Time.now.to_time.strftime('%Y').to_i   
+
+      .btn.form-btn  
+        = f.submit "انشأ الحساب"
     = render "devise/shared/links"
 

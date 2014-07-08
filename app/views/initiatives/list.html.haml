@@ -41,6 +41,9 @@
                           .top-causes-separetor
                             =image_tag "top-causes-separetor.png"
                           .main_title.active_title أحدث المبادرات
+                - if @initiatives.any? == false
+                  %span لا يوجد مبادرات
+                - else
                   - @initiatives.each do |initiative|
                     .row
                       .col-md-12

@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get 'comments/create'
   get 'index/index'
   get 'initiatives/list'
+  get 'initiatives/search'
+  get 'initiatives/search_engine'
   get 'initiatives/poll_submit'
 
   resources :initiatives

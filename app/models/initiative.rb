@@ -1,4 +1,16 @@
+  require 'state_machine'
+
 class Initiative < ActiveRecord::Base
+
+  
+
+  state_machine :initial => :new do
+    event :mina do
+      transition :new => :inprogress, if: :in_stock 
+    end  
+  end
+
+ 
   belongs_to :user
   belongs_to :region
   has_and_belongs_to_many :tags
@@ -17,6 +29,17 @@ class Initiative < ActiveRecord::Base
   has_and_belongs_to_many :results
 
 
+
+
+
+
+
+
+
+
+
+
+
   #search by
   scope :searchTitle, lambda{|searchTitle| where (["title LIKE ?","%#{searchTitle}%"])}
   
@@ -32,7 +55,9 @@ class Initiative < ActiveRecord::Base
         User.find(user_id).initiatives
       end
   end
-
+ def in_stock
+    Initiative.users.length == 1
+  end
   def self.searchRegion(region_name)
       if Region.find_by_name(region_name)
         Region.find_by_name(region_name).initiatives

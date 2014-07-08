@@ -14,8 +14,12 @@
         .col-md-11.title-font.green-font.text-right
           = f.label :"صورة المبادرة"
         .col-md-4
-        .col-md-5.text-right
-          = f.file_field :image , class: 'initiative-img'
+        .col-md-5.text-right.upload-preview
+
+          = f.file_field :image ,class: 'initiative-img'
+          .upload-preview
+            %img/
+          %input.file{name: "logo", type: "file"}/
           .upload-preview
             %img/
           %input.file{name: "logo", type: "file"}/
@@ -29,7 +33,7 @@
         .col-md-3.title-font
           = f.label :"عنوان المبادرة"
           
-      .form-grouppadding
+      .form-group
         .col-md-9
           = f.text_area :description, class: 'form-control'
         .col-md-3.title-font

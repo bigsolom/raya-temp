@@ -9,23 +9,43 @@
       .row
         .col-md-12.participate-flowchart-details.flowchart-item-details
           .wrapper
-            .row.final-results
-              .col-md-4.depend
-                %span.final-results-title واعتمد هذاالقرار من
-                %span.final-results-paragraph
-                  = Result.last.decisionmakers[0].name
-                  %br>/
-                  = Result.last.decisionmakers[0].job  
-                %span.final-results-img
-                  = image_tag "atef-helmy.jpg"
-              .col-md-8.final
-                %span.final-results-title أخر النتائج
-                %span.final-results-sub-title 
-                  بمناقشة 
-                  = Result.last.initiatives[0].title
-                %span.final-results-paragraph
-                  = Result.last.decision 
-      .row
+            - if Result.all.any? == false
+              .row.final-results
+                .col-md-4.depend
+                  %span.final-results-title 
+                  .decision-maker-info.col-md-8
+                    %span.final-results-paragraph.bold-font لا يوجد نتائج 
+                      
+
+                .col-md-8.final
+                  %span.final-results-title أخر النتائج
+                  %span.final-results-sub-title
+                    %span لا يوجد نتائج
+
+
+                  %span.final-results-paragraph
+                     
+            - else
+              .row.final-results
+                .col-md-4.depend
+                  %span.final-results-title واعتمد هذاالقرار من
+                  .decision-maker-info.col-md-8
+                    %span.final-results-paragraph.bold-font
+                      = Result.last.decisionmakers[0].name
+                      %br>/
+                      = Result.last.decisionmakers[0].job  
+ 
+                      
+                  .final-results-img.col-md-4
+                    = image_tag "atef-helmy.jpg"
+                .col-md-8.final
+                  %span.final-results-title أخر النتائج
+                  %span.final-results-sub-title
+                    %span :
+                    بمناقشة 
+                    = Result.last.initiatives[0].title
+                    تم الاتفاق علي التالي 
+          
         .col-md-12
           .col-md-2
           %form.col-md-8.result-form

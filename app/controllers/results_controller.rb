@@ -1,5 +1,8 @@
 class ResultsController < ApplicationController
   def index
+  	if params[:searchResult]
+  		@results = Result.searchResult(params[:searchResult]).order('created_at DESC')
+	else
 	@results = Result.all.order('created_at DESC')
 	@regions = Region.all
 	@users = User.all
@@ -13,6 +16,7 @@ class ResultsController < ApplicationController
      		initiative = result.initiatives.where(initiative_id = initiative.id).all[0]
      		end
    	end
+   end
   end
 
   def create

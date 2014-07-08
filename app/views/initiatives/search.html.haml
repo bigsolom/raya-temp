@@ -1,0 +1,37 @@
+.row
+	.col-md-12.padding-bottom
+		.col-md-4
+		.col-md-6
+			.main_title البحث المتقدم
+			.inner_menu
+			%form.col-md-12.text-right{action: "/initiatives/search_engine"}
+				.col-md-2
+				.col-md-8
+					.col-md-12
+						%input.col-md-3.form-control{type:"text", name: "search_title"}
+					
+					.col-md-8
+						%select{name:"search_model", class: 'form-control pull-right green-font result-font'}
+							%option{value: "initiatives"} المبادرات
+							%option{value: "2"} النتائج
+					.col-md-4
+						%span.green-font.main_title بحث في 
+
+					.col-md-8
+						= select_tag "sector_id", options_for_select(@sectors.collect{|sector| ([sector.name,sector.id])} + ['كل الاقسام']), class: 'form-control pull-right green-font result-font'
+
+					.col-md-4
+						%span.green-font.main_title في قسم
+
+					.col-md-8
+						= select_tag "region_id", options_for_select(@regions.collect{|region| [region.name,region.id]}+ ['كل الامارات']), class: 'form-control pull-right green-font result-font'
+					.col-md-4
+						%span.green-font.main_title في إمارة
+				
+					%input.btn.green-btn{type:"submit",value:"ابحث "}
+
+	          				
+
+						
+					
+					

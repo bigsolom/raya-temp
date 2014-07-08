@@ -102,8 +102,10 @@
                 %form{action: "/initiatives/list"}
                   %input.btn-default.search-btn{type: "submit", value: "ابحث"}
                   %input.search-box.green-font{name: "search_all", type: "text"} 
-              %br
-              %br
+                %br
+              .green-font.main_title 
+                #{link_to("البحث المتقدم", {:controller => 'initiatives' ,:action => "search"})}
+             
               %br
               .main_title.active_title برزات قادمة
               %img.home-calendar=image_tag "calendar.png"

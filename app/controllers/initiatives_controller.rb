@@ -71,7 +71,14 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params[:id])
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
-    @results=@initiative.results
+    @results = @initiative.results
+    @initiative_results_updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
+    @results.each do |r|
+      @initiative_results_updates.push(r)
+    end
+    @update_result = @initiative_results_updates.sort_by {|obj| obj.created_at}
+
+
     
     #support initiative
     @supporters = @initiative.users.length
@@ -145,6 +152,37 @@ class InitiativesController < ApplicationController
 
   end
 
+  def search_engine
+    @result_initiatives_sector = []
+    @sectors = Sector.all
+    @regions = Region.all
+    @search_type = params[:search_model]
+    @sector_id = params[:sector_id]
+    @region_id = params[:region_id]
+
+    if params[:sector_id] == "كل الاقسام"
+      @initiatives_sector = Initiative.all
+    else
+    @initiatives_sector = Initiative.where("sector_id" => params[:sector_id])  
+    end
+    if params[:region_id] == "كل الامارات"
+      @initiatives_region = @initiatives_sector.all
+    else
+    @initiatives_region = @initiatives_sector.where("region_id" =>params[:region_id]) 
+    end
+    if params[:search_model] == "initiatives"
+      @initiatives_title = @initiatives_region.searchTitle(params[:search_title])
+    else
+
+      @results = Result.searchResult(params[:search_title]).order('created_at DESC')         
+  end
+end
+
+  def search
+    @sectors = Sector.all
+    @regions = Region.all
+    
+  end
 
 
 end

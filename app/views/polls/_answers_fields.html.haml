@@ -1,8 +1,17 @@
-%br/
-= f.label :content, "الإجابة"
-%br/
-= f.text_field :content
-%br/
-= f.label :_destroy, "حذف الإجابة"
-= f.check_box :_destroy
-%br/
+.row
+  .form-group
+    .form-group.green-border.col-md-12
+      .col-md-3
+        .col-md-12.input-group
+          .form-control.red-font.result-font
+            = f.label :_destroy, "حذف الاجابة:"
+          .input-group-addon    
+            = f.check_box :_destroy
+      .col-md-6
+        = f.text_field :content, class: 'form-control'  
+      .col-md-3.title-font.green-font
+        = f.label :content ,"ادخل الإجابة"
+
+
+
+
