@@ -1,9 +1,9 @@
 class ResultsController < ApplicationController
   def index
   	if params[:searchResult]
-  		@results = Result.searchResult(params[:searchResult]).order('created_at DESC')
+  		@results = Result.searchResult(params[:searchResult]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 	else
-	@results = Result.all.order('created_at DESC')
+	@results = Result.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 	@regions = Region.all
 	@users = User.all
     	@results.each do |result|

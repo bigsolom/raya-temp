@@ -15,11 +15,10 @@
           = f.label :"صورة المبادرة"
         .col-md-4
         .col-md-5.text-right.upload-preview
-
-          = f.file_field :image ,class: 'initiative-img'
           .upload-preview
             %img/
-          %input.file{name: "logo", type: "file"}/
+          %input.file
+            = f.file_field :image ,class: 'initiative-img'
           .upload-preview
             %img/
           %input.file{name: "logo", type: "file"}/

@@ -189,7 +189,7 @@
                               .title-font.green-font #{link_to(initiative.title[0, 35], {:controller => 'initiatives', :action => 'show', :id => initiative.id  })}
                               %div
                                 مبارده في
-                                #{link_to(initiative.sector, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector})}
+                                #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
                                 \- بمحافظة
                                 #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
                         .box-content-paragraph
@@ -202,27 +202,12 @@
 
 
 
-              .pagination_block
-                %ul.pagination
-                  %li.disabled
-                    %a{href: "#"}
-                      %strong <
-                  %li.active
-                    %a{href: "#"}
-                      1
-                      %span.sr-only (current)
-                  %li
-                    %a{href: "#"} 2
-                  %li
-                    %a{href: "#"} 3
-                  %li
-                    %a{href: "#"} 4
-                  %li
-                    %a{href: "#"} 5
-                  %li.disabled
-                    %a{href: "#"}
-                      %strong >
-              
+              .row
+                .col-md-3
+                .col-md-8.padding-bottom.float-left
+                  .digg_pagination
+                    = will_paginate @initiatives, inner_window: 1, :container => true, :next_label => ">", :previous_label => "<"
+          
 
 
 

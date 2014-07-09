@@ -6,19 +6,19 @@ class InitiativesController < ApplicationController
     @sectors = Sector.all
 
     if params[:searchTitle]
-      @initiatives = Initiative.searchTitle(params[:searchTitle]).order('created_at DESC')
+      @initiatives = Initiative.searchTitle(params[:searchTitle]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     elsif params[:region_name]
-      @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC')
+      @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     elsif params[:user_id]
-      @initiatives = Initiative.where("user_id" => params[:user_id])
+      @initiatives = Initiative.where("user_id" => params[:user_id]).paginate(:page => params[:page], :per_page => 5)
     elsif params[:sector_name]
-      @initiatives = Initiative.searchSector(params[:sector_name]).order('created_at DESC')
+      @initiatives = Initiative.searchSector(params[:sector_name]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     elsif params[:tag]
-      @initiatives = Initiative.tagged_with(params[:tag]).order('created_at DESC') 
+      @initiatives = Initiative.tagged_with(params[:tag]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5) 
     elsif params[:search_all]
-      @initiatives = Initiative.searchAll(params[:search_all]).order('created_at DESC')
+      @initiatives = Initiative.searchAll(params[:search_all]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     else
-      @initiatives = Initiative.all.order('created_at DESC')
+      @initiatives = Initiative.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 
     end
     
@@ -171,7 +171,8 @@ class InitiativesController < ApplicationController
     @initiatives_region = @initiatives_sector.where("region_id" =>params[:region_id]) 
     end
     if params[:search_model] == "initiatives"
-      @initiatives_title = @initiatives_region.searchTitle(params[:search_title])
+      @initiatives_title = @initiatives_region.searchTitle(params[:search_title]).paginate(:page => params[:page], :per_page => 5)
+      @initiatives_number = @initiatives_region.searchTitle(params[:search_title]).length
     else
 
       @results = Result.searchResult(params[:search_title]).order('created_at DESC')         

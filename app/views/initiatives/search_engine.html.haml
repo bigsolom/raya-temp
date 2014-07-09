@@ -1,0 +1,148 @@
+%html
+  %body
+    %div      
+      .row
+        .col-md-12
+          .wrapper
+            .row
+              = @result_initiatives_sector.length
+              - if @search_type == "initiatives"
+                .col-md-9
+                  .col-md-12
+                    .latest-causes
+                      .row
+                        .col-md-12
+                          .inner_menu
+                            .main_title.active_title نتيجة البحث المتقدم
+                        .main_title
+                          %span.green-font عدد المبادرات  الموجود    
+                          %span= @initiatives_number
+                        %br
+                  - if @initiatives_title.any? == false
+                    %span لا يوجد مبادرات
+                  - else
+                    - @initiatives_title.each do |initiative|
+                      .row
+                        .col-md-12
+                          .cause_block
+                            .col-md-9
+                              .col-md-12
+                                .box-count
+                                  %span
+                                    يوم متبقى
+                                  %span 
+                                    = (45 - ((Time.now - initiative.created_at) / (3600*24)).round) 
+                                  %br
+                                  %span.green-font.title-font
+                                    = initiative.users.length
+                                  %br
+                                  %span.green-font شخص دعم المبادرة
+                                .box-content
+                                  .box-title
+                                    .title-font.green-font.title-font #{link_to(initiative.title[0, 40], {:action => 'show', :id => initiative.id  })}
+                                    %div
+                                      مبارده في
+                                      #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
+                                      \- بمحافظة
+                                      #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
+                              .col-md-12.box-content-paragraph
+                                %span
+                                  #{initiative.description[0, 130]}
+                                #{link_to("....المزيد", {:action => 'show', :id => initiative.id  })}
+                            .col-md-3
+                              .cause-wrapper-img
+                                = image_tag initiative.image.url
+
+                  .row
+                    .col-md-3
+                    .col-md-8.padding-bottom.float-left
+                      .digg_pagination
+                        = will_paginate @initiatives_title, inner_window: 1, :container => true, :next_label => ">", :previous_label => "<"
+
+                .col-md-3
+                  .right-side-menu
+                    .row
+                      .col-md-12
+                        .inner_menu
+                          .main_title.active_title اقسام المبادرات
+                  - @sectors.each do |sector|        
+                    .row.right-side-menu-item.gray-font
+                      .col-md-12.gray-font
+                        #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => sector.name})}
+                   
+                    
+              - else 
+                .col-md-12
+                  .inner_menu
+                    .main_title.active_title نتيجة البحث المتقدم
+                - if @results.any? == false
+                  %span.main_title.green-font لا يوجد نتائج
+                - else
+                  .main_title
+                    %span.green-font عدد النتائج الموجود    
+                    %span= @results.length
+                  %br
+
+                  - @results.each do |result|
+                    - resultmaker = result.decisionmakers.where(result_id = result.id).all[0] 
+                    .row.cause-result-wrapper
+                      .col-md-6.cause-result-item
+                        .row
+                          .col-md-10
+                            .timeline-item-supporter
+                              .green-font.timeline-item-supporter-title.bold-font.result-font
+                                معالي / #{resultmaker.name}
+                              .green-font.timeline-item-supporter-sub-title.bold-font
+                                = resultmaker.job
+                              .light-text.timeline-item-supporter-sub-date
+                                تاريخ 
+                                = result.created_at.to_time.strftime('%A %e %B %Y')
+                                = ((Time.now - result.updated_at) / 3600).round
+                          .col-md-2
+                            .timeline-item-supporter-img
+                              = image_tag "ibrahim.jpg"
+                        .timeline-item-details.gray-text
+                          .green-font
+                            تفاصيل القرار
+                          = result.decision
+                   
+                        - initiative_data1 = result.initiatives.where(result_id = result.id)
+                      
+                      .col-md-6.cause-result-item.border-right
+                        - initiative_data1.each do |initiative_data|
+                          .col-md-12.cause-result-item
+                            .row
+                              .col-md-8
+                                .green-font.timeline-item-supporter-title.bold-font.result-font
+                                  #{link_to(initiative_data.title[0, 35], {:controller => 'initiatives' ,:action => "show", :id => initiative_data.id})}
+                                .timeline-item-supporter-sub-title.gray-text.bold-font
+                                  مبادرة في 
+                                  %span.green-font.opacity-font
+                                    #{link_to(initiative_data.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative_data.sector.name})}
+                                  \- بمحافظة
+                                  %span.green-font.opacity-font
+                                    #{link_to(initiative_data.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative_data.region.name})}
+                                .timeline-item-details.gray-text
+                                  = initiative_data.description[0, 150]
+                              .col-md-4
+                                .cause-result-img
+                                  = image_tag initiative_data.image.url
+                                .green-font.title-font 
+                                  = initiative_data.users.length
+                                .light-green-font.cause-result-sub-title
+                                  شخص دعم المبادرة
+
+
+
+
+
+
+
+
+
+
+       
+         
+          
+
+

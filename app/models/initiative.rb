@@ -10,6 +10,9 @@ class Initiative < ActiveRecord::Base
     end  
   end
 
+  def in_stock
+    Initiative.users.length == 1
+  end
  
   belongs_to :user
   belongs_to :region
@@ -55,9 +58,7 @@ class Initiative < ActiveRecord::Base
         User.find(user_id).initiatives
       end
   end
- def in_stock
-    Initiative.users.length == 1
-  end
+ 
   def self.searchRegion(region_name)
       if Region.find_by_name(region_name)
         Region.find_by_name(region_name).initiatives

@@ -119,29 +119,11 @@
 
 
             .row
-              .col-md-12
-                .pagination_block
-                  %ul.pagination
-                    %li.disabled
-                      %a{href: "#"}
-                        %strong <
-                    %li.active
-                      %a{href: "#"}
-                        1
-                        %span.sr-only (current)
-                    %li
-                      %a{href: "#"} 2
-                    %li
-                      %a{href: "#"} 3
-                    %li
-                      %a{href: "#"} 4
-                    %li
-                      %a{href: "#"} 5
-                    %li.disabled
-                      %a{href: "#"}
-                        %strong >
-      / //-----------Footer ---------//
-    / End of div container
+              .col-md-3
+              .col-md-8.padding-bottom.float-left
+                .digg_pagination
+                  = will_paginate @results, inner_window: 1, :container => true, :next_label => ">", :previous_label => "<"
+        
 
 
 
