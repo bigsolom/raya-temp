@@ -51,10 +51,12 @@
                         %input.btn.green-btn{type: "submit", value: "تصويت"}/
                   - else
                     .green-font تم التصويت مسبقا
+
                     %br
                     - @all_answers_of_question.each do |answer|
                       .green-font
                         = answer.content
+
                         %br
                         .progress
                           .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width:#{number_to_percentage(((answer.users.length.to_f/@users_who_voted_for_ans_question.length.to_f)*100),precision: 0)};"}
@@ -100,7 +102,7 @@
 
                               مبادرة فى
                               %span.green-font 
-                                #{link_to(@initiative.sector, {:controller => 'initiatives' ,:action => "list", :sector_name => @initiative.sector})}
+                                #{link_to(@initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => @initiative.sector.name})}
                               \- بمحافظة
                               %span.green-font 
                                 #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => @initiative.region.name})}
@@ -124,59 +126,65 @@
                         .cause-wrapper-details.gray-text
                           = @initiative.description
                   .cause_discussion_block
-                .row
-                .col-md-12
-                  .timeline
-                    - count = @updates.all.length
-                    - @updates.each do |update|
-                      .timeline-wrapper
-                        .pre-timeline-date.gray-text
-                          %div= update.created_at.to_time.strftime('%A')
-                          .green-font.bold 
-                            = update.created_at.to_time.strftime('%B %e')
-                          %div= update.created_at.to_time.strftime('%Y')
-                        .circle-icon.green-icon
-                        .timeline-item.small-item.plain-timeline-item
-                          .timeline-item-wrapper
-                            .green-font.bold 
-                              %span تحديث #
-                              = count
-                            .timeline-item-details.gray-text
-                              = update.action
-                              - count -=1  
-              
-                    - @results.each do |result|
-                      - user=result.decisionmakers.first
-                      .timeline-wrapper
-                        .pre-timeline-date.gray-text
-                          %div= result.created_at.to_time.strftime('%A')
-                          .red-font.bold= result.created_at.to_time.strftime('%B %e')
-                          %div= result.created_at.to_time.strftime('%Y')
-                        .circle-icon.red-icon
-                      .timeline-item.medium-item.upper-image-timeline-item
-                        .timeline-item-wrapper
-                          .red-font.bold النتائج الرسمية
-                          .row
-                            .col-md-10
-                              .timeline-item-supporter
-                                .green-font.timeline-item-supporter-title
-                                  = user.name
-                                .green-font.timeline-item-supporter-sub-title
-                                  = user.job
-                                .light-text.timeline-item-supporter-sub-date
-                                  تاريخ 
-                                  = result.created_at.to_time.strftime('%A %e %B  %Y ')
+ 
+                - @update_result.each do |update_or_result|
+                  - if @created_at_updates.include?(update_or_result.created_at)
+                    .row
+                      .col-md-12
+                        .timeline
 
-                            .col-md-2
-                              .timeline-item-supporter-img
-                                = image_tag "atef-helmy.jpg"
-                          %br
-                          .timeline-item-details.gray-text
-                            .green-font
-                              تفاصيل القرار
-                            = result.decision
-                            = @initiative_results_updates.length
-                              
+                          .timeline-wrapper
+                            .pre-timeline-date.gray-text
+                              %div= update_or_result.created_at.to_time.strftime('%A')
+                              .green-font.bold 
+                                = update_or_result.created_at.to_time.strftime('%B %e')
+                              %div= update_or_result.created_at.to_time.strftime('%Y')
+                            .circle-icon.green-icon
+                            .timeline-item.small-item.plain-timeline-item
+                              .timeline-item-wrapper
+                                .green-font.bold 
+                                  %span تحديث #
+                                  = @count
+                                  - @count-=1
+                                .timeline-item-details.gray-text
+                                  = update_or_result.action
+                                   
+                  - else
+
+                    - user=update_or_result.decisionmakers.first
+                    .row
+                      .col-md-12
+                        .timeline
+                          .timeline-wrapper
+                            .pre-timeline-date.gray-text
+                              %div= update_or_result.created_at.to_time.strftime('%A')
+                              .red-font.bold= update_or_result.created_at.to_time.strftime('%B %e')
+                              %div= update_or_result.created_at.to_time.strftime('%Y')
+                            .circle-icon.red-icon
+                            .timeline-item.medium-item.upper-image-timeline-item
+                              .timeline-item-wrapper
+                                .red-font.bold النتائج الرسمية
+                                .row
+                                  .col-md-10
+                                    .timeline-item-supporter
+                                      .green-font.timeline-item-supporter-title
+                                        = user.name
+                                      .green-font.timeline-item-supporter-sub-title
+                                        = user.job
+                                      .light-text.timeline-item-supporter-sub-date
+                                        تاريخ 
+                                        = update_or_result.created_at.to_time.strftime('%A %e %B  %Y ')
+
+                                  .col-md-2
+                                    .timeline-item-supporter-img
+                                      = image_tag "atef-helmy.jpg"
+                                %br
+                                .timeline-item-details.gray-text
+                                  .green-font
+                                    تفاصيل القرار
+                                  = update_or_result.decision
+
+                                    
                     
                           
             %br/

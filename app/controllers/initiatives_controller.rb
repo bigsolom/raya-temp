@@ -68,15 +68,25 @@ class InitiativesController < ApplicationController
   end
 
   def show
+    @update_result = []
+    @created_at_updates = []
+    @initiative_results_updates = []
     @initiative = Initiative.find(params[:id])
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
+    @count= @updates.length
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
     @results = @initiative.results
-    @initiative_results_updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
+
+    @updates.each do |r|
+      @initiative_results_updates.push(r)
+      @created_at_updates.push(r.created_at)
+    end
+
     @results.each do |r|
       @initiative_results_updates.push(r)
+
     end
-    @update_result = @initiative_results_updates.sort_by {|obj| obj.created_at}
+    @update_result = @initiative_results_updates.sort_by {|obj| obj.created_at}.reverse
 
 
     
