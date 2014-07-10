@@ -100,7 +100,6 @@ class InitiativesController < ApplicationController
     else
       @supportFlag=[]
     end  
-
     
     ## POLL Existance & Voted TEST##
     @poll_exist = false
@@ -126,8 +125,30 @@ class InitiativesController < ApplicationController
       
       @user_voted_before = users_ids_arr.include?(current_user.id) 
       #true if user has voted for this question before    
+    end
+
+
+    ## SURVAY Existance & Answerd before TEST##
+    @survay_exist = false
+    @user_answered_before = false
+    current_user_vs_survays_ids = []
+
+    if @initiative.survays.last
+      @survay_exist = true
+    
+      @survay = @initiative.survays.last
+
+      @current_user = User.find(current_user.id)
+      @current_user_feedbacks = @current_user.feedbacks
+      for feedback in @current_user_feedbacks
+        current_user_vs_survays_ids.push(feedback.survay_id) #array of all survay's ids answered for this user before
+      end
+      @user_answered_before  = current_user_vs_survays_ids.include?(@survay.id)
+
+     end
+
   end
-  end 
+
 
   ## POLL VOTE ##
   def poll_submit

@@ -32,11 +32,9 @@ class PollsController < ApplicationController
     @poll = Poll.new(poll_params)
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
-        format.json { render :show, status: :created, location: @poll }
+        format.html { redirect_to({:controller => 'initiatives', :action => 'list'}) }
       else
         format.html { render :new }
-        format.json { render json: @poll.errors, status: :unprocessable_entity }
       end
     end
   end

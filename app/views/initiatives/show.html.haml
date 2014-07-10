@@ -22,6 +22,7 @@
                   .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", role: "progressbar", style: "width: #{@support_percent}%"}
                     %span.sr-only 40% Complete (success)
                 .inner_menu
+                  
                   /////////Make new vote for the poll////////////
                 - if @poll_exist == true
                   .main_title.small-text تصويت الحالى 
@@ -34,7 +35,7 @@
                   
                   - if @user_voted_before == false
                     .poll-results
-                      .green-font
+                      .green-font.bold-font
                         - for question in @poll.questions
                           = question.content
                           %br
@@ -59,8 +60,24 @@
 
                         %br
                         .progress
-                          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width:#{number_to_percentage(((answer.users.length.to_f/@users_who_voted_for_ans_question.length.to_f)*100),precision: 0)};"}
-                          =  number_to_percentage(((answer.users.length.to_f/@users_who_voted_for_ans_question.length.to_f)*100),precision: 0)
+                          - percentage_of_votes = number_to_percentage(((answer.users.length.to_f/@users_who_voted_for_ans_question.length.to_f)*100),precision: 0)
+                          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width:#{percentage_of_votes};"}
+                          = percentage_of_votes
+
+                //Survay Question
+                - if (@survay_exist == true)
+                  .inner_menu
+                  .main_title.small-text السؤال الحالي
+                  %br
+                  .green-font.bold-font
+                    = @survay.question
+                  %br
+                  - if @user_answered_before == false
+                    = render 'feedback'
+                  - else 
+                    .green-font تم الإجابة مسبقا
+        
+                 
                 // Make new poll for this initiative
                 - if @initiative.user_id == current_user.id
                   %form{action: "/polls/new"}
@@ -73,6 +90,12 @@
                   %form{action: "/update/new"}
                     %input{name: "initiative_id", value: @initiative.id, type: "hidden"}
                     %input{type: "submit", value: "اضف تحديث",class: "red-btn"}
+
+                // Make new survay question for this initiative
+                - if @initiative.user_id == current_user.id
+                  %form{action: "/survays/new"}
+                    %input{name: "initiative_id", value: @initiative.id, type: "hidden"}
+                    %input{type: "submit", value: "اضف سؤال",class: "red-btn"}
                   
                       
            

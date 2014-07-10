@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20140710104825) do
     t.integer "decisionmaker_id"
   end
 
+  create_table "feedbacks", force: true do |t|
+    t.text     "answer"
+    t.integer  "survay_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feedbacks_users", id: false, force: true do |t|
+    t.integer "feedback_id"
+    t.integer "user_id"
+  end
+
   create_table "initiatives", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -135,6 +147,13 @@ ActiveRecord::Schema.define(version: 20140710104825) do
     t.datetime "image_updated_at"
   end
 
+  create_table "survays", force: true do |t|
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "initiative_id"
+  end
+
   create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -150,6 +169,7 @@ ActiveRecord::Schema.define(version: 20140710104825) do
 
   create_table "users", force: true do |t|
     t.string   "name"
+    t.string   "image"
     t.string   "job_title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -168,7 +188,7 @@ ActiveRecord::Schema.define(version: 20140710104825) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "gender"
-    t.date     "date_of_birth"
+    t.string   "date_of_birth"
     t.string   "national_id"
     t.string   "location"
   end

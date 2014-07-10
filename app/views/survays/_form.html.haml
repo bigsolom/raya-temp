@@ -1,0 +1,16 @@
+= form_for(:survay, :url => {:action => 'create', :initiative_id => @initiative_id}) do |f|
+  .row
+    .form-group
+      = f.hidden_field :initiative_id, :value => @initiative_id
+    .form-group.green-border.col-md-12
+      .col-md-3
+      .col-md-6
+        = f.text_field :question, class: 'form-control'
+      .col-md-3.title-font.green-font
+        = f.label :question ,":السؤال"
+      %br
+      %br
+      %br
+
+      .input.btn.green-btn
+        = f.submit "تسجيل السؤال"

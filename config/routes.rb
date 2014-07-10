@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'feedbacks/new'
+
+  post 'feedbacks/create'
+
+  get 'survays/new'
+  
+  post 'survays/create'
+
   get 'vote/vote'
 
   get 'sectors/new'
