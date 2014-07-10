@@ -1,7 +1,7 @@
   require 'state_machine'
 
 class Initiative < ActiveRecord::Base
-
+   
   
 
   state_machine :initial => :new do
@@ -91,4 +91,5 @@ class Initiative < ActiveRecord::Base
   end
 
 
-end
+
+  end

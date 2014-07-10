@@ -1,0 +1,82 @@
+<html>
+  <body>
+    <div>
+      <% @user = User.find_by_id(params[:user_id]) %>
+<form  class="form" method="post">
+<div class="col-md-12">
+  <div class="col-md-3"></div>
+  <div class="col-md-8 padding-bottom">
+    <div class="row col-md-12">
+      <div class="inner_menu">
+        <div class="main_title">بياناتي</div>
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="col-md-3 profile_image">
+        <%= image_tag @user.image.url %>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-8 green-font-title-font">
+        <div class="col-md-8">
+          <input name="name" class="form-control gray-text result-font" type="text" value="<%= @user.name %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          الاسم
+        </div>
+        <div class="col-md-8">
+          <input class="form-control result-font" name="email" type="text" value="<%= @user.email %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          البريد الاكتروني
+        </div>
+        <div class="col-md-8">
+          <input name="job_title" class="form-control gray-text result-font" type="text" value="<%= @user.job_title %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          الوظيفة
+        </div>
+        <div class="col-md-8">
+          <input class="form-control gray-text result-font" name="date_of_birth" type="text" value="<%= @user.date_of_birth %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          تاريخ الميلاد
+        </div>
+        <div class="col-md-8">
+          <input class="form-control gray-text result-font" name="gender" type="text" value="<%= @user.gender %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          النوع
+        </div>
+        <div class="col-md-8">
+          <input class="form-control result-font" type="text" name="national_id" value="<%= @user.national_id %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          الرقم القومي
+        </div>
+        <div class="col-md-8">
+          <input class="form-control gray-text result-font" type="text" name="location" value="<%= @user.location %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          محل الاقامه
+        </div>
+        <div class="col-md-8">
+          <input class="text-right result-font" type="text" value="<%= @user.initiatives.length %>"></input>
+        </div>
+        <div class="col-md-3 user-info-label green-font bold-font">
+          عدد المبادرات
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>
+<div class="row"></div>
+<div class="col-md-12">
+              <br/>
+              <input class="btn btn-default form-btn" type="submit" value="استمرار"></input>
+              <br/>
+            </div>
+            </form>
+</div>
+</body>
+</html>

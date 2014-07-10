@@ -8,6 +8,7 @@ class SupportsController < ApplicationController
         if userFlag == []
           user = User.find(current_user.id)
           user.initiatives << @initiative
+
         else
         @status = 1
         end

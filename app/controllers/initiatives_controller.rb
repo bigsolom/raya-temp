@@ -72,6 +72,7 @@ class InitiativesController < ApplicationController
     @created_at_updates = []
     @initiative_results_updates = []
     @initiative = Initiative.find(params[:id])
+   # @initiative.mina
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @count= @updates.length
     @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")

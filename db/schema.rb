@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20140710104825) do
     t.string   "state"
   end
 
+  add_index "initiatives", ["state"], name: "index_initiatives_on_state", using: :btree
+
   create_table "initiatives_results", id: false, force: true do |t|
     t.integer "initiative_id"
     t.integer "result_id"

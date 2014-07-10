@@ -34,5 +34,8 @@ class ResultsController < ApplicationController
 	end
 	result.initiative_ids = @initiatives_ids
 	result.decisionmaker_ids = @decisionmaker_ids
+	@initiatives_ids.each do |initiative|
+	initiative.update_attribute(:state, @initiative_state)
+	end
   end
 end
