@@ -24,6 +24,7 @@ class ResultsController < ApplicationController
 	@decisionmakers = Decisionmaker.all
 	@initiatives_ids = params[:initiatives_ids]
 	@decisionmaker_ids = params[:decisionmaker_ids]
+	@state = params[:state]
 	result = Result.new
 	if result = Result.new
 		result.decision = params[:decision]

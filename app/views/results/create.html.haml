@@ -66,6 +66,10 @@
             .col-md-12.green-font.result-font
               = select_tag "decisionmaker_ids", options_for_select(@decisionmakers.collect{|u| [u.job, u.id]  }), class: 'form-control pull-right green-font result-font'
             .col-md-12
+              .main_title.active_title حاله المبادرة
+            .col-md-12.green-font.result-font
+              = select_tag "state", options_for_select([["غلق المبادرة",1],["استمرار المبادرة",2]]), class: 'form-control pull-right green-font result-font'
+            .col-md-12
               .main_title.active_title تفاصيل القرار
             .col-md-12
               %textarea.col-md-12.form-control{name: "decision"}

@@ -8,7 +8,6 @@ class SupportsController < ApplicationController
         if userFlag == []
           user = User.find(current_user.id)
           user.initiatives << @initiative
-
         else
         @status = 1
         end
@@ -17,6 +16,9 @@ class SupportsController < ApplicationController
         user.initiatives << @initiative
 
       end
+    end
+    if @initiative.users.length >= 3 # 25000 
+      @initiative.in_progress
     end
     redirect_to :controller => "initiatives", :action => "show", :id =>params[:initiative_id]
       end 

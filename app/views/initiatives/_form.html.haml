@@ -15,9 +15,8 @@
           = f.label :"صورة المبادرة"
         .col-md-4
         .col-md-5.text-right.upload-preview
-          .upload-preview
-            %img/
           %input.file
+           
             = f.file_field :image ,class: 'initiative-img'
           .upload-preview
             %img/

@@ -64,3 +64,6 @@ gem 'semantic-ui-rails'
 gem 'rails_admin'
 
 gem 'state_machine'
+
+# friends relation 
+gem 'amistad'

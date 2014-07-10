@@ -5,14 +5,21 @@ class Initiative < ActiveRecord::Base
   
 
   state_machine :initial => :new do
-    event :mina do
-      transition :new => :inprogress, if: :in_stock 
+    event :in_progress do
+      transition :new => :in_progress
     end  
-  end
+    event :expired do
+      transition :new => :expired
+    end  
+    event :closed do
+      transition :in_progress => :closed
+    end  
+  
 
-  def in_stock
-    Initiative.users.length == 1
+  
+
   end
+    
  
   belongs_to :user
   belongs_to :region
@@ -58,6 +65,12 @@ class Initiative < ActiveRecord::Base
         User.find(user_id).initiatives
       end
   end
+
+    def self.searchFriend(friends_ids)
+      if User.find(user_id)
+        User.find(user_id).initiatives
+      end
+    end
  
   def self.searchRegion(region_name)
       if Region.find_by_name(region_name)

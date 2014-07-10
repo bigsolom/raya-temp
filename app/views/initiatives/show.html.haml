@@ -107,6 +107,7 @@
                               %span.green-font 
                                 #{link_to(@initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => @initiative.region.name})}
                           .col-md-12
+                            #{link_to(@initiative.user.name, {:controller => 'users' ,:action => "show", :user_id => @initiative.user.id})}
                             .social-media-sharing
                             
                             .cause-wrapper-sub-title :التصنيفات

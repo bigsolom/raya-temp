@@ -178,7 +178,11 @@
                             %span
                               يوم متبقى
                             %span 
-                              = (45 - ((Time.now - initiative.created_at) / (3600*24)).round) 
+                              - initiative_time = (45 - ((Time.now - initiative.created_at) / (3600*24)).round)
+                              = initiative_time
+                              - if initiative_time == 0
+                                - initiative.expired
+                             
                             %br
                             %span.green-font.title-font 
                               = initiative.users.length

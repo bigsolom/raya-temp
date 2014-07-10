@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
+  get 'users/list'
+
+  get 'users/create_relation'
+
   get 'decisionmakers/new'
 
   get 'decisionmakers/create'
@@ -44,6 +48,7 @@ Rails.application.routes.draw do
   get 'initiatives/search'
   get 'initiatives/search_engine'
   get 'initiatives/poll_submit'
+
 
   resources :initiatives
   resources :sectors
