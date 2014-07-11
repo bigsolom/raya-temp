@@ -236,7 +236,7 @@
                               %span d 
                         .col-md-10
                           %span.cause_discussion_paragraph.title-font
-                            = comment.user.name
+                            #{link_to(comment.user.name, {:controller => 'users' ,:action => "show", :user_id => comment.user.id})}
                         .col-md-12
                           %span.cause_discussion_paragraph
                             = comment.content
@@ -244,10 +244,6 @@
                         .cause_discussion_img
                           = image_tag comment.user.image.url
 
-- @update_result .each do |object|
-  - if @results.include?(object.created_at)
-    = object.decision
-  - else
-    = object.id
+
 
 

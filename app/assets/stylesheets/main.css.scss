@@ -32,11 +32,18 @@ input, select {
 /*---------Header--------*/
 
 .dark-text {
-  color: #919191;
+  color: #7D7D7D;
+
 }
 
 .light-text {
   color: #D0D0D0;
+}
+.light-text a {
+  color: #B3ACAC;
+}
+.light-text a:hover{
+  color: #1A8A3C;
 }
 .gray-font{
   
@@ -405,7 +412,12 @@ footer {
   font-weight: bold;
   text-align: right;
 }
-
+.main_title a {
+  color: #D91D14;
+}
+.main_title a:hover{
+  color: #1A8A3C;
+}
 .inner_menu .main_title {
   display: inline-block;
 }
@@ -911,7 +923,15 @@ a.cause-section {
   color: #fff;
   font-size: 18px;
 }
-
+.cause_discussion_paragraph{
+  
+}
+.cause_discussion_paragraph a{
+  color: black;
+}
+.cause_discussion_paragraph a:hover{
+  color: #999999;
+}
 .cause_details .title-font {
   font-size: 16px;
 }

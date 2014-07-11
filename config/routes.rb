@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   get 'users/list'
 
-  get 'users/create_relation'
+  get 'users/follow'
+
+  get 'users/unfollow'
 
   get 'decisionmakers/new'
 

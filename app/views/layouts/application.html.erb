@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>تواصل جمهورية مصر العربية</title>
+  <title>تواصل الامارات العربية المتحدة</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
 				<div class="col-md-4 user-info">
 					<div class="user-information pull-right">
 						<div class="user">
-							<span class="dark-text"><%= current_user.name%></span><br/>
+							<span class="dark-text bold-font"><%= current_user.name%></span><br/>
 							<span class="light-text"> <%=link_to("مبادراتي",:controller => 'initiatives', :action => "list", :user_id => current_user.id )%> - 
 							</span>
 							<span class="light-text"><%=link_to("بياناتي",:controller => 'users', :action => "show", :user_id => current_user.id )%> - </span>
@@ -62,7 +62,7 @@
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">
-						<%=link_to("(246)اجتماع",:controller => 'initiatives', :action => "list" )%>
+						<%=link_to("(246)برزة",:controller => 'initiatives', :action => "list" )%>
 						</div>
 						<div class="separator"></div>
 						<div class="nav_item nav-text">

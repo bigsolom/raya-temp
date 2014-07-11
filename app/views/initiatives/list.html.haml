@@ -37,10 +37,17 @@
                     .row
                       .col-md-12
                         .inner_menu
-                          .main_title مبادرات الاصدقاء
-                          .top-causes-separetor
-                            =image_tag "top-causes-separetor.png"
-                          .main_title.active_title أحدث المبادرات
+                          - if @friend_initiative == true
+                            .main_title.active_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
+                            .top-causes-separetor
+                              =image_tag "top-causes-separetor.png"
+                            .main_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+                          - else
+                            .main_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
+                            .top-causes-separetor
+                              =image_tag "top-causes-separetor.png"
+                            .main_title.active_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+
                 - if @initiatives.any? == false
                   %span لا يوجد مبادرات
                 - else

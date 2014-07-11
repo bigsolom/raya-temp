@@ -164,10 +164,18 @@
                      
             .col-md-6.latest-causes
               .inner_menu
-                .main_title مبادرات الاصدقاء
-                .top-causes-separetor
-                  =image_tag "top-causes-separetor.png"
-                .main_title.active_title أحدث المبادرات
+                .main_title 
+                  - if @friend_initiative == true
+                    .main_title.active_title #{link_to("مبادرات الاصدقاء", {:controller => 'index' ,:action => "index", :friends_ids => current_user.id})}
+                    .top-causes-separetor
+                      =image_tag "top-causes-separetor.png"
+                    .main_title #{link_to("احدث المبادرات", {:controller => 'index' ,:action => "index"})}
+                  - else
+                    .main_title #{link_to("مبادرات الاصدقاء", {:controller => 'index' ,:action => "index", :friends_ids => current_user.id})}
+                    .top-causes-separetor
+                      =image_tag "top-causes-separetor.png"
+                    .main_title.active_title #{link_to("احدث المبادرات", {:controller => 'index' ,:action => "index"})}
+                
               - @initiatives.each do |initiative|
                 .row
                   .col-md-12

@@ -69,8 +69,8 @@ class Initiative < ActiveRecord::Base
   end
 
     def self.searchFriend(friends_ids)
-      if User.find(user_id)
-        User.find(user_id).initiatives
+      if User.find(friends_ids)
+        User.find(friends_ids).followed_users
       end
     end
  

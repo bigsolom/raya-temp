@@ -9,6 +9,17 @@ class InitiativesController < ApplicationController
       @initiatives = Initiative.searchTitle(params[:searchTitle]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     elsif params[:region_name]
       @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+    elsif params[:friends_ids]
+      @initiatives = []
+      @users = current_user.followed_users
+      @users.each do |user|
+        initiatives = Initiative.where("user_id" => user.id)
+        initiatives.each do |initiative|
+          @initiatives.push(initiative)
+        end
+      end
+      @initiatives = @initiatives.sort_by {|obj| obj.created_at}.reverse.paginate(:page => params[:page], :per_page => 5)
+      @friend_initiative = true
     elsif params[:user_id]
       @initiatives = Initiative.where("user_id" => params[:user_id]).paginate(:page => params[:page], :per_page => 5)
     elsif params[:sector_name]

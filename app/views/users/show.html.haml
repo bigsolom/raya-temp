@@ -5,7 +5,8 @@
 		.row.col-md-12
 			.inner_menu
 				- if @user.id == current_user.id
-					.main_title بياناتي
+					.main_title.active_title 
+						بياناتي	
 				- else 
 					.main_title البيانات الشخصيه 
 		.row.col-md-12
@@ -53,13 +54,18 @@
 						%form{action: "/users/list"}
 							.btn.red-btn
 								%input{type: "submit",value: "اصدقائي"}
-				- else 
+				- elsif current_user.followed_users.exists?(@user.id)
 					.col-md-10
-						%form{action: "/users/create_relation"}
+						%form{action: "/users/unfollow"}
+							.btn.red-btn
+								%input{type: "hidden", name: "user_id",value: @user.id}
+								%input{type: "submit",value: "احذف من الاصدقاء "}
+				- else
+					.col-md-10
+						%form{action: "/users/follow"}
 							.btn.red-btn
 								%input{type: "hidden", name: "user_id",value: @user.id}
 								%input{type: "submit",value: "اضف الي الاصدقاء"}
-				
 			.col-md-1
 .row
 

@@ -16,9 +16,14 @@ class UsersController < ApplicationController
   	@user.update_attributes(:name => @name, :email => @email, :date_of_birth => @date_of_birth, :gender => @gender, :national_id => @national_id, :location => @location, :job_title => @job_title)
   #redirect_to :action => "show"
   end
-  def create_relation
+  def follow
   	@user = User.find(params[:user_id])
   	current_user.follow!(@user)
+  	redirect_to({controller: "initiatives", action: 'list'})
+  end
+  def unfollow
+  	@user = User.find(params[:user_id])
+  	current_user.unfollow!(@user)
   	redirect_to({controller: "initiatives", action: 'list'})
   end
   def list
