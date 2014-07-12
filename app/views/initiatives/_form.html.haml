@@ -13,26 +13,34 @@
       .form-group
         .col-md-11.title-font.green-font.text-right
           = f.label :"صورة المبادرة"
-        .col-md-4
-        .col-md-5.text-right.upload-preview
+        .col-md-5
+        .col-md-5.text-right.upload-preview.image-frame
           %input.file
-           
-            = f.file_field :image , class: 'initiative-img', class: 'file'
             .upload-preview
               %img/
+            = f.file_field :image , class: 'initiative-img', class: 'file'
+
     .col-md-6.green-font.text-right
       = f.hidden_field :sector_id
       = f.hidden_field :user_id, :value => current_user.id
+      .form-group
+        .col-md-9
+          %span 
+            sector
+          %br
+           
+        .col-md-3.title-font
+          = f.label :"مبادرة بقطاع"      
       .form-group.green-border
         .col-md-9.padding-top
-          = f.text_field :title, class: 'form-control'
+          = f.text_field :title, class: 'form-control', rows: "6"
         %br
         .col-md-3.title-font
           = f.label :"عنوان المبادرة"
           
       .form-group
         .col-md-9
-          = f.text_area :description, class: 'form-control'
+          = f.text_area :description, class: 'form-control',:rows => "12"
         .col-md-3.title-font
           = f.label :"تفاصيل المبادرة"
       
@@ -47,5 +55,5 @@
         .col-md-3.title-font
           = label_tag :"التصنيفات"
       .actions
-        .col-md-12
-          = f.submit 'انشئ المبادرة', class: 'btn btn-default form-btn'
+        .col-md-12.padding-bottom
+          = f.submit 'استمرار', class: 'btn green-btn title-font'

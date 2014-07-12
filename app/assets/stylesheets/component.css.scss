@@ -619,3 +619,13 @@ a.cause-section {
   *:first-child + html .digg_pagination {
     overflow: hidden; }
 
+.image-frame{
+	height: 210px;
+	width:250px;
+	border: 2px solid #E6E3E3;
+	border-radius: 5px;
+}
+.image-frame img{
+	height: 100%;
+	width: 100%;
+}

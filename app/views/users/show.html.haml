@@ -12,41 +12,54 @@
 		.row.col-md-12
 			.col-md-3.profile_image
 				= image_tag @user.image.url
+				- if @user.id == current_user.id
+					%form{action: "/users/edit"}
+						.btn.red-btn
+							%input{type: "hidden", name: "user_id",value: @user.id}
+							%input{type: "submit",value: "تعديل البيانات"}
 			.col-md-1
 			.col-md-8.green-font-title-font
 				.col-md-8
-					%input.form-control.gray-text.result-font{type: "text",value:  @user.name }
+					.form-control.gray-text.result-font
+						= @user.name
 				.col-md-3.user-info-label.green-font.bold-font
 					الاسم
 				.col-md-8
-					%input.form-control.result-font{type: "text",value:  @user.email }
+					.form-control.result-font
+						= @user.email
 						
 				.col-md-3.user-info-label.green-font.bold-font
 					البريد الاكتروني
 				
 				.col-md-8
-					%input.form-control.gray-text.result-font{type: "text",value:  @user.job_title }	
+					.form-control.gray-text.result-font
+						= @user.job_title
 				.col-md-3.user-info-label.green-font.bold-font
 					الوظيفة
 				.col-md-8
-					%input.form-control.gray-text.result-font{type: "text",value:  @user.date_of_birth }	
+					.form-control.gray-text.result-font	
+						= @user.date_of_birth
 				.col-md-3.user-info-label.green-font.bold-font
 					تاريخ الميلاد
 			
 				.col-md-8
-					%input.form-control.gray-text.result-font{type: "text",value:  @user.gender }		
+					.form-control.gray-text.result-font
+						= @user.gender	
 				.col-md-3.user-info-label.green-font.bold-font
 					النوع
 				.col-md-8
-					%input.form-control.result-font{type: "text",value:  @user.national_id}		
+					.form-control.result-font
+						= @user.national_id
 				.col-md-3.user-info-label.green-font.bold-font
 					الرقم القومي
 				.col-md-8
-					%input.form-control.gray-text.result-font{type: "text",value:  @user.location}
+					.form-control.gray-text.result-font
+						=  @user.location
 				.col-md-3.user-info-label.green-font.bold-font
 					محل الاقامه
 				.col-md-8
-					%input.text-right.result-font{type: "text",value:  @user.initiatives.length}
+					.text-right.result-font
+						= @user.initiatives.length
 				.col-md-3.user-info-label.green-font.bold-font
 					عدد المبادرات
 				- if @user.id == current_user.id
@@ -66,6 +79,7 @@
 							.btn.red-btn
 								%input{type: "hidden", name: "user_id",value: @user.id}
 								%input{type: "submit",value: "اضف الي الاصدقاء"}
+
 			.col-md-1
 .row
 
