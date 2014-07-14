@@ -44,14 +44,6 @@ class Initiative < ActiveRecord::Base
 
 
 
-
-
-
-
-
-
-
-
   #search by
   scope :searchTitle, lambda{|searchTitle| where (["title LIKE ?","%#{searchTitle}%"])}
   
