@@ -22,7 +22,7 @@ class ResultsController < ApplicationController
   def create
 	@initiatives = Initiative.all
 	@decisionmakers = Decisionmaker.all
-	@initiatives_ids = params[:initiatives_ids]
+	#@initiatives_ids = params[:initiatives_ids]
 	@decisionmaker_ids = params[:decisionmaker_ids]
 	@state = params[:state]
 	result = Result.new
@@ -34,8 +34,8 @@ class ResultsController < ApplicationController
 	end
 	result.initiative_ids = @initiatives_ids
 	result.decisionmaker_ids = @decisionmaker_ids
-	@initiatives_ids.each do |initiative|
-	initiative.update_attribute(:state, @initiative_state)
-	end
+	#@initiatives_ids.each do |initiative|
+	#initiative.update_attribute(:state, @initiative_state)
+	#end
   end
 end

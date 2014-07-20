@@ -18,7 +18,7 @@ class SupportsController < ApplicationController
 
       end
     end
-    if @initiative.users.length >= 3 # 25000 
+    if @initiative.users.length >= 1 # 25000 
       @initiative.in_progress
     end
     redirect_to :controller => "initiatives", :action => "show", :id =>params[:initiative_id]

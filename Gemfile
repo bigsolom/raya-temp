@@ -67,3 +67,5 @@ gem 'state_machine'
 
 # friends relation 
 gem 'amistad'
+
+gem 'ckeditor_rails'

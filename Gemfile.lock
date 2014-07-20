@@ -38,6 +38,8 @@ GEM
     bootstrap-tagsinput-rails (0.3.2.0)
       railties (>= 3.1)
     builder (3.2.2)
+    ckeditor_rails (4.4.2)
+      railties (>= 3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -214,6 +216,7 @@ DEPENDENCIES
   amistad
   bootstrap-sass (~> 3.1.1)
   bootstrap-tagsinput-rails
+  ckeditor_rails
   coffee-rails (~> 4.0.0)
   devise
   haml-rails

@@ -18,3 +18,4 @@
 //= require bootstrap-tagsinput
 //= require turbolinks
 //= require_tree .
+//= require ckeditor-jquery

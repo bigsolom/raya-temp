@@ -1,2 +1,55 @@
-%h1 Users#edit
-%p Find me in app/views/users/edit.html.haml
+!!!
+%html
+  %body
+    %div
+      - @user = User.find_by_id(params[:user_id])
+      %form.form{method: "post"}
+        .col-md-12
+          .col-md-3
+          .col-md-8.padding-bottom
+            .row.col-md-12
+              .inner_menu
+                .main_title بياناتي
+            .row.col-md-12
+              .col-md-3.profile_image
+                = image_tag @user.image.url
+              .col-md-1
+              .col-md-8.green-font-title-font
+                .col-md-8
+                  %input.form-control.gray-text.result-font{name: "name", type: "text", value: @user.name}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  الاسم
+                .col-md-8
+                  %input.form-control.result-font{name: "email", type: "text", value: @user.email}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  البريد الاكتروني
+                .col-md-8
+                  %input.form-control.gray-text.result-font{name: "job_title", type: "text", value: @user.job_title}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  الوظيفة
+                .col-md-8
+                  %input.form-control.gray-text.result-font{name: "date_of_birth", type: "text", value: @user.date_of_birth}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  تاريخ الميلاد
+                .col-md-8
+                  %input.form-control.gray-text.result-font{name: "gender", type: "text", value: @user.gender}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  النوع
+                .col-md-8
+                  %input.form-control.result-font{name: "national_id", type: "text", value: @user.national_id}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  الرقم القومي
+                .col-md-8
+                  %input.form-control.gray-text.result-font{name: "location", type: "text", value: @user.location}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  محل الاقامه
+                .col-md-8
+                  %input.text-right.result-font{type: "text", value: @user.initiatives.length}/
+                .col-md-3.user-info-label.green-font.bold-font
+                  عدد المبادرات
+              .col-md-1
+        .row
+        .col-md-12
+          %br/
+          %input.btn.btn-default.form-btn{type: "submit", value: "استمرار"}/
+          %br/

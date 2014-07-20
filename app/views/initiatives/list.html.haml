@@ -47,6 +47,44 @@
                             .top-causes-separetor
                               =image_tag "top-causes-separetor.png"
                             .main_title.active_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+                - if @flag == 'sector'
+                  %span.green-font.main_title
+                    المبادرات الموجوده في قطاع: 
+                  %span.main_title
+                    #{link_to(@flag_value, {:controller => 'initiatives' ,:action => "list", :sector_name => @flag_value})}
+                  %div
+                    %br
+                - elsif @flag == "region"
+                  %span.green-font.main_title
+                    المبادرات الموجوده في إمارة: 
+                  %span.main_title
+                    #{link_to(@flag_value, {:controller => 'initiatives' ,:action => "list", :region_name => @flag_value})}
+                  %div
+                    %br
+
+                - elsif @flag == "search_all"
+                  %span.green-font.main_title
+                    المبادرات التي تحتوي علي كلمة: 
+                  %span.main_title
+                    = @flag_value
+                  %div
+                    %br
+
+                - elsif @flag == "search_user"
+                  %span.green-font.main_title
+                    المبادرات الخاصة للمستخدم: 
+                  %span.main_title
+                    #{link_to(@flag_value.name, {:controller => 'users' ,:action => "show", :user_id => @flag_value.id})}
+                  %div
+                    %br
+
+                - elsif @flag == "tag"
+                  %span.green-font.main_title
+                    المبادرات التابعه للتصنيف: 
+                  %span.main_title
+                    #{link_to(@flag_value, {:controller => 'initiatives' ,:action => "list", :tag => @flag_value})}
+                  %div
+                    %br
 
                 - if @initiatives.any? == false
                   %span لا يوجد مبادرات
@@ -73,7 +111,7 @@
                                   %div
                                     مبارده في
                                     #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
-                                    \- بمحافظة
+                                    \- بإمارة
                                     #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
                             .col-md-12.box-content-paragraph
                               %span
@@ -98,10 +136,16 @@
                     .col-md-12
                       .inner_menu
                         .main_title.active_title اقسام المبادرات
-                - @sectors.each do |sector|        
-                  .row.right-side-menu-item.gray-font
-                    .col-md-12.gray-font
-                      #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => sector.name})}
+                - @sectors.each do |sector|
+                  - if sector.name == @flag_value        
+                    .row.right-side-menu-item.gray-font
+                      .col-md-12.green-font.bold-font.highlight-font
+                        #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => sector.name})}
+                  - else 
+                    .row.right-side-menu-item.gray-font
+                      .col-md-12.gray-font
+                        #{link_to(sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => sector.name})}
+
                  
                   
                   

@@ -26,7 +26,7 @@
       .form-group
         .col-md-9
           %span 
-            = @sector.name
+         
           %br
            
         .col-md-3.title-font
@@ -40,7 +40,7 @@
           
       .form-group
         .col-md-9
-          = f.text_area :description, class: 'form-control',:rows => "12"
+          = f.text_area :description, class: 'form-control ckeditor',:rows => "12"
         .col-md-3.title-font
           = f.label :"تفاصيل المبادرة"
       

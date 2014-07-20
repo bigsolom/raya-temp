@@ -79,6 +79,9 @@ $font_0: Droid;
 	font-family: $font_0;
 	font-weight: bold;
 }
+.highlight-font{
+	font-size: 25px;
+}
 
 //original selectors
 //.tweets , .tweeters
@@ -626,6 +629,53 @@ a.cause-section {
 	border-radius: 5px;
 }
 .image-frame img{
+	height: 100%;
+	width: 100%;
+}
+
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.image_frame_user{
+	height: 100px;
+	width: 100px;
+}
+image_frame_user img{
+	height: 100%;
+	width: 100%;
+}
+.image_frame_small_user{
+	height: 50px;
+	width: 50px;
+}
+image_frame_small_user img{
 	height: 100%;
 	width: 100%;
 }

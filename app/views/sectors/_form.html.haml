@@ -18,10 +18,11 @@
           .col-md-11.title-font.green-font.text-right
             = f.label :"صورة القسم"
           .col-md-5
-          .col-md-5.text-right
-            = f.file_field :image , class: 'initiative-img', class: 'file'
+          .col-md-5.text-right.image-frame
             .upload-preview
               %img/
+            = f.file_field :image , class: 'initiative-img', class: 'file'
+
       .col-md-5
       
         

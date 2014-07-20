@@ -1,2 +1,69 @@
-- @users.each do |user|
-	#{link_to(user.name, {:controller => 'users' ,:action => "show", :user_id => user.id})}
+- @users.each do |user_info|
+  .container
+    .well.col-xs-8.col-sm-8.col-md-8.col-lg-8.col-xs-offset-2.col-sm-offset-2.col-md-offset-2.col-lg-offset-2
+      .row.user-row
+        .col-xs-3.col-sm-2.col-md-1.col-lg-1
+          %img.img-circle.image_frame_small_user{alt: "User Pic", src: "#{user_info.image.url}"}/
+        .col-xs-8.col-sm-9.col-md-10.col-lg-10
+          %strong 
+            = user_info.name
+          %br/
+          %span.text-muted
+            = user_info.email 
+        .col-xs-1.col-sm-1.col-md-1.col-lg-1.dropdown-user{"data-for" => ".user_info"}
+          %i.glyphicon.glyphicon-chevron-down.text-muted
+      .row.user-infos.user_info
+        .col-xs-12.col-sm-12.col-md-10.col-lg-10.col-xs-offset-0.col-sm-offset-0.col-md-offset-1.col-lg-offset-1
+          .panel.panel-primary
+            .panel-heading
+              %h3.panel-title User information
+            .panel-body
+              .row
+                .col-md-3.col-lg-3.hidden-xs.hidden-sm
+                  %img.img-circle.image_frame_user{alt: "User Pic", src: "#{user_info.image.url}"}/
+
+                .col-xs-2.col-sm-2.hidden-md.hidden-lg
+                  %img.img-circle{alt: "User Pic", src: "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"}/
+                .col-xs-10.col-sm-10.hidden-md.hidden-lg
+                  %strong 
+                    = user_info.name
+                  %br/
+                  %dl
+                    %dt الوظيفة
+                    %dd 
+          
+                    %dt Registered since:
+                    %dd 11/12/2013
+                    %dt Topics
+                    %dd 15
+                    %dt Warnings
+                    %dd 0
+                .col-md-9.col-lg-9.hidden-xs.hidden-sm
+                  %strong 
+                    = user_info.name
+                  %br/
+                  %table.table.table-user-information
+                    %tbody
+                      %tr
+                        %td 
+                          = user_info.job_title
+                        %td :الوظيفة
+                      %tr
+                        %td 
+                          = user_info.date_of_birth
+                        %td :تاريخ الميلاد
+                      %tr
+                        %td 
+                          = user_info.location
+                        %td :محل الاقامة
+                      %tr
+                        %td 
+                          = user_info.initiatives.length
+                        %td :عدد المبادرات
+
+            .panel-footer
+              .btn.btn-sm.btn-primary
+                .glyphicon.glyphicon-envelope
+              %span.pull-right
+                %button.btn.btn-sm.btn-danger{"data-original-title" => "Remove this user", "data-toggle" => "tooltip", type: "button"}
+                  %i.glyphicon.glyphicon-remove

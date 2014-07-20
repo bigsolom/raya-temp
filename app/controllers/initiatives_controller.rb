@@ -7,8 +7,13 @@ class InitiativesController < ApplicationController
 
     if params[:searchTitle]
       @initiatives = Initiative.searchTitle(params[:searchTitle]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @flag = "search_title"
+      @flag_value = params[:searchTitle]
+
     elsif params[:region_name]
       @initiatives = Initiative.searchRegion(params[:region_name]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @flag = "region"
+      @flag_value = params[:region_name]
     elsif params[:friends_ids]
       @initiatives = []
       @users = current_user.followed_users
@@ -20,14 +25,26 @@ class InitiativesController < ApplicationController
       end
       @initiatives = @initiatives.sort_by {|obj| obj.created_at}.reverse.paginate(:page => params[:page], :per_page => 5)
       @friend_initiative = true
+
     elsif params[:user_id]
       @initiatives = Initiative.where("user_id" => params[:user_id]).paginate(:page => params[:page], :per_page => 5)
+      @flag = "search_user"
+      @flag_value = User.find(params[:user_id])
+
     elsif params[:sector_name]
       @initiatives = Initiative.searchSector(params[:sector_name]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @flag = "sector"
+      @flag_value = params[:sector_name]
+
     elsif params[:tag]
       @initiatives = Initiative.tagged_with(params[:tag]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5) 
+      @flag = "tag"
+      @flag_value = params[:tag]
+
     elsif params[:search_all]
       @initiatives = Initiative.searchAll(params[:search_all]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @flag = "search_all"
+      @flag_value = params[:search_all]
     else
       @initiatives = Initiative.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 
@@ -86,7 +103,7 @@ class InitiativesController < ApplicationController
    # @initiative.mina
     @updates = Update.where(initiative_id: params[:id]).order('created_at DESC')
     @count= @updates.length
-    @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative")
+    @comments = Comment.where("commentable_id" => params[:id]).where("commentable_type" => "initiative").order('created_at DESC')
     @results = @initiative.results
 
     @updates.each do |r|
