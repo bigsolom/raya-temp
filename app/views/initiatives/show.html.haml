@@ -65,7 +65,9 @@
                           = percentage_of_votes
 
                 //Survay Question
+                %br
                 - if (@survay_exist == true)
+                  %br
                   .inner_menu
                   .main_title.small-text السؤال الحالي
                   %br
@@ -148,7 +150,7 @@
                       .col-md-12
                         .green-font.bold-font تفاصيل المبادرة
                         .cause-wrapper-details.gray-text
-                          = @initiative.description
+                          = @initiative.description.html_safe
                   .cause_discussion_block
  
                 - @update_result.each do |update_or_result|

@@ -6,10 +6,10 @@ class UpdateController < ApplicationController
   end
 
   def create
-  	 update=Update.new(params[:update])
-  	 update.action=params[:description]
-  	 update.initiative_id=params[:id]
-  	 if update.save
+  	# update=Update.new(params[:update])
+  	 @update.action=params[:description]
+  	 @update.initiative_id=params[:id]
+  	 if @update.save
   	 	redirect_to(:controller => "initiatives",:action => 'show',:id => params[:id])
   	 else
   	    render('new')
