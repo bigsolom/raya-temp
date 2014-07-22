@@ -173,7 +173,7 @@
                                   = @count
                                   - @count-=1
                                 .timeline-item-details.gray-text
-                                  = update_or_result.action
+                                  = update_or_result.action.html_safe
                                    
                   - else
 
@@ -208,7 +208,7 @@
                                 .timeline-item-details.gray-text
                                   .green-font
                                     تفاصيل القرار
-                                  = update_or_result.decision
+                                  = update_or_result.decision.html_safe
 
                                     
                     

@@ -12,7 +12,7 @@
 			.main_title.title-font محتوي التحديث
 		%form{action: "/update/create", name:"myForm"}
 			%input{type:"hidden", name:"id", value: @initiative_id}
-			%textarea.form-control{rows:"10",name:"description"}
+			%textarea.form-control{rows:"10",name: "description",class: "form-control ckeditor"}
 			%input.btn.green-btn{type:"submit", value:"اضف التحديث"}
 		%br
 	.col-md-2

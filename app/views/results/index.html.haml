@@ -45,7 +45,7 @@
                 .note-img.col-md-2
                   = resultmaker.pic
               .result-person-decision.col-md-12.gray-font
-                = result.decision
+                = result.decision.html_safe
           - initiatives_data = result.initiatives
           - initiatives_data.each do |initiative_data|
             .content.col-md-6.content-partial
@@ -62,7 +62,7 @@
                       %a
                         = initiative_data.region.name
                     .result-topic-content.col-md-12.gray-font
-                      = initiative_data.description
+                      = initiative_data.description.html_safe
                 .col-md-5.width-35
                   .box-img.col-md-12
                     = image_tag initiative_data.image.url
