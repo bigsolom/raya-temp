@@ -1,3 +1,4 @@
+!!!
 %html
   %body
     %div
@@ -12,55 +13,52 @@
             - if Result.all.any? == false
               .row.final-results
                 .col-md-4.depend
-                  %span.final-results-title 
+                  %span.final-results-title
                   .decision-maker-info.col-md-8
-                    %span.final-results-paragraph.bold-font لا يوجد نتائج 
-                      
-
+                    %span.final-results-paragraph.bold-font لا يوجد نتائج
                 .col-md-8.final
                   %span.final-results-title أخر النتائج
                   %span.final-results-sub-title
                     %span لا يوجد نتائج
-
-
                   %span.final-results-paragraph
-                     
             - else
               .row.final-results
                 .col-md-4.depend
                   %span.final-results-title واعتمد هذاالقرار من
                   .decision-maker-info.col-md-8
                     %span.final-results-paragraph.bold-font
-                      = Result.last.decisionmakers[0].name
-                      %br>/
-                      = Result.last.decisionmakers[0].job  
- 
-                      
+                      - last_results_DS = Result.last.decisionmakers
+                      - last_results_DS.each do |last_result_DS|
+                        = last_result_DS.name
+                        %br/
+                        = last_result_DS.job
                   .final-results-img.col-md-4
                     = image_tag "atef-helmy.jpg"
                 .col-md-8.final
                   %span.final-results-title أخر النتائج
                   %span.final-results-sub-title
                     %span :
-                    بمناقشة 
-                    = Result.last.initiatives[0].title
-                    تم الاتفاق علي التالي 
-          
+                    بمناقشة
+                    - last_results_ini = Result.last.initiatives
+                    - last_results_ini.each do |last_result_ini|
+                      - last_result_ini.title
+                    تم الاتفاق علي التالي
         .col-md-12
           .col-md-2
           %form.col-md-8.result-form
             .main_title.active_title اصنع قرار لمبادرة
-            %br
+            %br/
             .main_title.active_title اختر المبادرات المراد صنع لها القرار
-            %br 
+            %br/
             - @initiatives.each do |initiative|
               .col-lg-6
                 .input-group
-                  %input.form-control.green-font.result-font{type: "text",value:  initiative.title }/
+                  %input.form-control.green-font.result-font{type: "text", value: initiative.title}>/
+                  \/
                   %span.input-group-addon
-                    %input{type: "checkbox", name: "initiatives_ids[]", value: initiative.id }/
-                %br
-
+                    %input{name: "initiatives_ids[]", type: "checkbox", value: initiative.id}>/
+                    \/
+                %br/
             .col-md-12
               .main_title.active_title اختر المسؤل عن صنع القرار
             .col-md-12.green-font.result-font
@@ -74,15 +72,6 @@
             .col-md-12
               %textarea.col-md-12.form-control{name: "decision"}
             .col-md-12
-              %br
-              %input.btn.btn-default.form-btn{type: "submit", value: "استمرار"}
-              %br
-
-
-
-
-
-
-
-
-    
+              %br/
+              %input.btn.btn-default.form-btn{type: "submit", value: "استمرار"}/
+              %br/
