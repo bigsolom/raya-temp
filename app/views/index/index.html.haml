@@ -206,7 +206,7 @@
                                 #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
                         .box-content-paragraph
                           %span
-                            #{initiative.description[0, 120]}
+                            #{initiative.description[0, 120].html_safe}
                             %span.bold-font #{link_to("...المزيد", {:controller=>'initiatives',:action => 'show', :id => initiative.id  })}
                       .col-md-3  
                         .cause-wrapper-img

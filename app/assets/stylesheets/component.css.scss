@@ -569,7 +569,9 @@ a.cause-section {
 .float-left{
 	float: left;
 }
-
+.pagination{
+direction: rtl;
+}
 .digg_pagination {
   background: white;
   cursor: default;
@@ -579,7 +581,7 @@ a.cause-section {
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
     padding: 0.3em 1em;
     display: block;
-    float: left;
+    float: right;
     margin-right: 0px; }
   .digg_pagination .disabled {
     color: #999999;
