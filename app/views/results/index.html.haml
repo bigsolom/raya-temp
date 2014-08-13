@@ -1,78 +1,130 @@
-!!!
 %html
-  %head
-    %title تواصل | الامارات العربية المتحدة
-    %meta{charset: "utf-8"}/
-    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    %title Bootstrap 101 Template
-    /
-      Bootstrap
-    %link{href: "../../assets/stylesheets/bootstrap.min.css", rel: "stylesheet"}/
   %body
-    %p
-      \/
-      = succeed "/" do
-        %link{href: "../../assets/stylesheets/component.css", rel: "stylesheet"}/
-      /
-        HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-      /
-        WARNING: Respond.js doesn't work if you view the page via file://
-      /
-        [if lt IE 9]
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    /
-      result
-    - @results.each do |result|
-      - resultmakers = result.decisionmakers
-      - resultmakers.each do |resultmaker|
-        .result.col-md-9.content-border
-          .content.col-md-6.content-partial.right-border
-            .result-person-detail.col-md-12
-              .result-person-info.col-md-12
-                .col-md-10.width-80
-                  .col-md-12.result-font
-                    %span.col-md-12.green-font.bold-font
-                      معالي /  #{resultmaker.name}
-                    %br/
-                    %span.col-md-12.green-font
-                      = resultmaker.job
-                    .col-md-12
-                      %span.gray-font.small-font بتاريخ
-                      %span.gray-font.small-font
-                        = result.updated_at
-                .note-img.col-md-2
-                  = resultmaker.pic
-              .result-person-decision.col-md-12.gray-font
-                = result.decision.html_safe
-          - initiatives_data = result.initiatives
-          - initiatives_data.each do |initiative_data|
-            .content.col-md-6.content-partial
-              .result-person-detail.col-md-12
-                .col-md-7.width-65
-                  .result-topic-title.col-md-12.box-title
-                    .col-md-12.title-font.green-font
-                      = initiative_data.title
-                    .col-md-12.gray-font
-                      مبارده في
-                      %a
-                        = initiative_data.sector.name
-                      بأمارة
-                      %a
-                        = initiative_data.region.name
-                    .result-topic-content.col-md-12.gray-font
-                      = initiative_data.description.html_safe
-                .col-md-5.width-35
-                  .box-img.col-md-12
-                    = image_tag initiative_data.image.url
-                  .count-box.col-md-12
-                    %span.green-font.col-md-12.title-font
-                    %span.green-font.col-md-12.date-font شخص دعم المبادرة
-        %div
-        /
-          jQuery (necessary for Bootstrap's JavaScript plugins)
-        %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
-        /
-          Include all compiled plugins (below), or include individual files as needed
-        %script{src: "js/bootstrap.min.js"}
+    %div
+      .row
+        .col-md-12.page-header-block
+          .wrapper
+            %span.green-font.big-title شـارك
+            %span.gray-text فى نهضة البلاد وتابع نتائج البرزات القادمة
+      .row
+        .col-md-12.participate-flowchart-details.flowchart-item-details
+          .wrapper
+            - if Result.all.any? == false
+              .row.final-results
+                .col-md-4.depend
+                  %span.final-results-title 
+                  .decision-maker-info.col-md-8
+                    %span.final-results-paragraph.bold-font لا يوجد نتائج 
+                      
+
+                .col-md-8.final
+                  %span.final-results-title أخر النتائج
+                  %span.final-results-sub-title
+                    %span لا يوجد نتائج
+
+
+                  %span.final-results-paragraph
+                     
+            - else
+              .row.final-results
+                .col-md-4.depend
+                  %span.final-results-title واعتمد هذاالقرار من
+                  .decision-maker-info.col-md-8
+                    %span.final-results-paragraph.bold-font
+                      = Result.last.decisionmakers[0].name
+                      %br>/
+                      = Result.last.decisionmakers[0].job  
+ 
+                      
+                  .final-results-img.col-md-4
+                    = image_tag "atef-helmy.jpg"
+                .col-md-8.final
+                  %span.final-results-title أخر النتائج
+                  %span.final-results-sub-title
+                    %span :
+                    بمناقشة 
+                    = Result.last.initiatives[0].title
+                    تم الاتفاق علي التالي
+
+
+                  %span.final-results-paragraph
+                    = Result.last.decision
+
+      .row
+        .col-md-12
+          .wrapper 
+            %span.col-md-6.margin-top
+              %form{action: "/results/index"}
+                %input.btn-default.search-btn{type: "submit", value: "ابحث"}
+                %input.search-box.green-font{name: "searchResult", type: "text"}
+                %span.main_title.active_title ابحث عن نتيجة
+            
+            .inner_menu.col-md-6
+              .main_title.active_title نتائج المبادرات
+            %br
+            %br
+            %br
+
+            - @results.each do |result|
+              - resultmaker = result.decisionmakers.where(result_id = result.id).all[0] 
+              .row.cause-result-wrapper
+                .col-md-6.cause-result-item
+                  .row
+                    .col-md-10
+                      .timeline-item-supporter
+                        .green-font.timeline-item-supporter-title.bold-font.result-font
+                          معالي / #{resultmaker.name}
+                        .green-font.timeline-item-supporter-sub-title.bold-font
+                          = resultmaker.job
+                        .light-text.timeline-item-supporter-sub-date
+                          تاريخ 
+                          = result.created_at.to_time.strftime('%A %e %B %Y')
+                          = ((Time.now - result.updated_at) / 3600).round
+                    .col-md-2
+                      .timeline-item-supporter-img
+                        = image_tag "ibrahim.jpg"
+                  .timeline-item-details.gray-text
+                    .green-font
+                      تفاصيل القرار
+                    = result.decision
+                - initiative_data1 = result.initiatives.where(result_id = result.id).all
+                .col-md-6.cause-result-item.border-right
+                  - initiative_data1.each do |initiative_data|
+                    .col-md-12.cause-result-item
+                      .row
+                        .col-md-8
+                          .green-font.timeline-item-supporter-title.bold-font.result-font
+                            #{link_to(initiative_data.title[0, 35], {:controller => 'initiatives' ,:action => "show", :id => initiative_data.id})}
+                          .timeline-item-supporter-sub-title.gray-text.bold-font
+                            مبادرة في 
+                            %span.green-font.opacity-font
+                              #{link_to(initiative_data.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative_data.sector.name})}
+                            \- بإمارة
+                            %span.green-font.opacity-font
+                              #{link_to(initiative_data.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative_data.region.name})}
+                          .timeline-item-details.gray-text
+                            = initiative_data.description[0, 150]
+                        .col-md-4
+                          .cause-result-img
+                            = image_tag initiative_data.image.url
+                          .green-font.title-font 
+                            = initiative_data.users.length
+                          .light-green-font.cause-result-sub-title
+                            شخص دعم المبادرة
+          %form{action: "/results/create"}
+            .col-md-9
+            .btn.red-btn
+              %input{type:"submit", value:"اصنع قرار"}
+
+
+
+            .row
+              .col-md-3
+              .col-md-8.padding-bottom.float-left
+                .digg_pagination
+                  = will_paginate @results, inner_window: 1, :container => true, :next_label => ">", :previous_label => "<"
+        
+
+
+
+

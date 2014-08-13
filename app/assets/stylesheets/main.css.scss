@@ -683,7 +683,7 @@ footer {
 
 .box-content-paragraph {
   text-align: right;
-  margin-top: 12px;
+  padding-left: 20px;
 }
 
 .box-img {
@@ -693,6 +693,10 @@ footer {
   border: 3px solid #F8F8F8;
   display: inline-block;
   float: right;
+}
+.box-img img{
+  height: 100%;
+  width: 100%;
 }
 
 /*-----------------Pagination -----------------*/

@@ -57,7 +57,33 @@ $font_0: Droid;
 	color: $color_12;
 	font-size: 16px;
 }
+.hangout-block
+{
+	border:1px solid #e1e2e1;
+	border-bottom:3px solid #e1e2e1;
+	border-radius:5px;
+	min-height:10px;
+}
 
+.hangout-block-separator
+{
+	border-top:1px solid #e1e2e1;
+	margin-left:0px;
+
+}
+.hangout-block-title
+{
+	background-color:#fff;
+	text-align:center;
+	width:35%;
+	margin:0 auto;
+	position:relative;
+	bottom:10px;
+}
+.hangout-main-block
+{
+	margin-bottom:20px;
+}
 //original selectors
 //.hangout-img img , .final-results-img img
 %extend_3 {
@@ -387,7 +413,7 @@ select {
 }
 .timeline-item-supporter-img {
 	margin-top: 30px;
-	min-height: 52px;
+	min-height: 70px;
 	min-width: 65px;
 	border: 1px solid #E2E3E2;
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
@@ -398,6 +424,9 @@ select {
 	height: 100%;
 	width: 100%;
 	margin-top: 2px;
+}
+.padding{
+	padding: 8px;
 }
 .timeline-item-supporter-img img{
 	height: 100%;

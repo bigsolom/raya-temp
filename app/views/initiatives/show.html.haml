@@ -219,7 +219,8 @@
               .col-md-9
                 .inner_menu
                   .main_title مناقشة المبادرة
-                %form{action: "/comments/create"}
+
+                %form{action: "/comments/create",remote: true}
                   .send-comment
                     %textarea.form-control{cols: "30", name: "content", rows: "6"}
                     %input{name: "initiative_id", type: "hidden", value: @initiative.id }/

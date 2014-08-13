@@ -19,3 +19,4 @@
 //= require turbolinks
 //= require_tree .
 //= require ckeditor-jquery
+//= require google-instant-hangouts

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710104825) do
+ActiveRecord::Schema.define(version: 20140723113507) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 20140710104825) do
   create_table "feedbacks_users", id: false, force: true do |t|
     t.integer "feedback_id"
     t.integer "user_id"
+  end
+
+  create_table "hangouts", force: true do |t|
+    t.date     "date"
+    t.integer  "user_id"
+    t.text     "user_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hangouts_initiatives", id: false, force: true do |t|
+    t.integer "hangout_id"
+    t.integer "initiative_id"
   end
 
   create_table "initiatives", force: true do |t|
@@ -171,7 +184,6 @@ ActiveRecord::Schema.define(version: 20140710104825) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "image"
     t.string   "job_title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -190,7 +202,7 @@ ActiveRecord::Schema.define(version: 20140710104825) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "gender"
-    t.string   "date_of_birth"
+    t.date     "date_of_birth"
     t.string   "national_id"
     t.string   "location"
   end

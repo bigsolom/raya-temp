@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
        
   has_many :initiatives
+  has_many :hangouts
   has_and_belongs_to_many :initiatives
 
   has_many :followed_users, through: :relationships, source: :followed

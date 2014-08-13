@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'hangouts/list'
+
+  get 'hangouts/show'
+
   get 'feedbacks/new'
 
   post 'feedbacks/create'
@@ -62,7 +66,6 @@ Rails.application.routes.draw do
   resources :users
   resources :initiatives
   resources :sectors
-
   devise_for :users
   devise_scope :user do
    get "signup", to: "devise/registrations#new"
