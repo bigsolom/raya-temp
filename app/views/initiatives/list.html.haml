@@ -37,16 +37,23 @@
                     .row
                       .col-md-12
                         .inner_menu
-                          - if @friend_initiative == true
-                            .main_title.active_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
-                            .top-causes-separetor
+                          - if @flag == "search_user"
+                            %span.main_title 
+                              #{link_to("البيانات الشخصية", {:controller => 'users' ,:action => "show", :user_id => @flag_value.id})}
+                            %span.top-causes-separator
                               =image_tag "top-causes-separetor.png"
-                            .main_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+                            .main_title.active_title #{link_to("المبادرات", {:controller => 'initiatives' ,:action => "list"})}
                           - else
-                            .main_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
-                            .top-causes-separetor
-                              =image_tag "top-causes-separetor.png"
-                            .main_title.active_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+                            - if @friend_initiative == true
+                              .main_title.active_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
+                              .top-causes-separetor
+                                =image_tag "top-causes-separetor.png"
+                              .main_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
+                            - else
+                              .main_title #{link_to("مبادرات الاصدقاء", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}
+                              .top-causes-separetor
+                                =image_tag "top-causes-separetor.png"
+                              .main_title.active_title #{link_to("احدث المبادرات", {:controller => 'initiatives' ,:action => "list"})}
                 - if @flag == 'sector'
                   %span.green-font.main_title
                     المبادرات الموجوده في قطاع: 

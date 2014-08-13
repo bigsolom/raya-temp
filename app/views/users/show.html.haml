@@ -2,13 +2,20 @@
 	.col-md-3
 	.col-md-8.padding-bottom
 
-		.row.col-md-12
-			.inner_menu
-				- if @user.id == current_user.id
-					.main_title.active_title 
-						بياناتي	
-				- else 
-					.main_title البيانات الشخصيه 
+		.row
+			.col-md-12
+				.inner_menu
+					- if @user.id == current_user.id
+						%span.main_title #{link_to("مبادراتى ", {:controller => 'initiatives' ,:action => "list", :friends_ids => current_user.id})}	
+						%span.top-causes-separator
+							=image_tag "top-causes-separetor.png"
+						%span.main_title #{link_to("بياناتي", {:controller => 'users' ,:action => "show", :user_id => current_user.id})} 
+
+					- else 
+						%span.main_title #{link_to("المبادرات ", {:controller => 'initiatives' ,:action => "list", :user_id => @user.id})}	
+						%span.top-causes-separator
+							=image_tag "top-causes-separetor.png"
+						%span.main_title.active_title #{link_to("البيانات الشخصية", {:controller => 'users' ,:action => "show", :user_id => @user.id})} 
 		.row.col-md-12
 			.col-md-3.profile_image
 				= image_tag @user.image.url
@@ -22,6 +29,7 @@
 				.col-md-8
 					.form-control.gray-text.result-font
 						= @user.name
+
 				.col-md-3.user-info-label.green-font.bold-font
 					الاسم
 				.col-md-8
