@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   get 'update/create'
   get 'results/index'
   get 'results/create'
+  get 'results/show'
   get 'comments/create'
   get 'index/index'
   get 'initiatives/list'

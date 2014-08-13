@@ -41,4 +41,8 @@ class ResultsController < ApplicationController
 	
 	
   end
+  def show
+  	@result = Result.find_by_id(params[:id])
+  	@initiatives = @result.initiatives
+  end
 end
