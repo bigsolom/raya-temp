@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20140723113507) do
 
   create_table "users", force: true do |t|
     t.string   "name"
+    t.string   "image"
     t.string   "job_title"
     t.datetime "created_at"
     t.datetime "updated_at"

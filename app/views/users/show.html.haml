@@ -15,7 +15,7 @@
 				- if @user.id == current_user.id
 					%form{action: "/users/edit"}
 						.btn.red-btn
-							%input{type: "hidden", name: "user_id",value: current_user.id}
+							%input{type: "hidden", name: "user_id",value: @user.id}
 							%input{type: "submit",value: "تعديل البيانات"}
 			.col-md-1
 			.col-md-8.green-font-title-font

@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get 'initiatives/search_engine'
   get 'initiatives/poll_submit'
 
-  resources :users
+  
   resources :initiatives
   resources :sectors
   devise_for :users

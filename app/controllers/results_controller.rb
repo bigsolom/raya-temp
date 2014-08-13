@@ -9,7 +9,7 @@ class ResultsController < ApplicationController
     	@results.each do |result|
      
      		@decisionmakers =  Decisionmaker.all.each do |decisionmaker|
-     		decisionmaker = result.decisionmakers.where(decisionmaker_id = decisionmaker.id).all[0]
+     		decisionmaker = result.decisionmakers
      		end
      	
     		@initiatives = Initiative.all.each do |initiative|
@@ -22,21 +22,23 @@ class ResultsController < ApplicationController
   def create
 	@initiatives = Initiative.all
 	@decisionmakers = Decisionmaker.all
-	#@initiatives_ids = params[:initiatives_ids]
+	@initiatives_ids = params[:initiatives_ids]
 	@decisionmaker_ids = params[:decisionmaker_ids]
 	@initiative_state = params[:state]
 	result = Result.new
 	if result = Result.new
 		result.decision = params[:decision]
 		if result.save
+			@initiatives_ids.each do |id_initiative|
+		initiative = Initiative.find_by_id(id_initiative)
+	initiative.update_attribute(:state, @initiative_state)
+	end
 		redirect_to :action => "index"
 	end
 	end
 	result.initiative_ids = @initiatives_ids
 	result.decisionmaker_ids = @decisionmaker_ids
-	#@initiatives_ids.each do |initiative|
-	#initiative.update_attribute(:state, @initiative_state)
-	#end
+	
 	
   end
 end
