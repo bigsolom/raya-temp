@@ -86,7 +86,8 @@
                   .timeline-item-details.gray-text
                     .green-font
                       تفاصيل القرار
-                    #{link_to(result.decision[0, 10], {:controller => 'results' ,:action => "show", :id => result.id})}
+                    %span.grey-font
+                      #{link_to(result.decision[0, 10], {:controller => 'results' ,:action => "show", :id => result.id})}
                 - initiative_data1 = result.initiatives.where(result_id = result.id).all
                 .col-md-6.cause-result-item.border-right
                   - initiative_data1.each do |initiative_data|

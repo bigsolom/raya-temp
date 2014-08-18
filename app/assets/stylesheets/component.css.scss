@@ -160,12 +160,20 @@ select {
 	font-size: 14px;
 	display: inline-block;
 }
+.grey-font{
+	color: #909090;
+}
+.grey-font a{
+	color: #909090;
+}
 .final-results-paragraph {
 	@extend %extend_2;
 	font-size: 14px;
 	display: inline-block;
 }
-
+.margin-top{
+	margin-top: 11px;
+}
 .final-results-title {
 	@extend %extend_4;
 }

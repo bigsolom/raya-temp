@@ -2,14 +2,52 @@
 %html
   %body
     %div
-      / //-----------Main Content Area ---------//
-      .row
+      / //-----------intiatives area  ---------//
+      .row.margin-bottom
         .col-md-12
-          .wrapper
-            .row.bottom-bordered
-              .col-md-4
+          .Result-wrapper
+            .row
+              .col-md-5
+                .col-md-12
+                  .main_title
+                    وتتضمن هذه النتيجه المبادرات الاتيه
 
-              .col-md-8
+                  - @initiatives.each do |initiative| 
+                    .cause-wrapper
+                      .row.cause-wrapper-row
+                        .col-md-12.cause-wrapper-header
+                          .row
+                            .col-md-1
+                              
+                            .col-md-7
+                              .cause-wrapper-title.green-font.margin-top
+                                %span 
+                                #{link_to(initiative.title[0..25], {:controller => 'initiatives' ,:action => "show", :id => initiative.id})}
+                                
+                              .cause-wrapper-sub-title
+                                %span مبادرة في 
+                                %span.green-font
+                                  #{link_to(initiative.sector.name, {:controller => 'initiatives' ,:action => "list", :sector_name => initiative.sector.name})}
+
+                                %span بإمارة
+                                %span.green-font
+                                  #{link_to(initiative.region.name, {:controller => 'initiatives' ,:action => "list", :region_name => initiative.region.name})}
+                              %br
+
+                              %span.grey-font
+                                = initiative.description[0..65]
+
+                             
+                            .col-md-3
+                              .cause-wrapper-img
+                                = image_tag initiative.image.url
+
+
+
+                            
+
+              / //-----------Result area  ---------//
+              .col-md-7
                 .cause-wrapper
                   .row.cause-wrapper-row
                     .col-md-12.cause-wrapper-header
@@ -23,7 +61,9 @@
                             = @result.decisionmakers[0].name
                           .cause-wrapper-sub-title
                             %span.green-font 
-                            = @result.decisionmakers[0].job
+                              = @result.decisionmakers[0].job
+                            .grey-font
+                              = @result.created_at.to_time.strftime('%A %e %B %Y')
                         .col-md-3
                           .cause-wrapper-img
                             = image_tag "ibrahim.jpg"
@@ -31,9 +71,9 @@
                         .col-md-12
                           .social-media-sharing
                     .row.cause-wrapper-paragraph
-                      .col-md-12
+                      .col-md-12.cause-wrapper-title
                         .green-font تفاصيل القرار
-                        .cause-wrapper-details.gray-text
+                        .cause-wrapper-sub-title.gray-text
                           = @result.decision.html_safe
 
 
@@ -42,7 +82,3 @@
 
 
 
-//<%= @result.decision %>
-//<% @initiatives.each do |initiative| %>
-//<%= initiative.title %>
-//<% end %>
