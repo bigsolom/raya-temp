@@ -39,8 +39,8 @@ class ResultsController < ApplicationController
 	result.initiative_ids = @initiatives_ids
 	result.decisionmaker_ids = @decisionmaker_ids
 	
-	
-  end
+	end
+
   def show
   	@result = Result.find_by_id(params[:id])
   	@initiatives = @result.initiatives

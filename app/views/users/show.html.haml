@@ -5,10 +5,15 @@
 		.row.col-md-12
 			.inner_menu
 				- if @user.id == current_user.id
-					.main_title.active_title 
-						بياناتي	
+					%span.main_title #{link_to("المبادرات", {:controller => 'initiatives' ,:action => "list", :user_id => @user.id})}
+					%span.top-causes-separetor
+						=image_tag "top-causes-separetor.png" 
+					.main_title #{link_to("بياناتي", {:controller => 'users' ,:action => "show", :user_id => @user.id})}
 				- else 
-					.main_title البيانات الشخصيه 
+					%span.main_title #{link_to("المبادرات", {:controller => 'initiatives' ,:action => "list", :user_id => @user.id})}
+					%span.top-causes-separetor
+						=image_tag "top-causes-separetor.png" 
+					.main_title #{link_to("بياناتي", {:controller => 'users' ,:action => "show", :user_id => @user.id})}
 		.row.col-md-12
 			.col-md-3.profile_image
 				= image_tag @user.image.url

@@ -1,0 +1,48 @@
+
+%html
+  %body
+    %div
+      / //-----------Main Content Area ---------//
+      .row
+        .col-md-12
+          .wrapper
+            .row.bottom-bordered
+              .col-md-4
+
+              .col-md-8
+                .cause-wrapper
+                  .row.cause-wrapper-row
+                    .col-md-12.cause-wrapper-header
+                      .row
+                        .col-md-2
+                          
+                        .col-md-7
+                          .cause-wrapper-title.green-font 
+                            %span 
+                              معالي
+                            = @result.decisionmakers[0].name
+                          .cause-wrapper-sub-title
+                            %span.green-font 
+                            = @result.decisionmakers[0].job
+                        .col-md-3
+                          .cause-wrapper-img
+                            = image_tag "ibrahim.jpg"
+                      .row
+                        .col-md-12
+                          .social-media-sharing
+                    .row.cause-wrapper-paragraph
+                      .col-md-12
+                        .green-font تفاصيل القرار
+                        .cause-wrapper-details.gray-text
+                          = @result.decision.html_safe
+
+
+
+
+
+
+
+//<%= @result.decision %>
+//<% @initiatives.each do |initiative| %>
+//<%= initiative.title %>
+//<% end %>
