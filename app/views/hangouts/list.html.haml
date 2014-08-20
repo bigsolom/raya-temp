@@ -94,7 +94,7 @@
                                   .col-md-12.padding
                                     .box-content-paragraph
                                       %span
-                                        #{initiative.description[0, 130]}
+                                        #{initiative.description[0, 130].html_safe}
                                       #{link_to("....المزيد", {:action => 'show', :id => initiative.id  })}
                                 .col-md-3.box-img
                                   = image_tag initiative.image.url

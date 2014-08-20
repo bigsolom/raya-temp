@@ -70,5 +70,6 @@ gem 'amistad'
 
 gem 'ckeditor_rails'
 
-#hangouts
-gem 'google-instant-hangouts' 
+#twitter 
+gem 'twitter'
+

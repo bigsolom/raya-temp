@@ -16,7 +16,6 @@
 //= require jquery-fileupload
 //= require bootstrap
 //= require bootstrap-tagsinput
-//= require turbolinks
+
 //= require_tree .
 //= require ckeditor-jquery
-//= require google-instant-hangouts
