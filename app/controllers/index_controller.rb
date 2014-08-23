@@ -14,5 +14,10 @@ class IndexController < ApplicationController
   	else
   	@initiatives = Initiative.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
   	end
+load_tweets
+
   end
+def load_tweets
+    @tweets = $client.user_timeline('ahelmy')
+end
 end

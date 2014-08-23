@@ -136,7 +136,8 @@
                           %span.tweet_time
                             5h
                         %span.tweet_paragraph
-                          تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية تحديثات الهيئات الحكومية
+                          - @tweets.each do |element|
+                            %li= element.text
                   
                     .col-md-12.bottom-boreded
                       .tweets_block
@@ -222,6 +223,6 @@
           
 
 
+- @tweets.each do |element|
+  %li= element.text
 
-        
-       
