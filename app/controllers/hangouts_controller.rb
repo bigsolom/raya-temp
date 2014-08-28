@@ -1,5 +1,8 @@
 class HangoutsController < ApplicationController
   def create
+  	@initiatives = Initiative.all
+  	@decisionmakers = Decisionmaker.all
+
   end
 
   def list
